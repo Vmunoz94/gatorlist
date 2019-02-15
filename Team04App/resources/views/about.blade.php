@@ -1,5 +1,5 @@
 {{-- use the aboutLayout template --}}
-@extends('layouts.aboutLayout')
+@extends('layouts.about')
 
 {{-- fill in missing sections --}}
 @section('title', 'About')
@@ -41,7 +41,6 @@
               <a href="about/gabriel" class="ui inverted purple button small w-75 mx-auto name-of-person my-2">Gabriel Alfaro</a>
               <a href="about/daniel" class="ui inverted purple button small w-75 mx-auto name-of-person my-2">Daniel Mossaband</a>
               <a href="about/aditya" class="ui inverted purple button small w-75 mx-auto name-of-person my-2">Aditya Sheoran</a>
-
             </div>
           </div>
         </div>

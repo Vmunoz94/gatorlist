@@ -12,7 +12,7 @@
   <title>@yield('title')</title>
 </head>
 
-<body>
+<body id="aboutPage">
   <!-- navbar -->
   <nav class="navbar navbar-expand-md navbar-light bg-light">
     <div class="container">
@@ -45,7 +45,7 @@
   <!-- jumbotron -->
   <section class="jumbotron jumbotron-fluid mb-0">
     <div class="container">
-      <h1 class="display-4 text-center">@yield('jumbotronTitle')</h1>
+      <h1 id="jumbotronTitle" class="display-4 text-center">@yield('jumbotronTitle')</h1>
       <hr class="my-4">
         @yield('jumbotronContent')
   </section>

@@ -10655,6 +10655,14 @@ a.text-dark:focus {
   }
 }
 
+#aboutPage {
+  background-image: url("/images/background.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 735px;
+  height: cover;
+}
+
 .navbar {
   background-color: transparent !important;
 }
@@ -10677,27 +10685,12 @@ a.text-dark:focus {
   max-width: 300px;
 }
 
-h1 {
-  letter-spacing: 0.1em;
-  text-transform: capitalize;
-}
-
-.header {
-  font-weight: bold;
-  font-size: 1.5rem;
-  letter-spacing: 0.01em;
-}
-
 .jumbotron {
   background: transparent;
 }
 
-body {
-  background-image: url(https://images.unsplash.com/photo-1533087053677-60bb97f0b3bb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80);
-  background-repeat: no-repeat;
-  background-size: cover;
-  min-height: 735px;
-  height: cover;
+#jumbotronTitle {
+  letter-spacing: 0.5rem;
 }
 
 .card {
@@ -10712,9 +10705,10 @@ body {
   background-color: rgba(255, 255, 255, 0.1);
 }
 
-.carousel-item {
+.carousel-inner {
   max-width: 500px;
   margin: 0 auto;
+  padding: 0 5px;
 }
 
 img {
@@ -10727,15 +10721,15 @@ img {
   border-radius: 10px !important;
 }
 
+ul {
+  list-style-type: none;
+}
+
 #go-back-button {
   max-width: 200px;
   box-shadow: 0px 2px 5px black;
   -moz-box-shadow: 0 2px 5px black;
   -webkit-box-shadow: 0 2px 5px black;
-}
-
-ul {
-  list-style-type: none;
 }
 
 @media only screen and (max-width: 991px) {

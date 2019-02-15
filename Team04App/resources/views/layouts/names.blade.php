@@ -1,5 +1,5 @@
 {{-- use the aboutLayout template --}}
-@extends('layouts.aboutLayout')
+@extends('layouts.about')
 
 {{-- fill in the body section --}}
 {{-- this was made seperate because the about body is different from the individual site body --}}
@@ -7,11 +7,11 @@
     <section>
         <div class="container">
             <div class="row">
-                <div class="col-lg-4 mb-5">
+                <div class="col-lg-4 mb-5 ">
                     <div class="carousel slide ">
-                        <div class="carousel-inner">
+                        <div class="carousel-inner ">
                             <div class="carousel-item active">
-                                <img class="d-block w-100 d-flex justify-content-start m-0  border border-dark rounded"
+                                <img class="w-100 m-0 border border-dark rounded"
                                     src="@yield('imgSource')">
                             </div>
                         </div>

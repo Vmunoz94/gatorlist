@@ -75,4 +75,9 @@ git push origin --delete <branch name>
 git checkout <branch name (ex. develop)>
 git merge origin <branch name (ex. feature)>
 ```
+- Pull from branch
+```
+git checkout <branch name (ex. feature)>
+git pull origin <branch name (ex. develop)>
+```
 

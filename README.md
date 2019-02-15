@@ -8,3 +8,5 @@
 2. Add ALL members of your team to this repo. For it to count, they must ACCEPT the invite.
 
 
+Mac installation guide:
+(Coming Soon)

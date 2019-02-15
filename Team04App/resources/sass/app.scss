@@ -8,6 +8,15 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+// Font Awesome
+@import url('https://use.fontawesome.com/releases/v5.7.2/css/all.css');
+
+// Semantic UI
+@import url('https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/button.min.css');
+
+// about.css
+@import 'about';
+
 .navbar-laravel {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);

@@ -73,7 +73,8 @@ git push origin --delete <branch name>
 - Merge branch - first push updated branch to github then...
 ```
 git checkout <branch name (ex. develop)>
-git merge origin <branch name (ex. feature)>
+git merge <branch name (ex. feature)>
+git push origin <same branch>
 ```
 - Pull from branch
 ```

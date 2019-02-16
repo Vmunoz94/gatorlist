@@ -14,3 +14,18 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+// Delete this later
+Route::get('/about', function(){
+   return view('about');
+});
+
+
+// Delete this later
+Route::get('/about/victor', function(){
+   return view('names.victor');
+});
+
+Route::get('/about/karuna', function(){
+   return view('names.karuna');
+});

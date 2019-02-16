@@ -71,9 +71,9 @@ git branch -d <branch name>
 git push origin --delete <branch name>
 ```
 - Merge branch - first push updated branch to github then
-> All merging will be done through Github, never the cmdline.   
-> Open pull request, allows for code review and prevents merge conflicts. 
-> Ideally team leads and github master should decide if code gets to be merged. 
+> All merging will be done through Github, never the cmdline.     
+> Open pull request, allows for code review and prevents merge conflicts.    
+> Ideally team leads and github master should decide if code gets to be merged.    
 
 - Pull from branch
 ```

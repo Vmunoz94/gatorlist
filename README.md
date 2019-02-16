@@ -53,6 +53,7 @@ git commit -m "<your message>"
 - Push changes
 ```
 git push origin <branch name>
+> only push to your branch name
 ```
 - Change branch
 ```
@@ -66,10 +67,7 @@ git checkout -b <branch name>
 ```
 git branch -d <branch name>
 ```
-- Delete remote branch 
-```
-git push origin --delete <branch name>
-```
+
 - Merge branch - first push updated branch to github then
 > All merging will be done through Github, never the cmdline.     
 > Open pull request, allows for code review and prevents merge conflicts.    

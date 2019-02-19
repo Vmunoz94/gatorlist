@@ -32,7 +32,3 @@ Homestead.json
 
 # .DS_Store
 **/.DS_Store
-
-### Composer ###
-composer.phar
-/vendor/

@@ -5,10 +5,12 @@
 @section('title', 'About')
 @section('jumbotronTitle', 'ABOUT THE TEAM')
 @section('jumbotronContent')
+
     <p class="lead text-center jumbotron-content-bigger mb-1">Software Engineering class SFSU</h2>
     <p class="lead text-center jumbotron-content-bigger mb-1">Spring 2019</h2>
     <p class="lead text-center jumbotron-content-bigger mb-1">Section-01</h2>
     <p class="lead text-center jumbotron-content-bigger mb-1">Team-04</h2>
+
 @endSection
 @section('body')
     <section class="mb-5">

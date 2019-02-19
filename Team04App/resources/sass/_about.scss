@@ -1,0 +1,110 @@
+// scss 
+$shadow: black;
+$darkColor: #343a40;
+$darkerColorBright: rgba(255, 255, 255, 0.1);
+$light: white;
+$letterSpace: .5rem;
+
+// set background image
+#aboutPage {
+    background-image: url('/images/background.jpeg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 735px;
+    height: cover;
+}
+
+// change the color of the navbar
+.navbar {
+    background-color: transparent !important;
+}
+// add space between nav-links
+.navbar-light .navbar-nav .nav-link {
+    padding: 5px 10px;
+}
+// create the hover effect
+.navbar-light .navbar-nav .nav-link:hover {
+    box-shadow: 0px 2px 10px $shadow;
+    -moz-box-shadow: 0 2px 10px $shadow;
+    -webkit-box-shadow: 0 2px 10px $shadow;
+    background-color: $darkColor !important;
+    border-radius: 5px;
+
+    transition: color 0.1s ease-in-out;
+    color: $light !important;
+}
+
+// restrict the size of the buttons that route to individual pages
+.name-of-person {
+    max-width: 300px;
+}
+
+// remove background color from jumbotron
+.jumbotron {
+    background: transparent;
+}
+// add spacing between letters in jumbotron title
+#jumbotronTitle {
+    letter-spacing: $letterSpace;
+}
+
+// control size and color of cards
+.card {
+    max-width: 600px;
+    margin: 0 auto;
+    box-shadow: 0px 2px 10px $shadow;
+    -moz-box-shadow: 0 2px 10px $shadow;
+    -webkit-box-shadow: 0 2px 10px $shadow;
+
+}
+.card-body {
+    background-color: $darkerColorBright;
+}
+
+// style the image column
+.carousel-inner {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 0 5px;
+}
+img {
+    box-shadow: 0 1px 5px $shadow;
+    -moz-box-shadow: 0 1px 5px $shadow;
+    -webkit-box-shadow: 0 1px 5px $shadow;
+}
+.rounded {
+    border-radius: 10px !important;
+}
+
+// get rid of bullet points while using lists
+ul {
+    list-style-type: none;
+}
+
+// style the go back button
+#go-back-button {
+    max-width: 200px;
+    box-shadow: 0px 2px 5px $shadow;
+    -moz-box-shadow: 0 2px 5px $shadow;
+    -webkit-box-shadow: 0 2px 5px $shadow;
+}
+
+@media only screen and (max-width: 991px) {
+    body {
+        background-position-x: -500px;
+    }
+
+    div .container {
+        margin: 0 auto;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    body {
+        background-position-x: -700px;
+    }
+
+    .nav-link:hover {
+        border: none;
+    }
+}

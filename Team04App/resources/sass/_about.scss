@@ -47,6 +47,9 @@ $letterSpace: .5rem;
 #jumbotronTitle {
     letter-spacing: $letterSpace;
 }
+p.lead.text-center.jumbotron-content-bigger.mb-1{
+    font-size: 1.5rem !important;
+}
 
 // control size and color of cards
 .card {

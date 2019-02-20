@@ -17,7 +17,7 @@
         
     </ul>
     <div class="lead">
-        This semester I am currently enrolled in five CSC clases, which are:
+        This semester I am currently enrolled in five CSC classes, which are:
     </div>
     <ul class="ml-5 border-left">
         <li>Software Engineering</li>

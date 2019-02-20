@@ -5,7 +5,7 @@
 @section('title', 'Huawei')
 @section('jumbotronTitle', 'Huawei Gao')
 @section('job', 'Frontend Member')
-//@section('imgSource', '/images/victorSelfie.jpg')
+@section('imgSource', '/images/huaweiAvatar.jpg')
 @section('cardBody')
     <div class="lead">
         I'm Huawei, and this is my final semester at SFSU. Some of the elective courses I have

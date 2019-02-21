@@ -5,10 +5,10 @@
 @section('title', 'Karuna')
 @section('jumbotronTitle', 'Karuna Nayak')
 @section('job', 'Team Lead')
-@section('imgSource', '/images/karuna.jpg')
+@section('imgSource', '/images/Karuna.jpg')
 @section('cardBody')
     <div class="lead">
-        Hi.. This is Karuna Nayak. Welcome to my page. I am a computer science graduate student at SFSU. This is my 2nd semester as a grad student. 
+        Hi.. This is Karuna Nayak. I am a computer science graduate student at SFSU. This is my 2nd semester as a grad student. I am interested in Software Development, NLP and ML. 
     </div>
     <div class="lead">
         This semester I am currently enrolled in:

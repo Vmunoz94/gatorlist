@@ -2,7 +2,7 @@
 @extends('layouts.names')
 
 {{-- fill in values that were left empty in the layout --}}
-@section('title', 'Victor')
+@section('title', 'Daniel')
 @section('jumbotronTitle', 'Daniel Mossaband')
 @section('job', 'Backend Lead')
 @section('imgSource', '/images/danielProfilePicture.jpg')

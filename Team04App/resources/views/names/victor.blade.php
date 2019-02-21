@@ -8,8 +8,9 @@
 @section('imgSource', '/images/victorSelfie.jpg')
 @section('cardBody')
     <div class="lead">
-        I'm Victor, and this is my final semester at SFSU. Some of the elective courses I have
-        taken here at SFSU are:
+        I'm Victor, and this is my final semester at SFSU. 
+        After seven long years and multiple changes to my major, I can finally see the light at the end of the tunnel.
+        Some of the elective courses I have taken while pursing my B.S. degree in Computer Science have been:
     </div>
     <ul class="ml-5 border-left">
         <li>Computer Networks</li>

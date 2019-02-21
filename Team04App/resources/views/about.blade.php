@@ -5,10 +5,12 @@
 @section('title', 'About')
 @section('jumbotronTitle', 'ABOUT THE TEAM')
 @section('jumbotronContent')
-    <h2 class="lead text-center mb-1">Software Engineering class SFSU</h2>
-    <h2 class="lead text-center mb-1">Spring 2019</h2>
-    <h2 class="lead text-center mb-1">Section-01</h2>
-    <h2 class="lead text-center mb-1">Team-04</h2>
+
+    <p class="lead text-center jumbotron-content-bigger mb-1">Software Engineering class SFSU</p>
+    <p class="lead text-center jumbotron-content-bigger mb-1">Spring 2019</p>
+    <p class="lead text-center jumbotron-content-bigger mb-1">Section-01</p>
+    <p class="lead text-center jumbotron-content-bigger mb-1">Team-04</p>
+
 @endSection
 @section('body')
     <section class="mb-5">
@@ -38,7 +40,7 @@
           <div class="card text-white bg-dark mb-5">
             <h5 class="card-header text-center">Backend</h5>
             <div class="card-body text-center">
-              <a href="about/gabriel" class="ui inverted purple button small w-75 mx-auto name-of-person my-2">Gabriel Alfaro</a>
+              <a href="about/gabe" class="ui inverted purple button small w-75 mx-auto name-of-person my-2">Gabriel Alfaro</a>
               <a href="about/daniel" class="ui inverted purple button small w-75 mx-auto name-of-person my-2">Daniel Mossaband</a>
               <a href="about/aditya" class="ui inverted purple button small w-75 mx-auto name-of-person my-2">Aditya Sheoran</a>
             </div>

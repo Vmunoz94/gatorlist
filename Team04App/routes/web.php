@@ -11,8 +11,10 @@
 |
 */
 
+
 Route::get('/', 'HomeController@index');
 
 Route::get('/about', 'AboutController@index');
 
 Route::get('/about/{firstName}', 'AboutController@specificAboutPage');
+

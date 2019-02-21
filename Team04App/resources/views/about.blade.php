@@ -40,7 +40,7 @@
           <div class="card text-white bg-dark mb-5">
             <h5 class="card-header text-center">Backend</h5>
             <div class="card-body text-center">
-              <a href="about/gabriel" class="ui inverted purple button small w-75 mx-auto name-of-person my-2">Gabriel Alfaro</a>
+              <a href="about/gabe" class="ui inverted purple button small w-75 mx-auto name-of-person my-2">Gabriel Alfaro</a>
               <a href="about/daniel" class="ui inverted purple button small w-75 mx-auto name-of-person my-2">Daniel Mossaband</a>
               <a href="about/aditya" class="ui inverted purple button small w-75 mx-auto name-of-person my-2">Aditya Sheoran</a>
             </div>

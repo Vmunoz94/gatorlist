@@ -5,7 +5,7 @@
 @section('title', 'Gabe')
 @section('jumbotronTitle', 'Gabriel Alfaro')
 @section('job', 'Backend')
-<!--@section('imgSource', '/images/IMAGEFILE.jpg')-->
+@section('imgSource', '/images/blankProfile.png')
 @section('cardBody')
 <div class="lead">
     Hello, my name is Gabriel Alfaro and I am a 5th year currently attending

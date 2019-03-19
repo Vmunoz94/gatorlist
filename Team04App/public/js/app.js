@@ -2041,6 +2041,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -39080,7 +39083,7 @@ var render = function() {
   return _c("div", { staticClass: "container mb-5" }, [
     _c("form", [
       _c("div", { staticClass: "form-row justify-content-center" }, [
-        _c("div", { staticClass: "col-3 col-lg-1 pb-2" }, [
+        _c("div", { staticClass: "col-3 col-lg-1 pb-2 ml-0 pl-0" }, [
           _c(
             "select",
             {
@@ -39122,7 +39125,7 @@ var render = function() {
           )
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "col-9 col-lg-5 pb-2" }, [
+        _c("div", { staticClass: "col-8 col-lg-4 pb-2 pr-0 mr-0" }, [
           _c("input", {
             directives: [
               {
@@ -39149,7 +39152,9 @@ var render = function() {
           })
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "col-3 col-lg-1" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-3 col-lg-1 pb-2" }, [
           _c(
             "button",
             {
@@ -39368,7 +39373,18 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-1 col-lg-1 pb-2 pl-0 ml-0" }, [
+      _c("button", { staticClass: "btn btn-dark" }, [
+        _c("i", { staticClass: "fas fa-search" })
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -54311,9 +54327,6 @@ Vue.component('gatorlist-navbar', _components_header_Navbar_vue__WEBPACK_IMPORTE
 var app = new Vue({
   el: '#app',
   router: router
-});
-$(function () {
-  $('[data-toggle="tooltip"]').tooltip();
 });
 
 /***/ }),

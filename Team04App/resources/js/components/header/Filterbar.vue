@@ -2,16 +2,19 @@
     <div class="container mb-5">
             <form>
                 <div class="form-row justify-content-center">
-                    <div class="col-3 col-lg-1 pb-2">
+                    <div class="col-3 col-lg-1 pb-2 ml-0 pl-0">
                         <select class="form-control" v-model='selected'>
                             <option disabled value="">Type</option>
                             <option v-for='type in listingTypes'> {{ type }} </option>
                         </select>
                     </div>
-                    <div class="col-9 col-lg-5 pb-2">
+                    <div class="col-8 col-lg-4 pb-2 pr-0 mr-0">
                         <input type="text" class="form-control" v-model='search' placeholder="Neighborhood, Address, City, Zip, School">
                     </div>
-                    <div class="col-3 col-lg-1">
+                    <div class="col-1 col-lg-1 pb-2 pl-0 ml-0">
+                        <button class="btn btn-dark"><i class="fas fa-search"></i></button>
+                    </div>
+                    <div class="col-3 col-lg-1 pb-2">
                         <button class="btn btn-dark dropdown-toggle" type="button" id="priceMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Price
                         </button>

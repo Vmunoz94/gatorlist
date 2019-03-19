@@ -40,7 +40,3 @@ const app = new Vue({
     el: '#app',
     router,
 });
-
-$(function () {
-    $('[data-toggle="tooltip"]').tooltip()
-})

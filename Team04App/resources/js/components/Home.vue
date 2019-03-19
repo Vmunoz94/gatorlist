@@ -16,8 +16,5 @@
 
 
 <style>
-    .form-row{
-        width: 80%;
-        margin: auto;
-    }
+    
 </style>

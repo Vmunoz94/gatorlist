@@ -21,7 +21,7 @@ window.Vue = require('vue');
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 import VueRouter from 'vue-router';
 import { routes } from './routes';
-import Navbar from './components/Navbar.vue';
+import Navbar from './components/header/Navbar.vue';
 
 Vue.use(VueRouter);
 const router = new VueRouter({

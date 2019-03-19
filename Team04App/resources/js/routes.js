@@ -1,7 +1,8 @@
 import Home from './components/Home.vue';
-import Login from './components/Login.vue';
-import Register from './components/Register.vue';
-import About from './components/About.vue';
+import Login from './components/authentication/Login.vue';
+import Register from './components/authentication/Register.vue';
+import Account from './components/account/Account.vue';
+import About from './components/about/About.vue';
 import Victor from './components/about/employee/Victor.vue'
 import Aditya from './components/about/employee/Aditya.vue'
 import Daniel from './components/about/employee/Daniel.vue'
@@ -14,6 +15,7 @@ export const routes = [
     { path: '/', component: Home },
     { path: '/login', component: Login },
     { path: '/register', component: Register },
+    { path: '/account', component: Account },
     { path: '/about', component: About },
     { path: '/about/victor', component: Victor },
     { path: '/about/aditya', component: Aditya },

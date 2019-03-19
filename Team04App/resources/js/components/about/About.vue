@@ -29,11 +29,9 @@
 
 
 <script>
-    import { eventBusAbout } from '../app.js';
-
-    import TeamLeadCard from './about/TeamLeadCard.vue';
-    import TeamFrontendCard from './about/TeamFrontendCard.vue';
-    import TeamBackendCard from './about/TeamBackendCard.vue';
+    import TeamLeadCard from './TeamLeadCard.vue';
+    import TeamFrontendCard from './TeamFrontendCard.vue';
+    import TeamBackendCard from './TeamBackendCard.vue';
 
     export default{
         data: function () {

@@ -1,0 +1,23 @@
+<template>
+    <div class="jumbotron jumbotron-fluid mb-0 pb-4 pt-0">
+        <div class="container">
+            <p class="lead text-center jumbotron-content-bigger mb-1">Software Engineering class SFSU</p>
+            <p class="lead text-center jumbotron-content-bigger mb-1">Spring 2019</p>
+            <p class="lead text-center jumbotron-content-bigger mb-1">Section-01</p>
+            <p class="lead text-center jumbotron-content-bigger mb-1">Team-04</p>
+            <hr class="my-4">
+        </div>
+    </div>
+</template>
+
+<style>
+    /* remove background color from jumbotron */
+    .jumbotron {
+        background: transparent;
+    }
+    p.lead.text-center.jumbotron-content-bigger.mb-1{
+        font-size: 1.25rem !important;
+    }
+</style>
+
+

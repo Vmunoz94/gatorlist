@@ -19,8 +19,16 @@ window.Vue = require('vue');
 
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
+import VueRouter from 'vue-router';
+import { routes } from './routes';
+import Navbar from './components/Navbar.vue';
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.use(VueRouter);
+const router = new VueRouter({
+    routes,
+});
+
+Vue.component('gatorlist-navbar', Navbar);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -29,5 +37,6 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
  */
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    router,
 });

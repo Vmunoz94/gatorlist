@@ -9,7 +9,7 @@
                         </select>
                     </div>
                     <div class="col-8 col-lg-4 pb-2 pr-0 mr-0">
-                        <input type="text" class="form-control" v-model='search' placeholder="Neighborhood, Address, City, Zip, School">
+                        <input type="text" class="form-control" v-model='search' placeholder="Type, Neighborhood, Address, City, Zip, School">
                     </div>
                     <div class="col-1 col-lg-1 pb-2 pl-0 ml-0">
                         <button class="btn btn-dark"><i class="fas fa-search"></i></button>
@@ -84,8 +84,8 @@
 </script>
 
 <style>
-.show{
-    padding: 0;
-    margin: 0;
-}
+    .show{
+        padding: 0;
+        margin: 0;
+    }
 </style>

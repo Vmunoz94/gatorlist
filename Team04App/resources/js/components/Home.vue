@@ -1,10 +1,11 @@
 <template>
     <div class="container-fluid">
         <div class="row">
-            <div class="col">
+            <div class="col-12 col-lg-6">
                 <gatorlist-listings></gatorlist-listings>
             </div>
-            <div class="col">
+            <div class="col hide">
+                <gatorlist-google-maps></gatorlist-google-maps>
             </div>
         </div>
     </div>
@@ -12,6 +13,7 @@
 
 <script>
     import Listings from './search/Listings.vue'
+    import GoogleMaps from './search/GoogleMaps.vue'
 
     export default {
         data: function (){
@@ -21,11 +23,16 @@
         },
         components: {
             'gatorlist-listings': Listings,
+            'gatorlist-google-maps': GoogleMaps,
         }
     }
 </script>
 
 
 <style>
-    
+    @media only screen and (max-width: 992px) {
+        .hide{
+            display: none;
+        }
+    }
 </style>

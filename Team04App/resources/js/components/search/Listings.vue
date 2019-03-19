@@ -5,8 +5,9 @@
                     <div class="card mb-4" v-for='listing in listingList'>
                         <img class="card-img-top" :src="listing.image" alt="Card image cap">
                         <div class="card-body">
-                        <h5 class="card-title">Rent: ${{ listing.rent }}</h5>
+                        <h5 class="card-title text-center"><strong>{{ listing.type }}</strong></h5>
                         <hr>
+                        <h5 class="card-title">Rent: <strong>${{ listing.rent }}</strong></h5>
                         <div class="row">
                             <div class="col">
                                 <p class="card-text"><i class="fas fa-bed"></i> Beds: {{ listing.beds }}</p>
@@ -23,8 +24,8 @@
             </div>
         </transition>
 
-        <div>
-            
+        <div class="lead text-center mb-4">
+            -- Showing {{ listingList.length }} out of {{ listingList.length }} --
         </div>
     </div>
 
@@ -77,7 +78,16 @@
 </script>
 
 <style scoped lang='scss'>
+    .card{
+        box-shadow: 0px 2px 10px black;
+        -moz-box-shadow: 0 2px 10px black;
+        -webkit-box-shadow: 0 2px 10px black;
+    }
+
     .card:hover{
+        box-shadow: 0px 2px 20px black;
+        -moz-box-shadow: 0 2px 20px black;
+        -webkit-box-shadow: 0 2px 20px black;
         transform: scale(1.05); 
         transition: all .2s ease-in-out;
     }
@@ -96,8 +106,8 @@
     /* number of cards per line for each breakpoint */
     $cards-per-line: (
         xs: 1,
-        sm: 1,
-        md: 1,
+        sm: 2,
+        md: 3,
         lg: 2,
         xl: 3,
     );

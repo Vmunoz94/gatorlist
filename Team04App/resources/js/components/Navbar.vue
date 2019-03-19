@@ -19,10 +19,10 @@
                     </ul>
                     <ul class="navbar-nav">
                     <li class="nav-item p-0">
-                        <a class="nav-link text-dark" href="#">Login</a>
+                        <router-link to='/login' class="nav-link text-dark">Login</router-link>
                     </li>
                     <li class="nav-item p-0">
-                        <a class="nav-link text-dark" href="#">Register</a>
+                        <router-link to='/register' class="nav-link text-dark">Register</router-link>
                     </li>
                     </ul>
                 </div>

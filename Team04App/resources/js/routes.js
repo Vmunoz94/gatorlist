@@ -1,6 +1,6 @@
 import Home from './components/Home.vue';
-// import Login from './components/Login.vue';
-// import Register from './components/Register.vue';
+import Login from './components/Login.vue';
+import Register from './components/Register.vue';
 import About from './components/About.vue';
 import Victor from './components/about/employee/Victor.vue'
 import Aditya from './components/about/employee/Aditya.vue'
@@ -12,8 +12,8 @@ import Gabriel from './components/about/employee/Gabriel.vue'
 
 export const routes = [
     { path: '/', component: Home },
-    { path: '/login', component: Home },
-    { path: '/register', component: Home },
+    { path: '/login', component: Login },
+    { path: '/register', component: Register },
     { path: '/about', component: About },
     { path: '/about/victor', component: Victor },
     { path: '/about/aditya', component: Aditya },

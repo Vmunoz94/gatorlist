@@ -11,14 +11,20 @@ class ListingsController extends Controller
     // TUTORIAL
     // https://laravel.com/docs/master/queries
     // Everything is a get parameter
+
+
     public function index(Request $request)
     {
         // ?id={INT}
         $id = $request->input('id') ?: '%';
         // ?type=[house, apartment, room]
         $type = $request->input('type') ?: '%';
-        // ?address={TEXT}
-        $address = $request->input('address') ?: '%';
+        // ADDRESS FORMAT
+        // 600 Holloway Ave, San Francisco, CA 94132
+        // $street, $city, CA $zip
+        $street = $request->input('street') ?: '%';
+        $city = $request->input('city') ?: '%';
+        $zip = $request->input('zip') ?: '%';
         // ?bedrooms={INT}
         $bedrooms = $request->input('bedrooms') ?: '%';
         // ?bathrooms={INT}
@@ -47,7 +53,7 @@ class ListingsController extends Controller
         $listing = DB::table('listings')->where([
             ['id', 'like', $id],
             ['type', 'like', $type],
-            ['address', 'like', $address],
+            ['address', 'like', $street . ', ' . $city . ', CA ' . $zip],
             ['bedrooms', 'like', $bedrooms],
             ['bathrooms', 'like', $bathrooms],
             ['rent', 'like', $rent],
@@ -63,8 +69,8 @@ class ListingsController extends Controller
             ->limit($limit)
             ->orderBy('date', $order)
             ->get();
-
-        return $listing;
+dd($listing);
+//        return $listing;
 
     }
 

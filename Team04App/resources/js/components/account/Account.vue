@@ -21,16 +21,6 @@
                     name: 'Account_details',
                     component: 'gatorlist-account_details-component',
                     link: '/account_details',
-                },{
-                    role: 'Backend',
-                    name: 'Gabriel Alfaro',
-                    component: 'gatorlist-gabriel-component',
-                    link: '/about/gabriel',
-                },{
-                    role: 'Backend',
-                    name: 'Aditya Sheoran',
-                    component: 'gatorlist-aditya-component',
-                    link: '/about/aditya',
                 }],
             }
         },

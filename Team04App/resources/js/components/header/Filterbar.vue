@@ -84,6 +84,9 @@
 </script>
 
 <style>
+    select{
+        cursor: pointer;
+    }
     .show{
         padding: 0;
         margin: 0;

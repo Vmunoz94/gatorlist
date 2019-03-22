@@ -78,16 +78,21 @@
 </script>
 
 <style scoped lang='scss'>
+    hr{
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
     .card{
-        box-shadow: 0px 2px 10px black;
-        -moz-box-shadow: 0 2px 10px black;
-        -webkit-box-shadow: 0 2px 10px black;
+        box-shadow: 0 1px 10px black;
+        -moz-box-shadow: 0 1px 10px black;
+        -webkit-box-shadow: 0 1px 10px black;
     }
 
     .card:hover{
-        box-shadow: 0px 2px 20px black;
-        -moz-box-shadow: 0 2px 20px black;
-        -webkit-box-shadow: 0 2px 20px black;
+        cursor: pointer;
+        box-shadow: 0 5px 20px black;
+        -moz-box-shadow: 0 5px 20px black;
+        -webkit-box-shadow: 0 5px 20px black;
         transform: scale(1.05); 
         transition: all .2s ease-in-out;
     }

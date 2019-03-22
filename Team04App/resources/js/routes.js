@@ -12,7 +12,7 @@ import Karuna from './components/about/employee/Karuna.vue'
 import Gabriel from './components/about/employee/Gabriel.vue'
 
 export const routes = [
-    { path: '/', component: Home },
+    { path: '/', component: Home, name: 'home'},
     { path: '/login', component: Login },
     { path: '/register', component: Register },
     { path: '/account', component: Account },
@@ -24,4 +24,5 @@ export const routes = [
     { path: '/about/huawei', component: Huawei },
     { path: '/about/karuna', component: Karuna },
     { path: '/about/gabriel', component: Gabriel },
+    { path: '*', redirect: {name: 'home'} },
 ];

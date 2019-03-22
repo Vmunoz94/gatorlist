@@ -1,6 +1,6 @@
 <template>
     <div class="container mb-5">
-            <form>
+            <!-- <form> -->
                 <div class="form-row justify-content-center">
                     <div class="col-3 col-lg-1 pb-2 ml-0 pl-0">
                         <select class="form-control" v-model='selected'>
@@ -59,7 +59,7 @@
                 <div># of Beds: {{ numBeds }}</div>
                 <div># of Bathrooms: {{ numBathrooms }}</div>
                 <div>sort: {{ sort }}</div> -->
-            </form>
+            <!-- </form> -->
         </div>
 </template>
 
@@ -79,6 +79,9 @@
                 numBathrooms: '',
                 sort: '',
             }
+        },
+        beforeUpdate() {
+            this.$router.push({name: 'home'});
         },
     }
 </script>

@@ -4,7 +4,7 @@
             <div class="card-deck">
                     <div class="card mb-4" v-for='listing in listingList'>
                         <img class="card-img-top" :src="listing.image" alt="Card image cap">
-                        <div class="card-body">
+                        <div class="card-body py-3">
                         <h5 class="card-title text-center"><strong>{{ listing.type }}</strong></h5>
                         <hr>
                         <h5 class="card-title">Rent: <strong>${{ listing.rent }}</strong></h5>

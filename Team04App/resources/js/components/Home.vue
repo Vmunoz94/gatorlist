@@ -4,7 +4,7 @@
             <div class="col-12 col-lg-6">
                 <gatorlist-listings></gatorlist-listings>
             </div>
-            <div class="col hide">
+            <div class="col border-left hide">
                 <gatorlist-google-maps></gatorlist-google-maps>
             </div>
         </div>

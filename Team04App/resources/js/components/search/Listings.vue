@@ -86,6 +86,7 @@
         box-shadow: 0 1px 10px black;
         -moz-box-shadow: 0 1px 10px black;
         -webkit-box-shadow: 0 1px 10px black;
+        border: 1px solid grey;
     }
 
     .card:hover{

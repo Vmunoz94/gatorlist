@@ -11,7 +11,7 @@
             this.map = new google.maps.Map(document.getElementById('Map'), {
                 center: {lat:37.7749, lng: -122.4194},
                 scrollwheel: false,
-                zoom: 11
+                zoom: 12
             })
         }
 
@@ -21,7 +21,7 @@
 <style scoped>
     #Map {
         position: fixed;
-        top: 15px;
+        top: 14px;
         width: 100%;
         height: 96vh;
         border: 1px solid black;

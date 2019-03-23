@@ -2,40 +2,42 @@
     <div>
         <transition appear enter-active-class="animated fadeIn">
             <div class="card-deck">
-                    <div class="card mb-4" v-for='listing in listingList'>
-                        <img class="card-img-top" :src="listing.image" alt="Card image cap">
-                        <div class="card-body py-3">
-                        <h5 class="card-title text-center"><strong>{{ listing.type }}</strong></h5>
-                        <hr>
-                        <h5 class="card-title">Rent: <strong>${{ listing.rent }}</strong></h5>
-                        <div class="row">
-                            <div class="col">
-                                <p class="card-text"><i class="fas fa-bed"></i> Beds: {{ listing.beds }}</p>
-                            </div>
-                            <div class="col">
-                                <p class="card-text"><i class="fas fa-bath"></i> Baths: {{ listing.baths }}</p>
-                            </div>
+                <div class="card mb-4" v-for='listing in filteredListings'>
+                    <img class="card-img-top" :src="listing.image" alt="Card image cap">
+                    <div class="card-body py-3">
+                    <h5 class="card-title text-center"><strong>{{ listing.type }}</strong></h5>
+                    <hr>
+                    <h5 class="card-title">Rent: <strong>${{ listing.rent }}</strong></h5>
+                    <div class="row">
+                        <div class="col">
+                            <p class="card-text"><i class="fas fa-bed"></i> Beds: {{ listing.beds }}</p>
                         </div>
-                        <hr>
-                        <div class="card-text text-muted">{{ listing.street }},</div>
-                        <div class="card-text text-muted">{{ listing.city }}, CA {{ listing.zip }}</div>
+                        <div class="col">
+                            <p class="card-text"><i class="fas fa-bath"></i> Baths: {{ listing.baths }}</p>
                         </div>
                     </div>
+                    <hr>
+                    <div class="card-text text-muted">{{ listing.street }},</div>
+                    <div class="card-text text-muted">{{ listing.city }}, CA {{ listing.zip }}</div>
+                    </div>
+                </div>
             </div>
         </transition>
 
         <div class="lead text-center mb-4">
-            -- Showing {{ listingList.length }} out of {{ listingList.length }} --
+            -- Showing {{ filteredListings.length }} out of {{ allListingsList.length }} --
         </div>
     </div>
 
 </template>
 
 <script>
+    import { mapGetters } from 'vuex';
+
     export default {
         data: function (){
             return {
-                listingList : [{
+                allListingsList: [{
                     type: 'Apartment',
                     rent: 2000,
                     street: '1800 Holloway Ave',
@@ -72,6 +74,19 @@
                     baths: 1,
                     image: 'https://images.unsplash.com/photo-1512918580421-b2feee3b85a6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80'
                 }],
+            }
+        },
+        computed: {
+            ...mapGetters([
+                'getSearch'
+            ]),
+            filteredListings() {
+                return this.allListingsList.filter((element) => {
+                    let objectToArray = Object.values(element);
+                    objectToArray.pop();
+                    objectToArray = objectToArray.join("").toLowerCase();
+                    return objectToArray.match(this.getSearch.toLowerCase());
+                });
             }
         },
     }

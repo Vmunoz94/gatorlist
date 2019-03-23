@@ -21,6 +21,7 @@ window.Vue = require('vue');
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 import VueRouter from 'vue-router';
 import { routes } from './routes';
+import { store } from './store/store'
 import Navbar from './components/header/Navbar.vue';
 
 Vue.use(VueRouter);
@@ -39,4 +40,5 @@ Vue.component('gatorlist-navbar', Navbar);
 const app = new Vue({
     el: '#app',
     router,
+    store,
 });

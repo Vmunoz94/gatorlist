@@ -2,39 +2,42 @@
     <div>
         <transition appear enter-active-class="animated fadeIn">
             <div class="card-deck">
-                    <div class="card mb-4" v-for='listing in listingList'>
-                        <img class="card-img-top" :src="listing.image" alt="Card image cap">
-                        <div class="card-body">
-                        <h5 class="card-title">Rent: ${{ listing.rent }}</h5>
-                        <hr>
-                        <div class="row">
-                            <div class="col">
-                                <p class="card-text"><i class="fas fa-bed"></i> Beds: {{ listing.beds }}</p>
-                            </div>
-                            <div class="col">
-                                <p class="card-text"><i class="fas fa-bath"></i> Baths: {{ listing.baths }}</p>
-                            </div>
+                <div class="card mb-4" v-for='listing in filteredListings'>
+                    <img class="card-img-top" :src="listing.image" alt="Card image cap">
+                    <div class="card-body py-3">
+                    <h5 class="card-title text-center"><strong>{{ listing.type }}</strong></h5>
+                    <hr>
+                    <h5 class="card-title">Rent: <strong>${{ listing.rent }}</strong></h5>
+                    <div class="row">
+                        <div class="col">
+                            <p class="card-text"><i class="fas fa-bed"></i> Beds: {{ listing.beds }}</p>
                         </div>
-                        <hr>
-                        <div class="card-text text-muted">{{ listing.street }},</div>
-                        <div class="card-text text-muted">{{ listing.city }}, CA {{ listing.zip }}</div>
+                        <div class="col">
+                            <p class="card-text"><i class="fas fa-bath"></i> Baths: {{ listing.baths }}</p>
                         </div>
                     </div>
+                    <hr>
+                    <div class="card-text text-muted">{{ listing.street }},</div>
+                    <div class="card-text text-muted">{{ listing.city }}, CA {{ listing.zip }}</div>
+                    </div>
+                </div>
             </div>
         </transition>
 
-        <div>
-            
+        <div class="lead text-center mb-4">
+            -- Showing {{ filteredListings.length }} out of {{ allListingsList.length }} --
         </div>
     </div>
 
 </template>
 
 <script>
+    import { mapGetters } from 'vuex';
+
     export default {
         data: function (){
             return {
-                listingList : [{
+                allListingsList: [{
                     type: 'Apartment',
                     rent: 2000,
                     street: '1800 Holloway Ave',
@@ -73,11 +76,39 @@
                 }],
             }
         },
+        computed: {
+            ...mapGetters([
+                'getSearch'
+            ]),
+            filteredListings() {
+                return this.allListingsList.filter((element) => {
+                    let objectToArray = Object.values(element);
+                    objectToArray.pop();
+                    objectToArray = objectToArray.join("").toLowerCase();
+                    return objectToArray.match(this.getSearch.toLowerCase());
+                });
+            }
+        },
     }
 </script>
 
 <style scoped lang='scss'>
+    hr{
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+    .card{
+        box-shadow: 0 1px 10px black;
+        -moz-box-shadow: 0 1px 10px black;
+        -webkit-box-shadow: 0 1px 10px black;
+        border: 1px solid grey;
+    }
+
     .card:hover{
+        cursor: pointer;
+        box-shadow: 0 5px 20px black;
+        -moz-box-shadow: 0 5px 20px black;
+        -webkit-box-shadow: 0 5px 20px black;
         transform: scale(1.05); 
         transition: all .2s ease-in-out;
     }
@@ -96,8 +127,8 @@
     /* number of cards per line for each breakpoint */
     $cards-per-line: (
         xs: 1,
-        sm: 1,
-        md: 1,
+        sm: 2,
+        md: 3,
         lg: 2,
         xl: 3,
     );

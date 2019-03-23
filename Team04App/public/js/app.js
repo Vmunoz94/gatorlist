@@ -39907,7 +39907,7 @@ var render = function() {
             staticClass: "form-control",
             attrs: {
               type: "text",
-              placeholder: "Type, Neighborhood, Address, City, Zip, School"
+              placeholder: "Type, City, Street, Zip, Price"
             },
             domProps: { value: _vm.search },
             on: {

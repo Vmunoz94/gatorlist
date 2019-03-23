@@ -2196,8 +2196,8 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
-/* harmony import */ var _dummyListings_json__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./dummyListings.json */ "./resources/js/components/search/dummyListings.json");
-var _dummyListings_json__WEBPACK_IMPORTED_MODULE_2___namespace = /*#__PURE__*/__webpack_require__.t(/*! ./dummyListings.json */ "./resources/js/components/search/dummyListings.json", 1);
+/* harmony import */ var _dummyListings_json__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./dummyListings.json */ "./resources/js/components/search/dummyListings.json");
+var _dummyListings_json__WEBPACK_IMPORTED_MODULE_1___namespace = /*#__PURE__*/__webpack_require__.t(/*! ./dummyListings.json */ "./resources/js/components/search/dummyListings.json", 1);
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -2240,7 +2240,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      allListingsList: _dummyListings_json__WEBPACK_IMPORTED_MODULE_2__
+      allListingsList: _dummyListings_json__WEBPACK_IMPORTED_MODULE_1__
     };
   },
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['getSearch']), {

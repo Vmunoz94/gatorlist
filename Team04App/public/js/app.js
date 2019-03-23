@@ -2235,6 +2235,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -40398,62 +40399,65 @@ var render = function() {
     "div",
     [
       _c(
-        "transition",
-        { attrs: { appear: "", "enter-active-class": "animated fadeIn" } },
-        [
-          _c(
-            "div",
-            { staticClass: "card-deck" },
-            _vm._l(_vm.filteredListings, function(listing) {
-              return _c("div", { staticClass: "card mb-4" }, [
-                _c("img", {
-                  staticClass: "card-img-top",
-                  attrs: { src: listing.image, alt: "Card image cap" }
-                }),
+        "transition-group",
+        {
+          staticClass: "card-deck mx-1",
+          attrs: {
+            tag: "div",
+            appear: "",
+            "enter-active-class": "animated fadeInUp faster",
+            "leave-active-class": "animated fadeOutDown faster",
+            mode: "in-out"
+          }
+        },
+        _vm._l(_vm.filteredListings, function(listing, index) {
+          return _c("div", { key: "index", staticClass: "card mb-4" }, [
+            _c("img", {
+              staticClass: "card-img-top",
+              attrs: { src: listing.image, alt: "Card image cap" }
+            }),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-body py-3" }, [
+              _c("h5", { staticClass: "card-title text-center" }, [
+                _c("strong", [_vm._v(_vm._s(listing.type))])
+              ]),
+              _vm._v(" "),
+              _c("hr"),
+              _vm._v(" "),
+              _c("h5", { staticClass: "card-title" }, [
+                _vm._v("Rent: "),
+                _c("strong", [_vm._v("$" + _vm._s(listing.rent))])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col" }, [
+                  _c("p", { staticClass: "card-text" }, [
+                    _c("i", { staticClass: "fas fa-bed" }),
+                    _vm._v(" Beds: " + _vm._s(listing.beds))
+                  ])
+                ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "card-body py-3" }, [
-                  _c("h5", { staticClass: "card-title text-center" }, [
-                    _c("strong", [_vm._v(_vm._s(listing.type))])
-                  ]),
-                  _vm._v(" "),
-                  _c("hr"),
-                  _vm._v(" "),
-                  _c("h5", { staticClass: "card-title" }, [
-                    _vm._v("Rent: "),
-                    _c("strong", [_vm._v("$" + _vm._s(listing.rent))])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "row" }, [
-                    _c("div", { staticClass: "col" }, [
-                      _c("p", { staticClass: "card-text" }, [
-                        _c("i", { staticClass: "fas fa-bed" }),
-                        _vm._v(" Beds: " + _vm._s(listing.beds))
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col" }, [
-                      _c("p", { staticClass: "card-text" }, [
-                        _c("i", { staticClass: "fas fa-bath" }),
-                        _vm._v(" Baths: " + _vm._s(listing.baths))
-                      ])
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("hr"),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "card-text text-muted" }, [
-                    _vm._v(_vm._s(listing.street) + ",")
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "card-text text-muted" }, [
-                    _vm._v(_vm._s(listing.city) + ", CA " + _vm._s(listing.zip))
+                _c("div", { staticClass: "col" }, [
+                  _c("p", { staticClass: "card-text" }, [
+                    _c("i", { staticClass: "fas fa-bath" }),
+                    _vm._v(" Baths: " + _vm._s(listing.baths))
                   ])
                 ])
+              ]),
+              _vm._v(" "),
+              _c("hr"),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-text text-muted" }, [
+                _vm._v(_vm._s(listing.street) + ",")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-text text-muted" }, [
+                _vm._v(_vm._s(listing.city) + ", CA " + _vm._s(listing.zip))
               ])
-            }),
-            0
-          )
-        ]
+            ])
+          ])
+        }),
+        0
       ),
       _vm._v(" "),
       _c("div", { staticClass: "lead text-center mb-4" }, [
@@ -40462,7 +40466,7 @@ var render = function() {
             _vm._s(_vm.filteredListings.length) +
             " out of " +
             _vm._s(_vm.allListingsList.length) +
-            " --\n    "
+            " Listings --\n    "
         )
       ])
     ],

@@ -2196,6 +2196,8 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var _dummyListings_json__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./dummyListings.json */ "./resources/js/components/search/dummyListings.json");
+var _dummyListings_json__WEBPACK_IMPORTED_MODULE_2___namespace = /*#__PURE__*/__webpack_require__.t(/*! ./dummyListings.json */ "./resources/js/components/search/dummyListings.json", 1);
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -2234,46 +2236,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      allListingsList: [{
-        type: 'Apartment',
-        rent: 2000,
-        street: '1800 Holloway Ave',
-        city: 'San Francisco',
-        zip: 94132,
-        beds: 2,
-        baths: 1,
-        image: 'https://images.unsplash.com/photo-1460317442991-0ec209397118?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80'
-      }, {
-        type: 'Apartment',
-        rent: 1000,
-        street: '1805 Holloway Ave',
-        city: 'San Francisco',
-        zip: 94132,
-        beds: 1,
-        baths: 1,
-        image: 'https://images.unsplash.com/photo-1546724953-5d4afbc65730?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80'
-      }, {
-        type: 'House',
-        rent: 5000,
-        street: '1600 Holloway Ave',
-        city: 'Daly City',
-        zip: 94108,
-        beds: 3,
-        baths: 2,
-        image: 'https://images.unsplash.com/photo-1504202302068-15fc2055f7f9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1630&q=80'
-      }, {
-        type: 'Room',
-        rent: 500,
-        street: '1300 Holloway Ave',
-        city: 'Daly City',
-        zip: 94108,
-        beds: 1,
-        baths: 1,
-        image: 'https://images.unsplash.com/photo-1512918580421-b2feee3b85a6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80'
-      }]
+      allListingsList: _dummyListings_json__WEBPACK_IMPORTED_MODULE_2__
     };
   },
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['getSearch']), {
@@ -57807,6 +57774,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Listings_vue_vue_type_template_id_0f80c6ca_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
+
+/***/ }),
+
+/***/ "./resources/js/components/search/dummyListings.json":
+/*!***********************************************************!*\
+  !*** ./resources/js/components/search/dummyListings.json ***!
+  \***********************************************************/
+/*! exports provided: 0, 1, 2, 3, 4, 5, 6, 7, 8, default */
+/***/ (function(module) {
+
+module.exports = [{"type":"Apartment","rent":2000,"street":"1800 Holloway Ave","city":"San Francisco","zip":94132,"beds":2,"baths":1,"image":"https://images.unsplash.com/photo-1460317442991-0ec209397118?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"},{"type":"Apartment","rent":1000,"street":"1805 Holloway Ave","city":"San Francisco","zip":94132,"beds":1,"baths":1,"image":"https://images.unsplash.com/photo-1546724953-5d4afbc65730?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"},{"type":"House","rent":5000,"street":"1600 Holloway Ave","city":"Daly City","zip":94108,"beds":3,"baths":2,"image":"https://images.unsplash.com/photo-1504202302068-15fc2055f7f9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1630&q=80"},{"type":"Room","rent":500,"street":"1300 Holloway Ave","city":"Daly City","zip":94108,"beds":1,"baths":1,"image":"https://images.unsplash.com/photo-1512918580421-b2feee3b85a6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"},{"type":"House","rent":5030,"street":"1500 Somewhere Ave","city":"Berkeley","zip":91243,"beds":4,"baths":2,"image":"https://images.unsplash.com/photo-1513584684374-8bab748fbf90?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1646&q=80"},{"type":"House","rent":6030,"street":"150 Here Street","city":"Sausalito","zip":91223,"beds":4,"baths":5,"image":"https://images.unsplash.com/photo-1475855581690-80accde3ae2b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"},{"type":"House","rent":3030,"street":"110 There Street","city":"Sausalito","zip":91223,"beds":2,"baths":2,"image":"https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1653&q=80"},{"type":"Room","rent":1500,"street":"15 Somwhere Street","city":"San Francisco","zip":914132,"beds":1,"baths":1,"image":"https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"},{"type":"Room","rent":900,"street":"56 This Street","city":"San Francisco","zip":914132,"beds":1,"baths":1,"image":"https://images.unsplash.com/photo-1538183744096-546dd974a90e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1567&q=80"}];
 
 /***/ }),
 

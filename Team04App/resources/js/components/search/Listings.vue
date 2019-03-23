@@ -33,47 +33,12 @@
 
 <script>
     import { mapGetters } from 'vuex';
+    import dummyListings from './dummyListings.json';
 
     export default {
         data: function (){
             return {
-                allListingsList: [{
-                    type: 'Apartment',
-                    rent: 2000,
-                    street: '1800 Holloway Ave',
-                    city: 'San Francisco',
-                    zip: 94132,
-                    beds: 2,
-                    baths: 1,
-                    image: 'https://images.unsplash.com/photo-1460317442991-0ec209397118?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80',
-                },{
-                    type: 'Apartment',
-                    rent: 1000,
-                    street: '1805 Holloway Ave',
-                    city: 'San Francisco',
-                    zip: 94132,
-                    beds: 1,
-                    baths: 1,
-                    image: 'https://images.unsplash.com/photo-1546724953-5d4afbc65730?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80',
-                },{
-                    type: 'House',
-                    rent: 5000,
-                    street: '1600 Holloway Ave',
-                    city: 'Daly City',
-                    zip: 94108,
-                    beds: 3,
-                    baths: 2,
-                    image: 'https://images.unsplash.com/photo-1504202302068-15fc2055f7f9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1630&q=80'
-                },{
-                    type: 'Room',
-                    rent: 500,
-                    street: '1300 Holloway Ave',
-                    city: 'Daly City',
-                    zip: 94108,
-                    beds: 1,
-                    baths: 1,
-                    image: 'https://images.unsplash.com/photo-1512918580421-b2feee3b85a6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80'
-                }],
+                allListingsList: dummyListings,
             }
         },
         computed: {

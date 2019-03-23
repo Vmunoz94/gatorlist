@@ -2234,8 +2234,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -6717,7 +6715,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "hr[data-v-0f80c6ca] {\n  margin-top: 5px;\n  margin-bottom: 5px;\n}\n.card[data-v-0f80c6ca] {\n  box-shadow: 0 1px 10px black;\n  -moz-box-shadow: 0 1px 10px black;\n  -webkit-box-shadow: 0 1px 10px black;\n  border: 1px solid grey;\n}\n.card[data-v-0f80c6ca]:hover {\n  cursor: pointer;\n  box-shadow: 0 5px 20px black;\n  -moz-box-shadow: 0 5px 20px black;\n  -webkit-box-shadow: 0 5px 20px black;\n  -webkit-transform: scale(1.05);\n          transform: scale(1.05);\n  transition: all 0.2s ease-in-out;\n}\n\n/* Bootstrap 4 breakpoints & gutter */\n/* number of cards per line for each breakpoint */\n@media (min-width: 0) {\n.card-deck .card[data-v-0f80c6ca] {\n    flex: 0 0 calc(100% - 30px);\n}\n}\n@media (min-width: 576px) {\n.card-deck .card[data-v-0f80c6ca] {\n    flex: 0 0 calc(50% - 30px);\n}\n}\n@media (min-width: 768px) {\n.card-deck .card[data-v-0f80c6ca] {\n    flex: 0 0 calc(33.3333333333% - 30px);\n}\n}\n@media (min-width: 992px) {\n.card-deck .card[data-v-0f80c6ca] {\n    flex: 0 0 calc(50% - 30px);\n}\n}\n@media (min-width: 1200px) {\n.card-deck .card[data-v-0f80c6ca] {\n    flex: 0 0 calc(33.3333333333% - 30px);\n}\n}", ""]);
+exports.push([module.i, "hr[data-v-0f80c6ca] {\n  margin-top: 5px;\n  margin-bottom: 5px;\n}\n.card[data-v-0f80c6ca] {\n  box-shadow: 0 1px 10px black;\n  -moz-box-shadow: 0 1px 10px black;\n  -webkit-box-shadow: 0 1px 10px black;\n  border: 1px solid grey;\n}\n.card[data-v-0f80c6ca]:hover {\n  cursor: pointer;\n  box-shadow: 0 5px 20px black;\n  -moz-box-shadow: 0 5px 20px black;\n  -webkit-box-shadow: 0 5px 20px black;\n  -webkit-transform: scale(1.05);\n          transform: scale(1.05);\n  transition: all 0.2s ease-in-out;\n}\n.move-leave-active[data-v-0f80c6ca] {\n  opacity: 0;\n  position: absolute;\n}\n.move-move[data-v-0f80c6ca] {\n  transition: all 0.5s;\n}\n\n/* Bootstrap 4 breakpoints & gutter */\n/* number of cards per line for each breakpoint */\n@media (min-width: 0) {\n.card-deck .card[data-v-0f80c6ca] {\n    flex: 0 0 calc(100% - 30px);\n}\n}\n@media (min-width: 576px) {\n.card-deck .card[data-v-0f80c6ca] {\n    flex: 0 0 calc(50% - 30px);\n}\n}\n@media (min-width: 768px) {\n.card-deck .card[data-v-0f80c6ca] {\n    flex: 0 0 calc(33.3333333333% - 30px);\n}\n}\n@media (min-width: 992px) {\n.card-deck .card[data-v-0f80c6ca] {\n    flex: 0 0 calc(50% - 30px);\n}\n}\n@media (min-width: 1200px) {\n.card-deck .card[data-v-0f80c6ca] {\n    flex: 0 0 calc(33.3333333333% - 30px);\n}\n}", ""]);
 
 // exports
 
@@ -39744,7 +39742,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_vm._v("\n    hello    \n")])
+  return _c("div", [_vm._v("\n    hello H\n")])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -40401,17 +40399,15 @@ var render = function() {
       _c(
         "transition-group",
         {
-          staticClass: "card-deck mx-1",
+          staticClass: "card-deck",
           attrs: {
             tag: "div",
-            appear: "",
-            "enter-active-class": "animated fadeInUp faster",
-            "leave-active-class": "animated fadeOutDown faster",
-            mode: "in-out"
+            name: "move",
+            "enter-active-class": "animated fadeInUp faster"
           }
         },
-        _vm._l(_vm.filteredListings, function(listing, index) {
-          return _c("div", { key: "index", staticClass: "card mb-4" }, [
+        _vm._l(_vm.filteredListings, function(listing) {
+          return _c("div", { key: listing.image, staticClass: "card mb-4" }, [
             _c("img", {
               staticClass: "card-img-top",
               attrs: { src: listing.image, alt: "Card image cap" }

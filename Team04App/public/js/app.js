@@ -2196,13 +2196,12 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
-/* harmony import */ var _dummyListings_json__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./dummyListings.json */ "./resources/js/components/search/dummyListings.json");
-var _dummyListings_json__WEBPACK_IMPORTED_MODULE_2___namespace = /*#__PURE__*/__webpack_require__.t(/*! ./dummyListings.json */ "./resources/js/components/search/dummyListings.json", 1);
+/* harmony import */ var _dummyListings_json__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./dummyListings.json */ "./resources/js/components/search/dummyListings.json");
+var _dummyListings_json__WEBPACK_IMPORTED_MODULE_1___namespace = /*#__PURE__*/__webpack_require__.t(/*! ./dummyListings.json */ "./resources/js/components/search/dummyListings.json", 1);
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-//
 //
 //
 //
@@ -2240,7 +2239,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      allListingsList: _dummyListings_json__WEBPACK_IMPORTED_MODULE_2__
+      allListingsList: _dummyListings_json__WEBPACK_IMPORTED_MODULE_1__
     };
   },
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['getSearch']), {
@@ -6716,7 +6715,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "hr[data-v-0f80c6ca] {\n  margin-top: 5px;\n  margin-bottom: 5px;\n}\n.card[data-v-0f80c6ca] {\n  box-shadow: 0 1px 10px black;\n  -moz-box-shadow: 0 1px 10px black;\n  -webkit-box-shadow: 0 1px 10px black;\n  border: 1px solid grey;\n}\n.card[data-v-0f80c6ca]:hover {\n  cursor: pointer;\n  box-shadow: 0 5px 20px black;\n  -moz-box-shadow: 0 5px 20px black;\n  -webkit-box-shadow: 0 5px 20px black;\n  -webkit-transform: scale(1.05);\n          transform: scale(1.05);\n  transition: all 0.2s ease-in-out;\n}\n\n/* Bootstrap 4 breakpoints & gutter */\n/* number of cards per line for each breakpoint */\n@media (min-width: 0) {\n.card-deck .card[data-v-0f80c6ca] {\n    flex: 0 0 calc(100% - 30px);\n}\n}\n@media (min-width: 576px) {\n.card-deck .card[data-v-0f80c6ca] {\n    flex: 0 0 calc(50% - 30px);\n}\n}\n@media (min-width: 768px) {\n.card-deck .card[data-v-0f80c6ca] {\n    flex: 0 0 calc(33.3333333333% - 30px);\n}\n}\n@media (min-width: 992px) {\n.card-deck .card[data-v-0f80c6ca] {\n    flex: 0 0 calc(50% - 30px);\n}\n}\n@media (min-width: 1200px) {\n.card-deck .card[data-v-0f80c6ca] {\n    flex: 0 0 calc(33.3333333333% - 30px);\n}\n}", ""]);
+exports.push([module.i, "hr[data-v-0f80c6ca] {\n  margin-top: 5px;\n  margin-bottom: 5px;\n}\n.card[data-v-0f80c6ca] {\n  box-shadow: 0 1px 10px black;\n  -moz-box-shadow: 0 1px 10px black;\n  -webkit-box-shadow: 0 1px 10px black;\n  border: 1px solid grey;\n}\n.card[data-v-0f80c6ca]:hover {\n  cursor: pointer;\n  box-shadow: 0 5px 20px black;\n  -moz-box-shadow: 0 5px 20px black;\n  -webkit-box-shadow: 0 5px 20px black;\n  -webkit-transform: scale(1.05);\n          transform: scale(1.05);\n  transition: all 0.2s ease-in-out;\n}\n.move-leave-active[data-v-0f80c6ca] {\n  opacity: 0;\n  position: absolute;\n}\n.move-move[data-v-0f80c6ca] {\n  transition: all 0.5s;\n}\n\n/* Bootstrap 4 breakpoints & gutter */\n/* number of cards per line for each breakpoint */\n@media (min-width: 0) {\n.card-deck .card[data-v-0f80c6ca] {\n    flex: 0 0 calc(100% - 30px);\n}\n}\n@media (min-width: 576px) {\n.card-deck .card[data-v-0f80c6ca] {\n    flex: 0 0 calc(50% - 30px);\n}\n}\n@media (min-width: 768px) {\n.card-deck .card[data-v-0f80c6ca] {\n    flex: 0 0 calc(33.3333333333% - 30px);\n}\n}\n@media (min-width: 992px) {\n.card-deck .card[data-v-0f80c6ca] {\n    flex: 0 0 calc(50% - 30px);\n}\n}\n@media (min-width: 1200px) {\n.card-deck .card[data-v-0f80c6ca] {\n    flex: 0 0 calc(33.3333333333% - 30px);\n}\n}", ""]);
 
 // exports
 
@@ -39743,7 +39742,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_vm._v("\n    hello    \n")])
+  return _c("div", [_vm._v("\n    hello H\n")])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -40398,62 +40397,63 @@ var render = function() {
     "div",
     [
       _c(
-        "transition",
-        { attrs: { appear: "", "enter-active-class": "animated fadeIn" } },
-        [
-          _c(
-            "div",
-            { staticClass: "card-deck" },
-            _vm._l(_vm.filteredListings, function(listing) {
-              return _c("div", { staticClass: "card mb-4" }, [
-                _c("img", {
-                  staticClass: "card-img-top",
-                  attrs: { src: listing.image, alt: "Card image cap" }
-                }),
+        "transition-group",
+        {
+          staticClass: "card-deck",
+          attrs: {
+            tag: "div",
+            name: "move",
+            "enter-active-class": "animated fadeInUp faster"
+          }
+        },
+        _vm._l(_vm.filteredListings, function(listing) {
+          return _c("div", { key: listing.image, staticClass: "card mb-4" }, [
+            _c("img", {
+              staticClass: "card-img-top",
+              attrs: { src: listing.image, alt: "Card image cap" }
+            }),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-body py-3" }, [
+              _c("h5", { staticClass: "card-title text-center" }, [
+                _c("strong", [_vm._v(_vm._s(listing.type))])
+              ]),
+              _vm._v(" "),
+              _c("hr"),
+              _vm._v(" "),
+              _c("h5", { staticClass: "card-title" }, [
+                _vm._v("Rent: "),
+                _c("strong", [_vm._v("$" + _vm._s(listing.rent))])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col" }, [
+                  _c("p", { staticClass: "card-text" }, [
+                    _c("i", { staticClass: "fas fa-bed" }),
+                    _vm._v(" Beds: " + _vm._s(listing.beds))
+                  ])
+                ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "card-body py-3" }, [
-                  _c("h5", { staticClass: "card-title text-center" }, [
-                    _c("strong", [_vm._v(_vm._s(listing.type))])
-                  ]),
-                  _vm._v(" "),
-                  _c("hr"),
-                  _vm._v(" "),
-                  _c("h5", { staticClass: "card-title" }, [
-                    _vm._v("Rent: "),
-                    _c("strong", [_vm._v("$" + _vm._s(listing.rent))])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "row" }, [
-                    _c("div", { staticClass: "col" }, [
-                      _c("p", { staticClass: "card-text" }, [
-                        _c("i", { staticClass: "fas fa-bed" }),
-                        _vm._v(" Beds: " + _vm._s(listing.beds))
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col" }, [
-                      _c("p", { staticClass: "card-text" }, [
-                        _c("i", { staticClass: "fas fa-bath" }),
-                        _vm._v(" Baths: " + _vm._s(listing.baths))
-                      ])
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("hr"),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "card-text text-muted" }, [
-                    _vm._v(_vm._s(listing.street) + ",")
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "card-text text-muted" }, [
-                    _vm._v(_vm._s(listing.city) + ", CA " + _vm._s(listing.zip))
+                _c("div", { staticClass: "col" }, [
+                  _c("p", { staticClass: "card-text" }, [
+                    _c("i", { staticClass: "fas fa-bath" }),
+                    _vm._v(" Baths: " + _vm._s(listing.baths))
                   ])
                 ])
+              ]),
+              _vm._v(" "),
+              _c("hr"),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-text text-muted" }, [
+                _vm._v(_vm._s(listing.street) + ",")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-text text-muted" }, [
+                _vm._v(_vm._s(listing.city) + ", CA " + _vm._s(listing.zip))
               ])
-            }),
-            0
-          )
-        ]
+            ])
+          ])
+        }),
+        0
       ),
       _vm._v(" "),
       _c("div", { staticClass: "lead text-center mb-4" }, [
@@ -40462,7 +40462,7 @@ var render = function() {
             _vm._s(_vm.filteredListings.length) +
             " out of " +
             _vm._s(_vm.allListingsList.length) +
-            " --\n    "
+            " Listings --\n    "
         )
       ])
     ],

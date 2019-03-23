@@ -1,31 +1,30 @@
 <template>
-    <div>
-        <transition appear enter-active-class="animated fadeIn">
-            <div class="card-deck">
-                <div class="card mb-4" v-for='listing in filteredListings'>
-                    <img class="card-img-top" :src="listing.image" alt="Card image cap">
-                    <div class="card-body py-3">
-                    <h5 class="card-title text-center"><strong>{{ listing.type }}</strong></h5>
-                    <hr>
-                    <h5 class="card-title">Rent: <strong>${{ listing.rent }}</strong></h5>
-                    <div class="row">
-                        <div class="col">
-                            <p class="card-text"><i class="fas fa-bed"></i> Beds: {{ listing.beds }}</p>
-                        </div>
-                        <div class="col">
-                            <p class="card-text"><i class="fas fa-bath"></i> Baths: {{ listing.baths }}</p>
-                        </div>
+    <div>    
+        <transition-group tag="div" class="card-deck" name='move' enter-active-class="animated fadeInUp faster">
+            <div class="card mb-4" v-for='listing in filteredListings' :key='listing.image'>
+                <img class="card-img-top" :src="listing.image" alt="Card image cap">
+                <div class="card-body py-3">
+                <h5 class="card-title text-center"><strong>{{ listing.type }}</strong></h5>
+                <hr>
+                <h5 class="card-title">Rent: <strong>${{ listing.rent }}</strong></h5>
+                <div class="row">
+                    <div class="col">
+                        <p class="card-text"><i class="fas fa-bed"></i> Beds: {{ listing.beds }}</p>
                     </div>
-                    <hr>
-                    <div class="card-text text-muted">{{ listing.street }},</div>
-                    <div class="card-text text-muted">{{ listing.city }}, CA {{ listing.zip }}</div>
+                    <div class="col">
+                        <p class="card-text"><i class="fas fa-bath"></i> Baths: {{ listing.baths }}</p>
                     </div>
                 </div>
+                <hr>
+                <div class="card-text text-muted">{{ listing.street }},</div>
+                <div class="card-text text-muted">{{ listing.city }}, CA {{ listing.zip }}</div>
+                </div>
             </div>
-        </transition>
+        </transition-group>
+        
 
         <div class="lead text-center mb-4">
-            -- Showing {{ filteredListings.length }} out of {{ allListingsList.length }} --
+            -- Showing {{ filteredListings.length }} out of {{ allListingsList.length }} Listings --
         </div>
     </div>
 
@@ -76,6 +75,13 @@
         -webkit-box-shadow: 0 5px 20px black;
         transform: scale(1.05); 
         transition: all .2s ease-in-out;
+    }
+    .move-leave-active{
+        opacity: 0;
+        position: absolute;
+    }
+    .move-move{
+        transition: all .5s;
     }
 
     /* Bootstrap 4 breakpoints & gutter */

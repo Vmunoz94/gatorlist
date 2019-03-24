@@ -1,4 +1,3 @@
-
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -20,9 +19,14 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 import VueRouter from 'vue-router';
-import { routes } from './routes';
-import { store } from './store/store'
-import Navbar from './components/header/Navbar.vue';
+// <<<<<<< backend
+import {routes} from './routes';
+import Navbar from './components/Navbar.vue';
+// =======
+// import { routes } from './routes';
+// import { store } from './store/store'
+// import Navbar from './components/header/Navbar.vue';
+// >>>>>>> develop
 
 Vue.use(VueRouter);
 const router = new VueRouter({

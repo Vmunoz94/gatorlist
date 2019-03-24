@@ -11,7 +11,7 @@
                 <div class="collapse navbar-collapse" id="navbarToggle">
                     <ul class="navbar-nav mr-auto">
                     <li class="nav-item p-0">
-                        <router-link to='/' class="nav-link text-dark">Home</router-link>
+                        <router-link to='/' class="nav-link text-dark">Search</router-link>
                     </li>
                     <li class="nav-item p-0">
                         <router-link to='/about' class="nav-link text-dark">About</router-link>
@@ -19,28 +19,35 @@
                     </ul>
                     <ul class="navbar-nav">
                     <li class="nav-item p-0">
-                        <a class="nav-link text-dark" href="#">Login</a>
+                        <router-link to='/login' class="nav-link text-dark">Login</router-link>
                     </li>
                     <li class="nav-item p-0">
-                        <a class="nav-link text-dark" href="#">Register</a>
+                        <router-link to='/register' class="nav-link text-dark">Register</router-link>
                     </li>
                     </ul>
                 </div>
             </div>
         </nav>
         <gatorlist-jumbotron></gatorlist-jumbotron>
+        <gatorlist-filterbar></gatorlist-filterbar>
     </div>
 </template>
 
 <script>
     import Jumbotron from './Jumbotron.vue';
+    import Filterbar from './Filterbar.vue';
 
     export default {
-        props: {
-            'title': String,
+        data: function (){
+            return {
+                listingTypes: ['Room', 'Apartment', 'House'],
+                selected: '',
+                search: '',
+            }
         },
         components: {
             'gatorlist-jumbotron': Jumbotron,
+            'gatorlist-filterbar': Filterbar,
         },
     }
 </script>

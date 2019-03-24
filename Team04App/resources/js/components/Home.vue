@@ -1,44 +1,38 @@
 <template>
-    <div>
-        <h1 class="display-4 text-center mb-5">
-            Search for Housing
-        </h1>
-        <div class="container pt-5 mt-5">
-            <form>
-                <div class="form-row justify-content-center">
-                    <div class="col-2">
-                        <select class="form-control" v-model='selected'>
-                            <option disabled value="">Please select one</option>
-                            <option v-for='type in listingTypes'> {{ type }} </option>
-                        </select>
-                    </div>
-                    <div class="col-10">
-                        <input type="text" class="form-control" v-model='search' placeholder="Search">
-                    </div>
-                </div>
-                <div>{{ selected }}</div>
-                <div>{{ search }}</div>
-            </form>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-lg-6">
+                <gatorlist-listings></gatorlist-listings>
+            </div>
+            <div class="col border-left hide">
+                <gatorlist-google-maps></gatorlist-google-maps>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
+    import Listings from './search/Listings.vue'
+    import GoogleMaps from './search/GoogleMaps.vue'
+
     export default {
         data: function (){
             return {
-                listingTypes: ['Room', 'Apartment', 'House'],
-                selected: '',
-                search: '',
+                
             }
+        },
+        components: {
+            'gatorlist-listings': Listings,
+            'gatorlist-google-maps': GoogleMaps,
         }
     }
 </script>
 
 
 <style>
-    .form-row{
-        width: 80%;
-        margin: auto;
+    @media only screen and (max-width: 992px) {
+        .hide{
+            display: none;
+        }
     }
 </style>

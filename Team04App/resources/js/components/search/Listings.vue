@@ -1,5 +1,8 @@
 <template>
     <div>    
+        <div class="lead text-center mb-4">
+            -- Showing {{ filteredListings.length }} out of {{ allListingsList.length }} Listings --
+        </div>
         <transition-group tag="div" class="card-deck" name='move' appear enter-active-class="animated fadeInUp faster">
             <div class="card mb-4" v-for='listing in filteredListings' :key='listing.image'>
                 <img class="card-img-top" :src="listing.image" alt="Card image cap">
@@ -21,11 +24,6 @@
                 </div>
             </div>
         </transition-group>
-        
-
-        <div class="lead text-center mb-4">
-            -- Showing {{ filteredListings.length }} out of {{ allListingsList.length }} Listings --
-        </div>
     </div>
 
 </template>

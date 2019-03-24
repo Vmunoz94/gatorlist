@@ -40403,6 +40403,7 @@ var render = function() {
           attrs: {
             tag: "div",
             name: "move",
+            appear: "",
             "enter-active-class": "animated fadeInUp faster"
           }
         },

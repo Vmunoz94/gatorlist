@@ -1,6 +1,6 @@
 <template>
     <div>    
-        <transition-group tag="div" class="card-deck" name='move' enter-active-class="animated fadeInUp faster">
+        <transition-group tag="div" class="card-deck" name='move' appear enter-active-class="animated fadeInUp faster">
             <div class="card mb-4" v-for='listing in filteredListings' :key='listing.image'>
                 <img class="card-img-top" :src="listing.image" alt="Card image cap">
                 <div class="card-body py-3">

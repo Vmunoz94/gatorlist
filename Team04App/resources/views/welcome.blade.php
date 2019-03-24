@@ -9,9 +9,8 @@
         {{-- import css frameworks --}}
         <link rel="stylesheet" href="{{asset('css/app.css')}}">
 
-        <style>
-            
-        </style>
+        {{-- Import Google Maps API Key --}}
+
     </head>
     <body>
         <div id="app" class="flex-center position-ref full-height">

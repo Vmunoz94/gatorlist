@@ -36,3 +36,23 @@
         },
     }
 </script>
+
+<style scoped>
+    /* restrict the size of the buttons that route to individual pages */
+    .name-of-person {
+        max-width: 300px;
+    }
+
+    /* control size and color of cards */
+    .card {
+        max-width: 600px;
+        margin: 0 auto;
+        box-shadow: 0px 2px 10px black;
+        -moz-box-shadow: 0 2px 10px black;
+        -webkit-box-shadow: 0 2px 10px black;
+
+    }
+    .card-body {
+        background-color: rgba(255, 255, 255, 0.050);
+    }
+</style>

@@ -39287,7 +39287,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "Container" }, [
+    return _c("div", { staticClass: "container-fluid" }, [
       _c("div", { staticClass: "split left" }, [
         _c("div", { staticClass: "navbar navbar-inverse navbar-fixed-left" }, [
           _c("div", { staticClass: "text-left" }, [

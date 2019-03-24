@@ -1,5 +1,5 @@
 <template>
-<div class="Container">
+<div class="container-fluid">
     <div class="split left">
         <div class="navbar navbar-inverse navbar-fixed-left">
             <div class="text-left">

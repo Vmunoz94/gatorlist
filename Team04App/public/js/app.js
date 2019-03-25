@@ -2232,8 +2232,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -40396,6 +40394,16 @@ var render = function() {
   return _c(
     "div",
     [
+      _c("div", { staticClass: "lead text-center mb-4" }, [
+        _vm._v(
+          "\n        -- Showing " +
+            _vm._s(_vm.filteredListings.length) +
+            " out of " +
+            _vm._s(_vm.allListingsList.length) +
+            " Listings --\n    "
+        )
+      ]),
+      _vm._v(" "),
       _c(
         "transition-group",
         {
@@ -40455,17 +40463,7 @@ var render = function() {
           ])
         }),
         0
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "lead text-center mb-4" }, [
-        _vm._v(
-          "\n        -- Showing " +
-            _vm._s(_vm.filteredListings.length) +
-            " out of " +
-            _vm._s(_vm.allListingsList.length) +
-            " Listings --\n    "
-        )
-      ])
+      )
     ],
     1
   )

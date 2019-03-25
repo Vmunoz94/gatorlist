@@ -1,21 +1,23 @@
 <template>
     <div class="container mb-5">
-            <form>
+            <!-- <form> -->
                 <div class="form-row justify-content-center">
-                    <div class="col-3 col-lg-1 pb-2">
-                        <select class="form-control" name="type" v-model='selected'>
+                    <div class="col-10 col-md-9 col-lg-7 justify-content-center pr-0 mr-0 pb-2">
+                        <input type="text" class="form-control" v-model='search' placeholder="Type, City, Street, Zip, Price">
+                    </div>
+                    <div class="col-2 col-md-1 col-lg-1 justify-content-center pl-0 ml-0 pb-2">
+                        <button class="btn btn-dark btn-block inactive" disabled><i class="fas fa-search"></i></button>
+                    </div>
+                </div>
+                <div class="form-row justify-content-center">
+                    <div class="col-2 col-lg-1">
+                        <select class="form-control btn btn-dark" name="type" v-model='selected'>
                             <option disabled value="">Type</option>
                             <option v-for='type in listingTypes'> {{ type }} </option>
                         </select>
                     </div>
-                    <div class="col-8 col-lg-4 pb-2 pr-0 mr-0">
-                        <input type="text" class="form-control" v-model='search' placeholder="Type, City, Street, Zip, Price">
-                    </div>
-                    <div class="col-1 col-lg-1 pb-2 pl-0 ml-0">
-                        <button class="btn btn-dark inactive" disabled><i class="fas fa-search"></i></button>
-                    </div>
-                    <div class="col-3 col-lg-1">
-                        <button class="btn btn-dark dropdown-toggle" type="button" id="priceMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <div class="col-2 col-lg-1">
+                        <button id="priceMenuButton" class="btn btn-dark dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Price
                         </button>
                         <div class="dropdown-menu" aria-labelledby="priceMenuButton">
@@ -32,9 +34,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-3 col-lg-1">
+                    <div class="col-3 col-lg-2">
                         <select class="form-control btn btn-dark" name="bedrooms" v-model='numBeds'>
-                            <option disabled value="">Beds</option>
+                            <option disabled value="">Bedrooms</option>
                             <option v-for='bed in bedsList'> {{ bed }} </option>
                         </select>
                     </div>
@@ -44,7 +46,7 @@
                             <option v-for='bathroom in bathroomList'> {{ bathroom }} </option>
                         </select>
                     </div>
-                    <div class="col-3 col-lg-2">
+                    <div class="col-2 col-lg-2">
                         <select class="form-control btn btn-dark" name="sort" v-model='sort'>
                             <option disabled value="">Sort</option>
                             <option v-for='sort in sortList'> {{ sort }} </option>
@@ -59,7 +61,7 @@
                 <div># of Beds: {{ numBeds }}</div>
                 <div># of Bathrooms: {{ numBathrooms }}</div>
                 <div>sort: {{ sort }}</div> -->
-            </form>
+            <!-- </form> -->
         </div>
 </template>
 
@@ -96,6 +98,11 @@
 </script>
 
 <style scoped>
+    #priceMenuButton{
+        width: 95%;
+        padding-left: 2px;
+    }
+
     select{
         cursor: pointer;
     }

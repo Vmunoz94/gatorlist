@@ -10,20 +10,23 @@
 
                 <div class="collapse navbar-collapse" id="navbarToggle">
                     <ul class="navbar-nav mr-auto">
-                    <li class="nav-item p-0">
-                        <router-link to='/' class="nav-link text-dark">Search</router-link>
-                    </li>
-                    <li class="nav-item p-0">
-                        <router-link to='/about' class="nav-link text-dark">About</router-link>
-                    </li>
+                        <li class="nav-item p-0">
+                            <router-link to='/' class="nav-link text-dark">Search</router-link>
+                        </li>
+                        <li class="nav-item p-0">
+                            <router-link to='#' class="nav-link text-dark">Post Listing</router-link>
+                        </li>
+                        <li class="nav-item p-0">
+                            <router-link to='/about' class="nav-link text-dark">About</router-link>
+                        </li>
                     </ul>
                     <ul class="navbar-nav">
-                    <li class="nav-item p-0">
-                        <router-link to='/login' class="nav-link text-dark">Login</router-link>
-                    </li>
-                    <li class="nav-item p-0">
-                        <router-link to='/register' class="nav-link text-dark">Register</router-link>
-                    </li>
+                        <li class="nav-item p-0">
+                            <router-link to='/login' class="nav-link text-dark">Login</router-link>
+                        </li>
+                        <li class="nav-item p-0">
+                            <router-link to='/register' class="nav-link text-dark">Register</router-link>
+                        </li>
                     </ul>
                 </div>
             </div>

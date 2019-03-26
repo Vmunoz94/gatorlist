@@ -1,19 +1,20 @@
 <template>
     <div class="container mb-5">
-            <!-- <form> -->
+            <form>
                 <div class="form-row justify-content-center">
-                    <div class="col-10 col-md-9 col-lg-7 justify-content-center pr-0 mr-0 pb-2">
-                        <input type="text" class="form-control" v-model='search' placeholder="Type, City, Street, Zip, Price">
-                    </div>
-                    <div class="col-2 col-md-1 col-lg-1 justify-content-center pl-0 ml-0 pb-2">
-                        <button class="btn btn-dark btn-block inactive" disabled><i class="fas fa-search"></i></button>
+                    <div class="col-12 col-md-10 col-lg-8 justify-content-center pr-0 mr-0 pb-2">
+                        <div class="ui icon input fluid">
+                            <input type="text" v-model='search' placeholder="Search...">
+                            <i class="search icon"></i>
+                        </div>
                     </div>
                 </div>
+
                 <div class="form-row justify-content-center">
                     <div class="col-2 col-lg-1">
                         <select class="form-control btn btn-dark" name="type" v-model='selected'>
                             <option disabled value="">Type</option>
-                            <option v-for='type in listingTypes'> {{ type }} </option>
+                            <option v-for='(type, index) in listingTypes' :key='index'> {{ type }} </option>
                         </select>
                     </div>
                     <div class="col-2 col-lg-1">
@@ -37,19 +38,19 @@
                     <div class="col-3 col-lg-2">
                         <select class="form-control btn btn-dark" name="bedrooms" v-model='numBeds'>
                             <option disabled value="">Bedrooms</option>
-                            <option v-for='bed in bedsList'> {{ bed }} </option>
+                            <option v-for='(bed, index) in bedsList' :key='index'> {{ bed }} </option>
                         </select>
                     </div>
                     <div class="col-3 col-lg-2">
                         <select class="form-control btn btn-dark" name="bathrooms" v-model='numBathrooms'>
                             <option disabled value="">Bathrooms</option>
-                            <option v-for='bathroom in bathroomList'> {{ bathroom }} </option>
+                            <option v-for='(bathroom, index) in bathroomList' :key='index'> {{ bathroom }} </option>
                         </select>
                     </div>
                     <div class="col-2 col-lg-2">
                         <select class="form-control btn btn-dark" name="sort" v-model='sort'>
                             <option disabled value="">Sort</option>
-                            <option v-for='sort in sortList'> {{ sort }} </option>
+                            <option v-for='(sort, index) in sortList' :key='index'> {{ sort }} </option>
                         </select>
                     </div>
                 </div>
@@ -61,7 +62,7 @@
                 <div># of Beds: {{ numBeds }}</div>
                 <div># of Bathrooms: {{ numBathrooms }}</div>
                 <div>sort: {{ sort }}</div> -->
-            <!-- </form> -->
+            </form>
         </div>
 </template>
 

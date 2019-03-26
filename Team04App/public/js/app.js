@@ -2119,6 +2119,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -40004,333 +40005,326 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container mb-5" }, [
-    _c("div", { staticClass: "form-row justify-content-center" }, [
-      _c(
-        "div",
-        {
-          staticClass:
-            "col-10 col-md-9 col-lg-7 justify-content-center pr-0 mr-0 pb-2"
-        },
-        [
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.search,
-                expression: "search"
-              }
-            ],
-            staticClass: "form-control",
-            attrs: {
-              type: "text",
-              placeholder: "Type, City, Street, Zip, Price"
-            },
-            domProps: { value: _vm.search },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.search = $event.target.value
-              }
-            }
-          })
-        ]
-      ),
-      _vm._v(" "),
-      _vm._m(0)
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "form-row justify-content-center" }, [
-      _c("div", { staticClass: "col-2 col-lg-1" }, [
-        _c(
-          "select",
-          {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.selected,
-                expression: "selected"
-              }
-            ],
-            staticClass: "form-control btn btn-dark",
-            attrs: { name: "type" },
-            on: {
-              change: function($event) {
-                var $$selectedVal = Array.prototype.filter
-                  .call($event.target.options, function(o) {
-                    return o.selected
-                  })
-                  .map(function(o) {
-                    var val = "_value" in o ? o._value : o.value
-                    return val
-                  })
-                _vm.selected = $event.target.multiple
-                  ? $$selectedVal
-                  : $$selectedVal[0]
-              }
-            }
-          },
-          [
-            _c("option", { attrs: { disabled: "", value: "" } }, [
-              _vm._v("Type")
-            ]),
-            _vm._v(" "),
-            _vm._l(_vm.listingTypes, function(type) {
-              return _c("option", [_vm._v(" " + _vm._s(type) + " ")])
-            })
-          ],
-          2
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-2 col-lg-1" }, [
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-dark dropdown-toggle",
-            attrs: {
-              id: "priceMenuButton",
-              type: "button",
-              "data-toggle": "dropdown",
-              "aria-haspopup": "true",
-              "aria-expanded": "false"
-            }
-          },
-          [_vm._v("\n                        Price\n                    ")]
-        ),
-        _vm._v(" "),
+    _c("form", [
+      _c("div", { staticClass: "form-row justify-content-center" }, [
         _c(
           "div",
           {
-            staticClass: "dropdown-menu",
-            attrs: { "aria-labelledby": "priceMenuButton" }
+            staticClass:
+              "col-12 col-md-10 col-lg-8 justify-content-center pr-0 mr-0 pb-2"
           },
           [
-            _c("div", { staticClass: "form-row" }, [
-              _c("div", { staticClass: "col" }, [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model.number",
-                      value: _vm.minPrice,
-                      expression: "minPrice",
-                      modifiers: { number: true }
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: { type: "text", name: "minprice", placeholder: "Min" },
-                  domProps: { value: _vm.minPrice },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.minPrice = _vm._n($event.target.value)
-                    },
-                    blur: function($event) {
-                      return _vm.$forceUpdate()
-                    }
+            _c("div", { staticClass: "ui icon input fluid" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.search,
+                    expression: "search"
                   }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-1 text-center pt-2" }, [
-                _vm._v(
-                  "\n                                -\n                            "
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col" }, [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model.number",
-                      value: _vm.maxPrice,
-                      expression: "maxPrice",
-                      modifiers: { number: true }
+                ],
+                attrs: { type: "text", placeholder: "Search..." },
+                domProps: { value: _vm.search },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
                     }
-                  ],
-                  staticClass: "form-control",
-                  attrs: { type: "text", name: "maxprice", placeholder: "Max" },
-                  domProps: { value: _vm.maxPrice },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.maxPrice = _vm._n($event.target.value)
-                    },
-                    blur: function($event) {
-                      return _vm.$forceUpdate()
-                    }
+                    _vm.search = $event.target.value
                   }
-                })
-              ])
+                }
+              }),
+              _vm._v(" "),
+              _c("i", { staticClass: "search icon" })
             ])
           ]
         )
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "col-3 col-lg-2" }, [
-        _c(
-          "select",
-          {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.numBeds,
-                expression: "numBeds"
+      _c("div", { staticClass: "form-row justify-content-center" }, [
+        _c("div", { staticClass: "col-2 col-lg-1" }, [
+          _c(
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.selected,
+                  expression: "selected"
+                }
+              ],
+              staticClass: "form-control btn btn-dark",
+              attrs: { name: "type" },
+              on: {
+                change: function($event) {
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function(o) {
+                      return o.selected
+                    })
+                    .map(function(o) {
+                      var val = "_value" in o ? o._value : o.value
+                      return val
+                    })
+                  _vm.selected = $event.target.multiple
+                    ? $$selectedVal
+                    : $$selectedVal[0]
+                }
               }
+            },
+            [
+              _c("option", { attrs: { disabled: "", value: "" } }, [
+                _vm._v("Type")
+              ]),
+              _vm._v(" "),
+              _vm._l(_vm.listingTypes, function(type, index) {
+                return _c("option", { key: index }, [
+                  _vm._v(" " + _vm._s(type) + " ")
+                ])
+              })
             ],
-            staticClass: "form-control btn btn-dark",
-            attrs: { name: "bedrooms" },
-            on: {
-              change: function($event) {
-                var $$selectedVal = Array.prototype.filter
-                  .call($event.target.options, function(o) {
-                    return o.selected
-                  })
-                  .map(function(o) {
-                    var val = "_value" in o ? o._value : o.value
-                    return val
-                  })
-                _vm.numBeds = $event.target.multiple
-                  ? $$selectedVal
-                  : $$selectedVal[0]
+            2
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-2 col-lg-1" }, [
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-dark dropdown-toggle",
+              attrs: {
+                id: "priceMenuButton",
+                type: "button",
+                "data-toggle": "dropdown",
+                "aria-haspopup": "true",
+                "aria-expanded": "false"
               }
-            }
-          },
-          [
-            _c("option", { attrs: { disabled: "", value: "" } }, [
-              _vm._v("Bedrooms")
-            ]),
-            _vm._v(" "),
-            _vm._l(_vm.bedsList, function(bed) {
-              return _c("option", [_vm._v(" " + _vm._s(bed) + " ")])
-            })
-          ],
-          2
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-3 col-lg-2" }, [
-        _c(
-          "select",
-          {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.numBathrooms,
-                expression: "numBathrooms"
+            },
+            [_vm._v("\n                        Price\n                    ")]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "dropdown-menu",
+              attrs: { "aria-labelledby": "priceMenuButton" }
+            },
+            [
+              _c("div", { staticClass: "form-row" }, [
+                _c("div", { staticClass: "col" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model.number",
+                        value: _vm.minPrice,
+                        expression: "minPrice",
+                        modifiers: { number: true }
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "text",
+                      name: "minprice",
+                      placeholder: "Min"
+                    },
+                    domProps: { value: _vm.minPrice },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.minPrice = _vm._n($event.target.value)
+                      },
+                      blur: function($event) {
+                        return _vm.$forceUpdate()
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-1 text-center pt-2" }, [
+                  _vm._v(
+                    "\n                                -\n                            "
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model.number",
+                        value: _vm.maxPrice,
+                        expression: "maxPrice",
+                        modifiers: { number: true }
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "text",
+                      name: "maxprice",
+                      placeholder: "Max"
+                    },
+                    domProps: { value: _vm.maxPrice },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.maxPrice = _vm._n($event.target.value)
+                      },
+                      blur: function($event) {
+                        return _vm.$forceUpdate()
+                      }
+                    }
+                  })
+                ])
+              ])
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-3 col-lg-2" }, [
+          _c(
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.numBeds,
+                  expression: "numBeds"
+                }
+              ],
+              staticClass: "form-control btn btn-dark",
+              attrs: { name: "bedrooms" },
+              on: {
+                change: function($event) {
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function(o) {
+                      return o.selected
+                    })
+                    .map(function(o) {
+                      var val = "_value" in o ? o._value : o.value
+                      return val
+                    })
+                  _vm.numBeds = $event.target.multiple
+                    ? $$selectedVal
+                    : $$selectedVal[0]
+                }
               }
+            },
+            [
+              _c("option", { attrs: { disabled: "", value: "" } }, [
+                _vm._v("Bedrooms")
+              ]),
+              _vm._v(" "),
+              _vm._l(_vm.bedsList, function(bed, index) {
+                return _c("option", { key: index }, [
+                  _vm._v(" " + _vm._s(bed) + " ")
+                ])
+              })
             ],
-            staticClass: "form-control btn btn-dark",
-            attrs: { name: "bathrooms" },
-            on: {
-              change: function($event) {
-                var $$selectedVal = Array.prototype.filter
-                  .call($event.target.options, function(o) {
-                    return o.selected
-                  })
-                  .map(function(o) {
-                    var val = "_value" in o ? o._value : o.value
-                    return val
-                  })
-                _vm.numBathrooms = $event.target.multiple
-                  ? $$selectedVal
-                  : $$selectedVal[0]
+            2
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-3 col-lg-2" }, [
+          _c(
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.numBathrooms,
+                  expression: "numBathrooms"
+                }
+              ],
+              staticClass: "form-control btn btn-dark",
+              attrs: { name: "bathrooms" },
+              on: {
+                change: function($event) {
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function(o) {
+                      return o.selected
+                    })
+                    .map(function(o) {
+                      var val = "_value" in o ? o._value : o.value
+                      return val
+                    })
+                  _vm.numBathrooms = $event.target.multiple
+                    ? $$selectedVal
+                    : $$selectedVal[0]
+                }
               }
-            }
-          },
-          [
-            _c("option", { attrs: { disabled: "", value: "" } }, [
-              _vm._v("Bathrooms")
-            ]),
-            _vm._v(" "),
-            _vm._l(_vm.bathroomList, function(bathroom) {
-              return _c("option", [_vm._v(" " + _vm._s(bathroom) + " ")])
-            })
-          ],
-          2
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-2 col-lg-2" }, [
-        _c(
-          "select",
-          {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.sort,
-                expression: "sort"
-              }
+            },
+            [
+              _c("option", { attrs: { disabled: "", value: "" } }, [
+                _vm._v("Bathrooms")
+              ]),
+              _vm._v(" "),
+              _vm._l(_vm.bathroomList, function(bathroom, index) {
+                return _c("option", { key: index }, [
+                  _vm._v(" " + _vm._s(bathroom) + " ")
+                ])
+              })
             ],
-            staticClass: "form-control btn btn-dark",
-            attrs: { name: "sort" },
-            on: {
-              change: function($event) {
-                var $$selectedVal = Array.prototype.filter
-                  .call($event.target.options, function(o) {
-                    return o.selected
-                  })
-                  .map(function(o) {
-                    var val = "_value" in o ? o._value : o.value
-                    return val
-                  })
-                _vm.sort = $event.target.multiple
-                  ? $$selectedVal
-                  : $$selectedVal[0]
+            2
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-2 col-lg-2" }, [
+          _c(
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.sort,
+                  expression: "sort"
+                }
+              ],
+              staticClass: "form-control btn btn-dark",
+              attrs: { name: "sort" },
+              on: {
+                change: function($event) {
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function(o) {
+                      return o.selected
+                    })
+                    .map(function(o) {
+                      var val = "_value" in o ? o._value : o.value
+                      return val
+                    })
+                  _vm.sort = $event.target.multiple
+                    ? $$selectedVal
+                    : $$selectedVal[0]
+                }
               }
-            }
-          },
-          [
-            _c("option", { attrs: { disabled: "", value: "" } }, [
-              _vm._v("Sort")
-            ]),
-            _vm._v(" "),
-            _vm._l(_vm.sortList, function(sort) {
-              return _c("option", [_vm._v(" " + _vm._s(sort) + " ")])
-            })
-          ],
-          2
-        )
+            },
+            [
+              _c("option", { attrs: { disabled: "", value: "" } }, [
+                _vm._v("Sort")
+              ]),
+              _vm._v(" "),
+              _vm._l(_vm.sortList, function(sort, index) {
+                return _c("option", { key: index }, [
+                  _vm._v(" " + _vm._s(sort) + " ")
+                ])
+              })
+            ],
+            2
+          )
+        ])
       ])
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "col-2 col-md-1 col-lg-1 justify-content-center pl-0 ml-0 pb-2"
-      },
-      [
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-dark btn-block inactive",
-            attrs: { disabled: "" }
-          },
-          [_c("i", { staticClass: "fas fa-search" })]
-        )
-      ]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

@@ -3,6 +3,9 @@ import Login from './components/authentication/Login.vue';
 import Register from './components/authentication/Register.vue';
 import Account from './components/account/Account.vue';
 import Account_details from './components/account/Account_details.vue';
+import PendingListings from './components/account/PendingListings.vue';
+import EditListings from './components/account/EditListings.vue';
+import Messages from './components/account/Messages.vue';
 import About from './components/about/About.vue';
 import Victor from './components/about/employee/Victor.vue'
 import Aditya from './components/about/employee/Aditya.vue'
@@ -16,8 +19,12 @@ export const routes = [
     { path: '/', component: Home, name: 'home'},
     { path: '/login', component: Login },
     { path: '/register', component: Register },
-    { path: '/account', component: Account },
-    {path: '/account_details', component: Account_details},
+    { path: '/account', component: Account, children:[
+        { path: '', component: Account_details },
+        { path: 'pendingListings', component: PendingListings },
+        { path: 'editListings', component: EditListings },
+        { path: 'messages', component: Messages },
+    ] },
     { path: '/about', component: About },
     { path: '/about/victor', component: Victor },
     { path: '/about/aditya', component: Aditya },

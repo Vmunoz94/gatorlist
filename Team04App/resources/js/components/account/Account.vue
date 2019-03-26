@@ -1,18 +1,21 @@
 <template>
   <div class="container-fluid">
      <div class="row">    
-         <div class="col-12 col-lg-3">
-             <div class="navbar navbar-inverse navbar-fixed-left">                    
-                     <ul class="nav navbar-nav">                                                
-                         <button @click='toggle("gatorlist-account_details-component")' class="btn btn-dark btn-large"> Account Details </button>
-                         <button @click='toggle("gatorlist-pendinglistings-component")' class="btn btn-dark btn-large"> Pending Listings</button>
-                         <button @click='toggle("gatorlist-editlistings-component")' class="btn btn-dark btn-large"> Edit Listings</button>
-                         <button @click='toggle("gatorlist-messages-component")' class="btn btn-dark btn-large"> Messages</button>
-                     </ul>                            
-             </div>
+         <div class="col-12 col-lg-3 border-right">
+            <ul class="nav navbar-nav">  
+                <router-link 
+                v-for='(button, index) in buttons' 
+                :key='index' 
+                :to='button.link'
+                tag="button"
+                class="btn btn-dark btn-large w-50 mx-auto my-2"
+            >        
+            {{ button.title }}
+            </router-link>
+            </ul>                            
         </div> 
-         <div class="col border-left hide">
-             <component :is="currentComp"> </component>             
+         <div class="col">
+             <router-view></router-view>          
         </div>  
      </div>  
   </div>       
@@ -23,40 +26,31 @@
 
 
 <script>
-import pendingListings from "./PendingListings.vue"
-import accountdetails from "./Account_details.vue"
-import editlistings from "./EditListings.vue"
-import messages from "./Messages.vue"
-export default {
-        
+    export default {
+            
         data: function () {           
             return{
-                currentComp : accountdetails
-             } 
-        },
-        components : {
-            "gatorlist-account_details-component" : accountdetails,
-            "gatorlist-pendinglistings-component" : pendingListings,
-            "gatorlist-editlistings-component" : editlistings,
-            "gatorlist-messages-component" : messages
-
-        },
-        methods :{
-            toggle(comp){
-                this.currentComp = comp;
-            }
-        }        
+                buttons: [{
+                    title: "Account Details",
+                    link: "/account",
+                },{
+                    title: "Pending Listings",
+                    link: "/account/pendingListings",
+                },{
+                    title: "Edit Listings",
+                    link: "/account/editListings",
+                },{
+                    title: "Messages",
+                    link: "/account/messages",
+                },
+                ]
+            } 
+        },     
     }    
 </script>
 
 
 <style scoped>
-button{
-  margin: 13px;
-}
-.navbar {
-        background-color: transparent !important;
-    }
-    
+
 </style>
 

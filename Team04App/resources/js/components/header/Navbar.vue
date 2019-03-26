@@ -22,6 +22,9 @@
                     </ul>
                     <ul class="navbar-nav">
                         <li class="nav-item p-0">
+                            <router-link to='/account' class="nav-link text-dark">My Account</router-link>
+                        </li>
+                        <li class="nav-item p-0">
                             <router-link to='/login' class="nav-link text-dark">Login</router-link>
                         </li>
                         <li class="nav-item p-0">

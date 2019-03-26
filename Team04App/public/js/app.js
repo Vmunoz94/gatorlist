@@ -2016,36 +2016,71 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
+    // id: [1,2,3,4]
     return {
+      id: 0,
       actions: [{
-        role: 'Backend',
+        num: 1,
         name: 'Account Details',
         component: 'gatorlist-account_details-component',
         link: '/account_details'
       }, {
-        // role: 'Backend',
+        num: 2,
         name: 'Pending Listings',
         component: 'gatorlist-pending_listings-component',
         link: '/pending_listings'
       }, {
-        // role: 'Backend',
+        num: 3,
         name: 'Add Listing',
         component: 'gatorlist-add_listing-component',
         link: '/add_listing'
       }, {
-        // role: 'Backend',
+        num: 4,
         name: 'Edit Listing',
         component: 'gatorlist-edit_listing-component',
         link: '/edit_listing'
       }, {
-        // role: 'Backend',
+        num: 5,
         name: 'Messages',
         component: 'gatorlist-login-component',
         link: '/login'
       }]
     };
+  },
+  methods: {
+    on_action: function on_action(num) {
+      if (num === 1) {
+        this.id = 1;
+      } else if (num === 2) {
+        this.id = 2;
+      } else if (num == 3) {
+        this.id = 3;
+      } else if (num == 4) {
+        this.id = 4;
+      } else {
+        this.id = 5;
+      } // return action.name
+      // return "hi"
+      // <component actions[name].component> </component>
+
+    },
+    get_id: function get_id() {
+      return this.id;
+    }
   }
 });
 
@@ -39280,70 +39315,51 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container-fluid" }, [
-      _c("div", { staticClass: "split left" }, [
+  return _c("div", { staticClass: "container-fluid" }, [
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-12 col-lg-3" }, [
         _c("div", { staticClass: "navbar navbar-inverse navbar-fixed-left" }, [
-          _c("div", { staticClass: "text-left" }, [
-            _c("ul", { staticClass: "nav navbar-nav" }, [
-              _c(
-                "li",
-                {
-                  staticClass:
-                    "ui text-dark Black button small w-75 mx-auto my-2"
-                },
-                [_vm._v(" Account Details ")]
-              ),
-              _vm._v(" "),
-              _c(
-                "li",
-                {
-                  staticClass:
-                    "ui text-dark Black button small w-75 mx-auto my-2"
-                },
-                [_vm._v(" Pending Listings ")]
-              ),
-              _vm._v(" "),
-              _c(
-                "li",
-                {
-                  staticClass:
-                    "ui text-dark Black button small w-75 mx-auto my-2"
-                },
-                [_vm._v(" Edit Listings ")]
-              ),
-              _vm._v(" "),
-              _c(
-                "li",
-                {
-                  staticClass:
-                    "ui text-dark Black button small w-75 mx-auto my-2"
-                },
-                [_vm._v(" Messages ")]
-              )
-            ])
-          ])
+          _c(
+            "ul",
+            { staticClass: "nav navbar-nav" },
+            _vm._l(_vm.actions, function(action) {
+              return _c("div", { key: action.num }, [
+                _c(
+                  "li",
+                  {
+                    staticClass:
+                      "ui text-dark Black button small w-90 mx-auto my-2",
+                    nativeOn: {
+                      click: function($event) {
+                        return _vm.on_action(action.num, $event)
+                      }
+                    }
+                  },
+                  [_vm._v(" " + _vm._s(action.name) + " ")]
+                )
+              ])
+            }),
+            0
+          )
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "split right" }, [
-        _c("div", { staticClass: "center" }, [
-          _c("ul", { staticClass: "nav navbar-nav" }, [
-            _c("li", [_vm._v(" hi")]),
-            _vm._v(" "),
-            _c("li", [_vm._v("hello")])
+      _c(
+        "div",
+        { staticClass: "col border-left hide" },
+        [
+          _c("keep-alive", [
+            _vm.get_id() === 1
+              ? _c("div", [_vm._v(" \n                hi\n            ")])
+              : _c("div", [_vm._v("\n               no\n            ")])
           ])
-        ])
-      ])
+        ],
+        1
+      )
     ])
-  }
-]
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -39365,7 +39381,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_vm._v(" Account details go here")])
+  return _c("div", [_vm._v("hi there ")])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -55662,8 +55678,6 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Account_details_vue_vue_type_template_id_c2d62a9a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Account_details.vue?vue&type=template&id=c2d62a9a& */ "./resources/js/components/account/Account_details.vue?vue&type=template&id=c2d62a9a&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-/* harmony import */ var _Account_details_vue_vue_type_custom_index_0_blockType_keep_alive__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Account_details.vue?vue&type=custom&index=0&blockType=keep-alive */ "./resources/js/components/account/Account_details.vue?vue&type=custom&index=0&blockType=keep-alive");
-/* harmony import */ var _Account_details_vue_vue_type_custom_index_0_blockType_keep_alive__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_Account_details_vue_vue_type_custom_index_0_blockType_keep_alive__WEBPACK_IMPORTED_MODULE_2__);
 
 var script = {}
 
@@ -55681,25 +55695,10 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
   
 )
 
-/* custom blocks */
-
-if (typeof _Account_details_vue_vue_type_custom_index_0_blockType_keep_alive__WEBPACK_IMPORTED_MODULE_2___default.a === 'function') _Account_details_vue_vue_type_custom_index_0_blockType_keep_alive__WEBPACK_IMPORTED_MODULE_2___default()(component)
-
 /* hot reload */
 if (false) { var api; }
 component.options.__file = "resources/js/components/account/Account_details.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ "./resources/js/components/account/Account_details.vue?vue&type=custom&index=0&blockType=keep-alive":
-/*!**********************************************************************************************************!*\
-  !*** ./resources/js/components/account/Account_details.vue?vue&type=custom&index=0&blockType=keep-alive ***!
-  \**********************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-
 
 /***/ }),
 

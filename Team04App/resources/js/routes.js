@@ -5,6 +5,7 @@ import Account from './components/account/Account.vue';
 import Account_details from './components/account/Account_details.vue';
 import PendingListings from './components/account/PendingListings.vue';
 import EditListings from './components/account/EditListings.vue';
+import PostListing from './components/account/PostListing.vue';
 import Messages from './components/account/Messages.vue';
 import About from './components/about/About.vue';
 import Victor from './components/about/employee/Victor.vue'
@@ -25,6 +26,7 @@ export const routes = [
         { path: 'editListings', component: EditListings },
         { path: 'messages', component: Messages },
     ] },
+    { path: '/postListing', component: PostListing },
     { path: '/about', component: About },
     { path: '/about/victor', component: Victor },
     { path: '/about/aditya', component: Aditya },

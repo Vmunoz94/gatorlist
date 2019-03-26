@@ -1,3 +1,3 @@
 <template>
-    <div>hi there </div> 
+    <div> display user account details here </div> 
 </template>

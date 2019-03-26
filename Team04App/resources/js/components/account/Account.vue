@@ -5,29 +5,24 @@
          <div class="col-12 col-lg-3">
              <div class="navbar navbar-inverse navbar-fixed-left">
                <!-- <div class="text-left"> -->
-                     <ul class="nav navbar-nav">
-                         <div v-for='action in actions'
-                             :key="action.num">
-                         <li @click.native="on_action(action.num, $event)" class="ui text-dark Black button small w-90 mx-auto my-2"> {{action.name}} </li>
-                         </div>                         
-                     </ul>        
+                    
+                     <ul class="nav navbar-nav"> 
+                                               
+                         <button @click='toggle("gatorlist-account_details-component")' class="btn btn-dark btn-large"> Account Details </button>
+
+                         <button @click='toggle("gatorlist-pendinglistings-component")' class="btn btn-dark btn-large"> Pending Listings</button>
+                         <button @click='toggle("gatorlist-editlistings-component")' class="btn btn-dark btn-large"> Edit Listings</button>
+                         <button @click='toggle("gatorlist-messages-component")' class="btn btn-dark btn-large"> Messages</button>
+
+                         
+                     </ul>  
+                          
              </div>
         </div> 
          <div class="col border-left hide">
-             <keep-alive>
-              <div v-if="get_id()===1" > 
-                  hi
-              </div>
-              <div v-else>
-                 no
-              </div>   
-             <!-- <div v-for="action in actions"
-                 :key="action.name"
-                  @click.native="on_action(action)"> 
-            </div> -->
-             </keep-alive>                
-         <!-- </div> -->
-     </div>  
+             <component :is="currentComp"> </component>
+             
+        </div>  
      </div>  
   </div>       
    
@@ -37,65 +32,32 @@
 
 
 <script>
+import pendingListings from "./PendingListings.vue"
+import accountdetails from "./Account_details.vue"
+import editlistings from "./EditListings.vue"
+import messages from "./Messages.vue"
 export default {
-        data: function () {
-            
+        
+        data: function () {           
             // id: [1,2,3,4]
-            return{     
-                id:0,           
-                actions: [{
-                    num : 1,
-                    name: 'Account Details',
-                    component: 'gatorlist-account_details-component',
-                    link: '/account_details',
-                },
-                {
-                    num : 2,
-                    name: 'Pending Listings',
-                    component: 'gatorlist-pending_listings-component',
-                    link: '/pending_listings',
-                },
-                {
-                    num : 3,
-                    name: 'Add Listing',
-                    component: 'gatorlist-add_listing-component',
-                    link: '/add_listing',
-                },
-                {
-                    num : 4,
-                    name: 'Edit Listing',
-                    component: 'gatorlist-edit_listing-component',
-                    link: '/edit_listing',
-                },
-                {
-                    num : 5,
-                    name: 'Messages',
-                    component: 'gatorlist-login-component',
-                    link: '/login',
-                }],
-            }
+            return{
+                currentComp : accountdetails
+             } 
         },
-        methods:{
-            on_action: function(num){
-                if (num === 1){
-                    this.id=1;
-                }else if (num=== 2) {
-                    this.id = 2;
-                }else if (num == 3){
-                    this.id = 3;
-                }else if (num == 4) {
-                    this.id = 4;
-                } else {
-                    this.id = 5;
-                }
-                // return action.name
-                // return "hi"
-                // <component actions[name].component> </component>
-            },
-            get_id:function(){
-                return this.id
+        components : {
+            // 'gatorlist-login-component' : login,
+            "gatorlist-account_details-component" : accountdetails,
+            "gatorlist-pendinglistings-component" : pendingListings,
+            "gatorlist-editlistings-component" : editlistings,
+            "gatorlist-messages-component" : messages
+
+        },
+        methods :{
+            toggle(comp){
+                this.currentComp = comp;
             }
         }
+        
     }  
 
 
@@ -104,14 +66,20 @@ export default {
 
 
 
+
+
+
 <style scoped>
+button{
+  margin: 13px;
+}
 .navbar {
         background-color: transparent !important;
     }
     .navbar-light .navbar-nav .nav-link:hover {
         box-shadow: 0px 2px 10px black;
-        -moz-box-shadow: 0 2px 10px black;
-        -webkit-box-shadow: 0 2px 10px black;
+        /* -moz-box-shadow: 0 2px 10px black; */
+        /* -webkit-box-shadow: 0 2px 10px black; */
         background-color: black !important;
         border-radius: 5px;
 

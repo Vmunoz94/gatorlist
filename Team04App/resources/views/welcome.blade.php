@@ -6,11 +6,13 @@
 
         <title>GatorList</title>
 
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+        
         {{-- import css frameworks --}}
         <link rel="stylesheet" href="{{asset('css/app.css')}}">
 
         {{-- Import Google Maps API Key --}}
-
+        
     </head>
     <body>
         <div id="app" class="flex-center position-ref full-height">

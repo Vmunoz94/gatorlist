@@ -6,13 +6,12 @@
             </h1>
         </div>
 
-        <form>
         <div class="form-content">
             <div class="row justify-content-center">
                 <div class="col-10">
                     <div class="form-group margin-top">
                         <label for="username"><i class="fas fa-user"></i> Username:</label>
-                        <input type="text" class="form-control" id="username" placeholder="Username">
+                        <input type="text" class="form-control" id="username" placeholder="Username" v-model='username'>
                     </div>
                 </div>
             </div>
@@ -21,7 +20,7 @@
                     <div class="form-group">
                         <i class="fas fa-lock"></i>
                         <label for="password">Password:</label>
-                        <input type="password" class="form-control" id="password" placeholder="Password">
+                        <input type="password" class="form-control" id="password" placeholder="Password" v-model='password'>
                     </div>
                 </div>
             </div>
@@ -34,15 +33,31 @@
                 </div>
             </div>
             <div class="d-flex justify-content-center">
-                <button type="submit" class="btn btn-outline-dark btn-lg btn-block">Submit</button>
+                <button type="submit" class="btn btn-outline-dark btn-lg btn-block" :disabled='$v.$invalid'>Submit</button>
             </div>
         </div>
-        </form>
     </div>
 </template>
 
 <script>
-    
+    import { required } from 'vuelidate/lib/validators';
+
+    export default {
+        data: function (){
+            return {
+                username: '',
+                password: '',
+            }
+        },
+        validations: {
+            username: {
+                required
+            },
+            password: {
+                required
+            }
+        },
+    }
 </script>
 
 

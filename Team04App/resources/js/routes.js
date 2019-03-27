@@ -5,9 +5,9 @@ import Account from './components/account/Account.vue';
 import Account_details from './components/account/Account_details.vue';
 import PendingListings from './components/account/PendingListings.vue';
 import EditListings from './components/account/EditListings.vue';
-import PostListing from './components/account/PostListing.vue';
-import AddListing from './components/account/AddListing.vue';
-import ConfirmListing from './components/account/ConfirmListing.vue';
+import PostListing from './components/postListing/PostListing.vue';
+import AddListing from './components/postListing/AddListing.vue';
+import ConfirmListing from './components/postListing/ConfirmListing.vue';
 import Messages from './components/account/Messages.vue';
 import About from './components/about/About.vue';
 import Victor from './components/about/employee/Victor.vue'

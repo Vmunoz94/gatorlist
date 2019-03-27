@@ -8,16 +8,23 @@
 
         <div class="form-content">
             <div class="row justify-content-center margin-top">
-                <div class="col-10 col-sm-2 my-4">
-                    <select class="form-control text-reset" name="type" v-model='selected'>
+                <div class="col-10">
+                    <h4><strong>Enter Address Info</strong></h4>
+                    <hr>
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-10 col-sm-2 my-4 mt-5">
+                    <select class="form-control text-reset mt-2" name="type" v-model='selected' :class='{error: $v.street.$invalid}'>
                         <option disabled value="">Type</option>
-                        <option v-for='(type, index) in listingTypes' :key='index'> {{ type }} </option>
+                        <option v-for='(type, index) in listingTypes' :key='index' :value='type'> {{ type }} </option>
                     </select>
                 </div>
                 <div class="col-10 col-sm-8 my-4">
                     <div class="form-group">
                         <label for="street">Street:</label>
-                        <input type="text" class="form-control" id="street" placeholder="Street">
+                        <input type="text" class="form-control" id="street" placeholder="Street" v-model='street' :class='{error: $v.street.$invalid}'>
                     </div>
                 </div>
             </div>
@@ -27,7 +34,7 @@
                 <div class="col-5 col-sm-4">
                     <div class="form-group">
                         <label for="city">City:</label>
-                        <input type="text" class="form-control" id="city" placeholder="City">
+                        <input type="text" class="form-control" id="city" placeholder="City" v-model='city' :class='{error: $v.city.$invalid}'>
                     </div>
                 </div>
                 <div class="col-2 col-sm-2">
@@ -39,7 +46,7 @@
                 <div class="col-3 col-sm-2">
                     <div class="form-group">
                         <label for="zip">ZIP:</label>
-                        <input type="text" class="form-control" id="zip" placeholder="ZIP">
+                        <input type="text" class="form-control" id="zip" placeholder="ZIP" v-model='zip' :class='{error: $v.zip.$invalid}'>
                     </div>
                 </div>
             </div>
@@ -47,14 +54,14 @@
             <div class="row justify-content-center mt-4">
                 <div class="col-10 col-sm-2">
                     <div class="form-group">
-                        <label for="rent">Monthly Rent:</label>
-                        <input type="text" class="form-control" id="rent" placeholder="Monthly Rent">
+                        <label for="rent">Monthly Rent $:</label>
+                        <input type="text" class="form-control" id="rent" placeholder="$" v-model='rent' :class='{error: $v.rent.$invalid}'>
                     </div>
                 </div>
                 <div class="col-10 col-sm-8">
                     <div class="form-group">
                         <label for="image">Image URL:</label>
-                        <input type="text" class="form-control" id="image" placeholder="Image URL">
+                        <input type="text" class="form-control" id="image" placeholder="Image URL" v-model='url' :class='{error: $v.url.$invalid}'>
                     </div>
                 </div>
             </div>
@@ -62,25 +69,60 @@
             <div class="row justify-content-center mt-4">
                 <div class="col-10">
                     <label for="description">Description</label>
-                    <textarea class="form-control" id="description" placeholder="Description" rows="4"></textarea>
+                    <textarea class="form-control" id="description" placeholder="Description" rows="4" v-model='description' :class='{error: $v.description.$invalid}'></textarea>
                 </div>
             </div>
             
             <div class="d-flex justify-content-center margin-top">
-                <!-- <button type="submit" class="btn btn-outline-dark btn-lg btn-block">Submit</button> -->
-                <button class="ui inverted green button large fluid">Verify</button>
+                <button type="submit" class="btn btn-outline-dark btn-lg btn-block" :disabled='$v.$invalid'>Validate</button>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+    import { required, numeric, minLength, maxLength, url } from 'vuelidate/lib/validators';
     export default {
         data: function (){
             return {
                 listingTypes: ['Room', 'Apartment', 'House'],
                 selected: '',
+                street: '',
+                city: '',
+                zip: '',
+                rent: '',
+                url: '',
+                description: '',
             }
+        },
+        validations: {
+            selected: {
+                required
+            },
+            street: {
+                required
+            },
+            city: {
+                required
+            },
+            zip: {
+                required,
+                numeric,
+                minLen: minLength(5),
+                maxLen: maxLength(5),
+            },
+            rent: {
+                required,
+                numeric
+            },
+            url: {
+                required,
+                url
+            },
+            description: {
+                required
+            }
+
         },
     }
 </script>
@@ -128,10 +170,6 @@
         -moz-box-shadow: 0 1px 10px grey;
         -webkit-box-shadow: 0 1px 10px grey;
     }
-    .ui.inverted.button{
-        margin: 0;
-        box-shadow: none !important;
-    }
     .btn-outline-dark{
         border: none;
     }
@@ -146,5 +184,9 @@
     }
     input:disabled{
         background: none;
+    }
+    .error{
+        /* border-color: red; */
+        color: red;
     }
 </style>

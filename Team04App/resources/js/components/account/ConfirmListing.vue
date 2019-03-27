@@ -28,7 +28,7 @@
                     </p> 
                 </div>
                 <div class="col-5">
-                    <gatorlist-google-maps class="mapStyle"></gatorlist-google-maps>
+                    <gatorlist-google-maps class="mapStyle" :lat="this.lat" :lng="this.lng" :zoom="15"></gatorlist-google-maps>
                 </div>
             </div>
             <div class="row justify-content-center mb-3">
@@ -64,6 +64,7 @@
 <script>
     import { mapGetters } from 'vuex';
     import GoogleMaps from '../search/GoogleMaps.vue'
+    import axios from 'axios';
 
     export default {
         data: function () {
@@ -86,6 +87,38 @@
                 'getAddListing'
             ]),
         },
+        created() {
+            let address = [];
+            address.push(this.getAddListing.street)
+            address.push(this.getAddListing.city)
+            address.push(this.getAddListing.state)
+            address.push(this.getAddListing.zip)
+            address = address.join(" ");
+
+            var instance = axios.create();
+            delete instance.defaults.headers.common['X-CSRF-TOKEN'];
+            delete instance.defaults.headers.common['X-Requested-With'];
+
+            instance.get('https://maps.googleapis.com/maps/api/geocode/json', {
+                params: {
+                    address,
+                    key: 'AIzaSyBmbDCDGERAGuQH7jGPLBg8MGd5sQpoxvY',
+                }
+            })
+            .then((res) => {
+                if (res.data.status === 'ZERO_RESULTS'){
+                    console.log('Zero Results found');
+                }
+                else{
+                    this.confirmed = true;
+                    this.lat = res.data.results[0].geometry.location.lat
+                    this.lng = res.data.results[0].geometry.location.lng
+                }
+            })
+            .catch(() => {
+                console.log('Could not retrieve location from Geocoding API');
+            });            
+        },
     }
 </script>
 
@@ -102,8 +135,15 @@
     img{
         border-radius: 5px;
     }
-    .mapStyle{
-        height: 250px !important;
-        position: static !important;
+    .mapStyle {
+        position: static;
+        width: 100%;
+        height: 250px;
+        border: 1px solid black;
+        border-radius: 5px;
+        box-shadow: 0 1px 10px black;
+        -moz-box-shadow: 0 1px 10px black;
+        -webkit-box-shadow: 0 1px 10px black;
+        background-color: rgb(170, 178, 187);
     }
 </style>

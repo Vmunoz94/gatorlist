@@ -2206,6 +2206,8 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 /* harmony import */ var _search_GoogleMaps_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../search/GoogleMaps.vue */ "./resources/js/components/search/GoogleMaps.vue");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -2275,6 +2277,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2291,7 +2294,36 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.$router.push('/postListing');
     }
   },
-  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['getAddListing']))
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['getAddListing'])),
+  created: function created() {
+    var _this = this;
+
+    var address = [];
+    address.push(this.getAddListing.street);
+    address.push(this.getAddListing.city);
+    address.push(this.getAddListing.state);
+    address.push(this.getAddListing.zip);
+    address = address.join(" ");
+    var instance = axios__WEBPACK_IMPORTED_MODULE_2___default.a.create();
+    delete instance.defaults.headers.common['X-CSRF-TOKEN'];
+    delete instance.defaults.headers.common['X-Requested-With'];
+    instance.get('https://maps.googleapis.com/maps/api/geocode/json', {
+      params: {
+        address: address,
+        key: 'AIzaSyBmbDCDGERAGuQH7jGPLBg8MGd5sQpoxvY'
+      }
+    }).then(function (res) {
+      if (res.data.status === 'ZERO_RESULTS') {
+        console.log('Zero Results found');
+      } else {
+        _this.confirmed = true;
+        _this.lat = res.data.results[0].geometry.location.lat;
+        _this.lng = res.data.results[0].geometry.location.lng;
+      }
+    }).catch(function () {
+      console.log('Could not retrieve location from Geocoding API');
+    });
+  }
 });
 
 /***/ }),
@@ -7191,7 +7223,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n@media only screen and (max-width: 992px) {\n.hide{\n        display: none;\n}\n}\n", ""]);
+exports.push([module.i, "\n.mapStyle {\n    position: fixed;\n    top: 14px;\n    width: 100%;\n    height: 96vh;\n    border: 1px solid black;\n    box-shadow: 0 1px 10px black;\n    -moz-box-shadow: 0 1px 10px black;\n    -webkit-box-shadow: 0 1px 10px black;\n    background-color: rgb(170, 178, 187);\n}\n@media only screen and (max-width: 992px) {\n.hide{\n        display: none;\n}\n}\n", ""]);
 
 // exports
 
@@ -7419,7 +7451,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.margin-top[data-v-501a00f1]{\n    margin-top: 150px;\n}\np[data-v-501a00f1]{\n    border: 1px solid rgb(212, 212, 212);\n    border-radius: 5px;\n    padding-left: 10px;\n    padding-right: 10px;\n}\nimg[data-v-501a00f1]{\n    border-radius: 5px;\n}\n.mapStyle[data-v-501a00f1]{\n    height: 250px !important;\n    position: static !important;\n}\n", ""]);
+exports.push([module.i, "\n.margin-top[data-v-501a00f1]{\n    margin-top: 150px;\n}\np[data-v-501a00f1]{\n    border: 1px solid rgb(212, 212, 212);\n    border-radius: 5px;\n    padding-left: 10px;\n    padding-right: 10px;\n}\nimg[data-v-501a00f1]{\n    border-radius: 5px;\n}\n.mapStyle[data-v-501a00f1] {\n    position: static;\n    width: 100%;\n    height: 250px;\n    border: 1px solid black;\n    border-radius: 5px;\n    box-shadow: 0 1px 10px black;\n    -moz-box-shadow: 0 1px 10px black;\n    -webkit-box-shadow: 0 1px 10px black;\n    background-color: rgb(170, 178, 187);\n}\n", ""]);
 
 // exports
 
@@ -7552,7 +7584,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n#Map[data-v-37dfbd1c] {\n    position: fixed;\n    top: 14px;\n    width: 100%;\n    height: 96vh;\n    border: 1px solid black;\n    box-shadow: 0 1px 10px black;\n    -moz-box-shadow: 0 1px 10px black;\n    -webkit-box-shadow: 0 1px 10px black;\n    background-color: rgb(170, 178, 187);\n}\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* #Map {\n    position: fixed;\n    top: 14px;\n    width: 100%;\n    height: 96vh;\n    border: 1px solid black;\n    box-shadow: 0 1px 10px black;\n    -moz-box-shadow: 0 1px 10px black;\n    -webkit-box-shadow: 0 1px 10px black;\n    background-color: rgb(170, 178, 187);\n} */\n", ""]);
 
 // exports
 
@@ -39396,6 +39428,7 @@ var render = function() {
         { staticClass: "col border-left hide" },
         [
           _c("gatorlist-google-maps", {
+            staticClass: "mapStyle",
             attrs: { lat: 37.7749, lng: -122.4194, zoom: 12 }
           })
         ],
@@ -40881,7 +40914,12 @@ var render = function() {
             _c(
               "div",
               { staticClass: "col-5" },
-              [_c("gatorlist-google-maps", { staticClass: "mapStyle" })],
+              [
+                _c("gatorlist-google-maps", {
+                  staticClass: "mapStyle",
+                  attrs: { lat: this.lat, lng: this.lng, zoom: 15 }
+                })
+              ],
               1
             )
           ]),

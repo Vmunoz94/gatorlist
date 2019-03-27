@@ -22,7 +22,7 @@
 </script>
 
 <style scoped>
-    #Map {
+    /* #Map {
         position: fixed;
         top: 14px;
         width: 100%;
@@ -32,5 +32,5 @@
         -moz-box-shadow: 0 1px 10px black;
         -webkit-box-shadow: 0 1px 10px black;
         background-color: rgb(170, 178, 187);
-    }
+    } */
 </style>

@@ -9,7 +9,7 @@
 
         <div class="row justify-content-center">
             <div class="col-10 col-sm-2 my-4 mt-5">
-                <select class="form-control text-reset mt-2" name="type" v-model='selected' :class='{error: $v.street.$invalid}'>
+                <select class="form-control text-reset mt-2" name="type" v-model='selected'>
                     <option disabled value="">Type</option>
                     <option v-for='(type, index) in listingTypes' :key='index' :value='type'> {{ type }} </option>
                 </select>
@@ -17,7 +17,7 @@
             <div class="col-10 col-sm-8 my-4">
                 <div class="form-group">
                     <label for="street">Street:</label>
-                    <input type="text" class="form-control" id="street" placeholder="Street" v-model='street' :class='{error: $v.street.$invalid}'>
+                    <input type="text" class="form-control" id="street" placeholder="Street" v-model='street'>
                 </div>
             </div>
         </div>
@@ -27,7 +27,7 @@
             <div class="col-5 col-sm-4">
                 <div class="form-group">
                     <label for="city">City:</label>
-                    <input type="text" class="form-control" id="city" placeholder="City" v-model='city' :class='{error: $v.city.$invalid}'>
+                    <input type="text" class="form-control" id="city" placeholder="City" v-model='city'>
                 </div>
             </div>
             <div class="col-2 col-sm-2">
@@ -39,7 +39,7 @@
             <div class="col-3 col-sm-2">
                 <div class="form-group">
                     <label for="zip">ZIP:</label>
-                    <input type="text" class="form-control" id="zip" placeholder="ZIP" v-model='zip' :class='{error: $v.zip.$invalid}'>
+                    <input type="text" class="form-control" id="zip" placeholder="ZIP" v-model='zip'>
                 </div>
             </div>
         </div>
@@ -48,13 +48,13 @@
             <div class="col-10 col-sm-2">
                 <div class="form-group">
                     <label for="rent">Rent $:</label>
-                    <input type="text" class="form-control" id="rent" placeholder="$" v-model='rent' :class='{error: $v.rent.$invalid}'>
+                    <input type="text" class="form-control" id="rent" placeholder="$" v-model='rent'>
                 </div>
             </div>
             <div class="col-10 col-sm-8">
                 <div class="form-group">
                     <label for="image">Image URL:</label>
-                    <input type="text" class="form-control" id="image" placeholder="Image URL" v-model='url' :class='{error: $v.url.$invalid}'>
+                    <input type="text" class="form-control" id="image" placeholder="Image URL" v-model='url'>
                 </div>
             </div>
         </div>

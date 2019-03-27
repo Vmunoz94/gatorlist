@@ -108,6 +108,7 @@
             .then((res) => {
                 if (res.data.status === 'ZERO_RESULTS'){
                     console.log('Zero Results found');
+                    this.confirmed = false;
                 }
                 else{
                     this.confirmed = true;
@@ -117,6 +118,7 @@
             })
             .catch(() => {
                 console.log('Could not retrieve location from Geocoding API');
+                this.confirmed = false;
             });            
         },
     }

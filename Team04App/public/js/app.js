@@ -42235,7 +42235,19 @@ var render = function() {
     _c(
       "div",
       { staticClass: "form-content justify-content-between" },
-      [_c("router-view")],
+      [
+        _c(
+          "transition",
+          {
+            attrs: {
+              appear: "",
+              "enter-active-class": "animated fadeIn faster"
+            }
+          },
+          [_c("router-view")],
+          1
+        )
+      ],
       1
     )
   ])

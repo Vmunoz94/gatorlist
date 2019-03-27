@@ -7,7 +7,10 @@
         </div>
 
         <div class="form-content justify-content-between">
-            <router-view></router-view>
+            <transition appear enter-active-class="animated fadeIn faster">
+                <router-view></router-view>
+            </transition>
+            <!-- <router-view></router-view> -->
         </div>
     </div>
 </template>

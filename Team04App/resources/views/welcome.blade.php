@@ -6,6 +6,8 @@
 
         <title>GatorList</title>
 
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+        
         {{-- import css frameworks --}}
         <link rel="stylesheet" href="{{asset('css/app.css')}}">
 

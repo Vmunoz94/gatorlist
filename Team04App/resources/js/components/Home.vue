@@ -5,7 +5,7 @@
                 <gatorlist-listings></gatorlist-listings>
             </div>
             <div class="col border-left hide">
-                <gatorlist-google-maps></gatorlist-google-maps>
+                <gatorlist-google-maps :lat='37.7749' :lng='-122.4194' :zoom='12'></gatorlist-google-maps>
             </div>
         </div>
     </div>

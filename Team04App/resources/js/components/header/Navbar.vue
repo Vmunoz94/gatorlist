@@ -14,7 +14,7 @@
                             <router-link to='/' class="nav-link text-dark">Search</router-link>
                         </li>
                         <li class="nav-item p-0">
-                            <router-link to='#' class="nav-link text-dark">Post Listing</router-link>
+                            <router-link to='/postListing' class="nav-link text-dark">Post Listing</router-link>
                         </li>
                         <li class="nav-item p-0">
                             <router-link to='/about' class="nav-link text-dark">About</router-link>

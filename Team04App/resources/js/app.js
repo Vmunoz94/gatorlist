@@ -19,13 +19,16 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 import VueRouter from 'vue-router';
+import Vuelidate from 'vuelidate';
 import { routes } from './routes';
 import { store } from './store/store'
 import Navbar from './components/header/Navbar.vue';
 // >>>>>>> develop
 
+Vue.use(Vuelidate);
 Vue.use(VueRouter);
 const router = new VueRouter({
+    mode: 'history',
     routes,
 });
 

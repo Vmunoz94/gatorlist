@@ -14,13 +14,16 @@
                             <router-link to='/' class="nav-link text-dark">Search</router-link>
                         </li>
                         <li class="nav-item p-0">
-                            <router-link to='#' class="nav-link text-dark">Post Listing</router-link>
+                            <router-link to='/postListing' class="nav-link text-dark">Post Listing</router-link>
                         </li>
                         <li class="nav-item p-0">
                             <router-link to='/about' class="nav-link text-dark">About</router-link>
                         </li>
                     </ul>
                     <ul class="navbar-nav">
+                        <li class="nav-item p-0">
+                            <router-link to='/account' class="nav-link text-dark">My Account</router-link>
+                        </li>
                         <li class="nav-item p-0">
                             <router-link to='/login' class="nav-link text-dark">Login</router-link>
                         </li>

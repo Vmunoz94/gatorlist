@@ -28,6 +28,7 @@ import Navbar from './components/header/Navbar.vue';
 Vue.use(Vuelidate);
 Vue.use(VueRouter);
 const router = new VueRouter({
+    mode: 'history',
     routes,
 });
 

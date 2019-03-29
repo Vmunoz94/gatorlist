@@ -2,20 +2,23 @@
     <div class="container mb-5">
             <form>
                 <div class="form-row justify-content-center">
-                    <div class="col-3 col-lg-1 pb-2">
-                        <select class="form-control" name="type" v-model='selected'>
+                    <div class="col-12 col-md-10 col-lg-8 justify-content-center pr-0 mr-0 pb-2">
+                        <div class="ui icon input fluid">
+                            <input type="text" v-model='search' placeholder="Search...">
+                            <i class="search icon"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-row justify-content-center">
+                    <div class="col-2 col-lg-1">
+                        <select class="form-control btn btn-dark" name="type" v-model='selected'>
                             <option disabled value="">Type</option>
-                            <option v-for='type in listingTypes'> {{ type }} </option>
+                            <option v-for='(type, index) in listingTypes' :key='index'> {{ type }} </option>
                         </select>
                     </div>
-                    <div class="col-8 col-lg-4 pb-2 pr-0 mr-0">
-                        <input type="text" class="form-control" v-model='search' placeholder="Type, City, Street, Zip, Price">
-                    </div>
-                    <div class="col-1 col-lg-1 pb-2 pl-0 ml-0">
-                        <button class="btn btn-dark inactive" disabled><i class="fas fa-search"></i></button>
-                    </div>
-                    <div class="col-3 col-lg-1">
-                        <button class="btn btn-dark dropdown-toggle" type="button" id="priceMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <div class="col-2 col-lg-1">
+                        <button id="priceMenuButton" class="btn btn-dark dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Price
                         </button>
                         <div class="dropdown-menu" aria-labelledby="priceMenuButton">
@@ -32,22 +35,22 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-3 col-lg-1">
+                    <div class="col-3 col-lg-2">
                         <select class="form-control btn btn-dark" name="bedrooms" v-model='numBeds'>
-                            <option disabled value="">Beds</option>
-                            <option v-for='bed in bedsList'> {{ bed }} </option>
+                            <option disabled value="">Bedrooms</option>
+                            <option v-for='(bed, index) in bedsList' :key='index'> {{ bed }} </option>
                         </select>
                     </div>
                     <div class="col-3 col-lg-2">
                         <select class="form-control btn btn-dark" name="bathrooms" v-model='numBathrooms'>
                             <option disabled value="">Bathrooms</option>
-                            <option v-for='bathroom in bathroomList'> {{ bathroom }} </option>
+                            <option v-for='(bathroom, index) in bathroomList' :key='index'> {{ bathroom }} </option>
                         </select>
                     </div>
-                    <div class="col-3 col-lg-2">
+                    <div class="col-2 col-lg-2">
                         <select class="form-control btn btn-dark" name="sort" v-model='sort'>
                             <option disabled value="">Sort</option>
-                            <option v-for='sort in sortList'> {{ sort }} </option>
+                            <option v-for='(sort, index) in sortList' :key='index'> {{ sort }} </option>
                         </select>
                     </div>
                 </div>
@@ -96,6 +99,11 @@
 </script>
 
 <style scoped>
+    #priceMenuButton{
+        width: 95%;
+        padding-left: 2px;
+    }
+
     select{
         cursor: pointer;
     }

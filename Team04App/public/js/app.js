@@ -1778,6 +1778,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -1985,8 +1991,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-<<<<<<< HEAD
-=======
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/account/Account.vue?vue&type=script&lang=js&":
 /*!**************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/account/Account.vue?vue&type=script&lang=js& ***!
@@ -2246,6 +2250,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -2306,14 +2312,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2328,6 +2327,18 @@ __webpack_require__.r(__webpack_exports__);
       numBathrooms: '',
       sort: ''
     };
+  },
+  beforeCreate: function beforeCreate() {
+    var _this = this;
+
+    var endpoint = '/api/listings';
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(endpoint).then(function (res) {
+      _this.$store.dispatch('mutateAllListings', res.data);
+
+      _this.$store.dispatch('mutateLoading', false);
+    }).catch(function () {
+      console.log('Error retrieving from ', endpoint);
+    });
   },
   beforeUpdate: function beforeUpdate() {
     this.$router.push({
@@ -2650,6 +2661,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2684,8 +2701,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     delete instance.defaults.headers.common['X-Requested-With'];
     instance.get('https://maps.googleapis.com/maps/api/geocode/json', {
       params: {
-        address: address,
-        key: 'Add API Key'
+        address: address // key: 'AIzaSyBmbDCDGERAGuQH7jGPLBg8MGd5sQpoxvY',
+
       }
     }).then(function (res) {
       if (res.data.status === 'ZERO_RESULTS') {
@@ -2705,7 +2722,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 /***/ }),
 
->>>>>>> develop
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/search/GoogleMaps.vue?vue&type=script&lang=js&":
 /*!****************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/search/GoogleMaps.vue?vue&type=script&lang=js& ***!
@@ -2725,7 +2741,8 @@ __webpack_require__.r(__webpack_exports__);
   props: {
     lat: Number,
     lng: Number,
-    zoom: Number
+    zoom: Number,
+    gestureHandling: String
   },
   mounted: function mounted() {
     this.map = new google.maps.Map(document.getElementById('Map'), {
@@ -2733,7 +2750,8 @@ __webpack_require__.r(__webpack_exports__);
         lat: this.$props.lat,
         lng: this.$props.lng
       },
-      zoom: this.$props.zoom
+      zoom: this.$props.zoom,
+      gestureHandling: this.$props.gestureHandling
     });
   }
 });
@@ -2786,26 +2804,38 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
-    return {
-      allListingsList: _dummyListings_json__WEBPACK_IMPORTED_MODULE_1__
+    return {// loading: true,
     };
   },
-  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['getSearch']), {
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['getSearch', 'getAllListings', 'getLoading']), {
     filteredListings: function filteredListings() {
       var _this = this;
 
-      return this.allListingsList.filter(function (element) {
-        var objectToArray = Object.values(element);
-        objectToArray.pop();
-        objectToArray = objectToArray.join("").toLowerCase();
-        return objectToArray.match(_this.getSearch.toLowerCase());
+      return this.getAllListings.filter(function (element) {
+        var objectCopy = JSON.parse(JSON.stringify(element));
+        delete objectCopy.image;
+        var objectCopyValues = Object.values(objectCopy);
+        objectCopyValues.push('$CA');
+        var objectCopyArray = objectCopyValues.join("").toLowerCase();
+        return objectCopyArray.match(_this.getSearch.toLowerCase());
       });
     }
-  })
+  }),
+  watch: {
+    getAllListings: function getAllListings() {
+      this.loading = false;
+    }
+  }
 });
 
 /***/ }),
@@ -7286,7 +7316,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.mapStyle {\n    position: fixed;\n    top: 14px;\n    width: 100%;\n    height: 96vh;\n    border: 1px solid black;\n    box-shadow: 0 1px 10px black;\n    -moz-box-shadow: 0 1px 10px black;\n    -webkit-box-shadow: 0 1px 10px black;\n    background-color: rgb(170, 178, 187);\n}\n@media only screen and (max-width: 992px) {\n.hide{\n        display: none;\n}\n}\n", ""]);
+exports.push([module.i, "\n.mapStyle {\n    position: fixed;\n    top: 14px;\n    width: 100%;\n    height: 96vh;\n}\n@media only screen and (max-width: 992px) {\n.hide{\n        display: none;\n}\n}\n", ""]);
 
 // exports
 
@@ -7483,8 +7513,6 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 /***/ }),
 
-<<<<<<< HEAD
-=======
 /***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/authentication/Login.vue?vue&type=style&index=0&id=093970bd&scoped=true&lang=css&":
 /*!**************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/authentication/Login.vue?vue&type=style&index=0&id=093970bd&scoped=true&lang=css& ***!
@@ -7611,7 +7639,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.margin-top[data-v-288d667a]{\n    margin-top: 150px;\n}\np[data-v-288d667a]{\n    border: 1px solid rgb(212, 212, 212);\n    border-radius: 5px;\n    padding-left: 10px;\n    padding-right: 10px;\n}\nimg[data-v-288d667a]{\n    border-radius: 5px;\n}\n.mapStyle[data-v-288d667a] {\n    position: static;\n    width: 100%;\n    height: 250px;\n    border: 1px solid black;\n    border-radius: 5px;\n    box-shadow: 0 1px 10px black;\n    -moz-box-shadow: 0 1px 10px black;\n    -webkit-box-shadow: 0 1px 10px black;\n    background-color: rgb(170, 178, 187);\n}\n", ""]);
+exports.push([module.i, "\n.margin-top[data-v-288d667a]{\n    margin-top: 150px;\n}\np[data-v-288d667a]{\n    border: 1px solid rgb(212, 212, 212);\n    border-radius: 5px;\n    padding-left: 10px;\n    padding-right: 10px;\n}\nimg[data-v-288d667a]{\n    border-radius: 5px;\n}\n.mapStyle[data-v-288d667a] {\n    position: static;\n    width: 100%;\n    height: 250px;\n}\n", ""]);
 
 // exports
 
@@ -7637,7 +7665,6 @@ exports.push([module.i, "\n.login[data-v-2a3b7cde]{\n    max-width: 400px;\n    
 
 /***/ }),
 
->>>>>>> develop
 /***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/search/GoogleMaps.vue?vue&type=style&index=0&id=37dfbd1c&scoped=true&lang=css&":
 /*!***********************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/search/GoogleMaps.vue?vue&type=style&index=0&id=37dfbd1c&scoped=true&lang=css& ***!
@@ -7650,7 +7677,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* #Map {\n    position: fixed;\n    top: 14px;\n    width: 100%;\n    height: 96vh;\n    border: 1px solid black;\n    box-shadow: 0 1px 10px black;\n    -moz-box-shadow: 0 1px 10px black;\n    -webkit-box-shadow: 0 1px 10px black;\n    background-color: rgb(170, 178, 187);\n} */\n", ""]);
+exports.push([module.i, "\n#Map[data-v-37dfbd1c] {\n    /* position: fixed;\n    top: 14px;\n    width: 100%;\n    height: 96vh; */\n    border: 1px solid black;\n    box-shadow: 0 1px 10px black;\n    -moz-box-shadow: 0 1px 10px black;\n    -webkit-box-shadow: 0 1px 10px black;\n    background-color: rgb(170, 178, 187);\n}\n", ""]);
 
 // exports
 
@@ -38611,8 +38638,6 @@ if(false) {}
 
 /***/ }),
 
-<<<<<<< HEAD
-=======
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/authentication/Login.vue?vue&type=style&index=0&id=093970bd&scoped=true&lang=css&":
 /*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/authentication/Login.vue?vue&type=style&index=0&id=093970bd&scoped=true&lang=css& ***!
@@ -38853,7 +38878,6 @@ if(false) {}
 
 /***/ }),
 
->>>>>>> develop
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/search/GoogleMaps.vue?vue&type=style&index=0&id=37dfbd1c&scoped=true&lang=css&":
 /*!***************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/search/GoogleMaps.vue?vue&type=style&index=0&id=37dfbd1c&scoped=true&lang=css& ***!
@@ -39498,7 +39522,12 @@ var render = function() {
         [
           _c("gatorlist-google-maps", {
             staticClass: "mapStyle",
-            attrs: { lat: 37.7749, lng: -122.4194, zoom: 12 }
+            attrs: {
+              lat: 37.7749,
+              lng: -122.4194,
+              zoom: 12,
+              gestureHandling: "cooperative"
+            }
           })
         ],
         1
@@ -40684,12 +40713,6 @@ render._withStripped = true
 
 /***/ }),
 
-<<<<<<< HEAD
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/search/GoogleMaps.vue?vue&type=template&id=37dfbd1c&scoped=true&":
-/*!********************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/search/GoogleMaps.vue?vue&type=template&id=37dfbd1c&scoped=true& ***!
-  \********************************************************************************************************************************************************************************************************************************/
-=======
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/authentication/Login.vue?vue&type=template&id=093970bd&scoped=true&":
 /*!***********************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/authentication/Login.vue?vue&type=template&id=093970bd&scoped=true& ***!
@@ -41198,321 +41221,311 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container mb-5" }, [
-    _c("form", [
-      _c("div", { staticClass: "form-row justify-content-center" }, [
+    _c("div", { staticClass: "form-row justify-content-center" }, [
+      _c(
+        "div",
+        {
+          staticClass:
+            "col-12 col-md-10 col-lg-8 justify-content-center pr-0 mr-0 pb-2"
+        },
+        [
+          _c("div", { staticClass: "ui icon input fluid" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.search,
+                  expression: "search"
+                }
+              ],
+              attrs: { type: "text", placeholder: "Search..." },
+              domProps: { value: _vm.search },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.search = $event.target.value
+                }
+              }
+            }),
+            _vm._v(" "),
+            _c("i", { staticClass: "search icon" })
+          ])
+        ]
+      )
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "form-row justify-content-center" }, [
+      _c("div", { staticClass: "col-2 col-lg-1" }, [
+        _c(
+          "select",
+          {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.selected,
+                expression: "selected"
+              }
+            ],
+            staticClass: "form-control btn btn-dark",
+            attrs: { name: "type" },
+            on: {
+              change: function($event) {
+                var $$selectedVal = Array.prototype.filter
+                  .call($event.target.options, function(o) {
+                    return o.selected
+                  })
+                  .map(function(o) {
+                    var val = "_value" in o ? o._value : o.value
+                    return val
+                  })
+                _vm.selected = $event.target.multiple
+                  ? $$selectedVal
+                  : $$selectedVal[0]
+              }
+            }
+          },
+          [
+            _c("option", { attrs: { disabled: "", value: "" } }, [
+              _vm._v("Type")
+            ]),
+            _vm._v(" "),
+            _vm._l(_vm.listingTypes, function(type, index) {
+              return _c("option", { key: index }, [
+                _vm._v(" " + _vm._s(type) + " ")
+              ])
+            })
+          ],
+          2
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-2 col-lg-1" }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-dark dropdown-toggle",
+            attrs: {
+              id: "priceMenuButton",
+              type: "button",
+              "data-toggle": "dropdown",
+              "aria-haspopup": "true",
+              "aria-expanded": "false"
+            }
+          },
+          [_vm._v("\n                        Price\n                    ")]
+        ),
+        _vm._v(" "),
         _c(
           "div",
           {
-            staticClass:
-              "col-12 col-md-10 col-lg-8 justify-content-center pr-0 mr-0 pb-2"
+            staticClass: "dropdown-menu",
+            attrs: { "aria-labelledby": "priceMenuButton" }
           },
           [
-            _c("div", { staticClass: "ui icon input fluid" }, [
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.search,
-                    expression: "search"
-                  }
-                ],
-                attrs: { type: "text", placeholder: "Search..." },
-                domProps: { value: _vm.search },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
+            _c("div", { staticClass: "form-row" }, [
+              _c("div", { staticClass: "col" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model.number",
+                      value: _vm.minPrice,
+                      expression: "minPrice",
+                      modifiers: { number: true }
                     }
-                    _vm.search = $event.target.value
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "text", name: "minprice", placeholder: "Min" },
+                  domProps: { value: _vm.minPrice },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.minPrice = _vm._n($event.target.value)
+                    },
+                    blur: function($event) {
+                      return _vm.$forceUpdate()
+                    }
                   }
-                }
-              }),
+                })
+              ]),
               _vm._v(" "),
-              _c("i", { staticClass: "search icon" })
+              _c("div", { staticClass: "col-1 text-center pt-2" }, [
+                _vm._v(
+                  "\n                                -\n                            "
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model.number",
+                      value: _vm.maxPrice,
+                      expression: "maxPrice",
+                      modifiers: { number: true }
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "text", name: "maxprice", placeholder: "Max" },
+                  domProps: { value: _vm.maxPrice },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.maxPrice = _vm._n($event.target.value)
+                    },
+                    blur: function($event) {
+                      return _vm.$forceUpdate()
+                    }
+                  }
+                })
+              ])
             ])
           ]
         )
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "form-row justify-content-center" }, [
-        _c("div", { staticClass: "col-2 col-lg-1" }, [
-          _c(
-            "select",
-            {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.selected,
-                  expression: "selected"
-                }
-              ],
-              staticClass: "form-control btn btn-dark",
-              attrs: { name: "type" },
-              on: {
-                change: function($event) {
-                  var $$selectedVal = Array.prototype.filter
-                    .call($event.target.options, function(o) {
-                      return o.selected
-                    })
-                    .map(function(o) {
-                      var val = "_value" in o ? o._value : o.value
-                      return val
-                    })
-                  _vm.selected = $event.target.multiple
-                    ? $$selectedVal
-                    : $$selectedVal[0]
-                }
+      _c("div", { staticClass: "col-3 col-lg-2" }, [
+        _c(
+          "select",
+          {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.numBeds,
+                expression: "numBeds"
               }
-            },
-            [
-              _c("option", { attrs: { disabled: "", value: "" } }, [
-                _vm._v("Type")
-              ]),
-              _vm._v(" "),
-              _vm._l(_vm.listingTypes, function(type, index) {
-                return _c("option", { key: index }, [
-                  _vm._v(" " + _vm._s(type) + " ")
-                ])
-              })
             ],
-            2
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-2 col-lg-1" }, [
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-dark dropdown-toggle",
-              attrs: {
-                id: "priceMenuButton",
-                type: "button",
-                "data-toggle": "dropdown",
-                "aria-haspopup": "true",
-                "aria-expanded": "false"
+            staticClass: "form-control btn btn-dark",
+            attrs: { name: "bedrooms" },
+            on: {
+              change: function($event) {
+                var $$selectedVal = Array.prototype.filter
+                  .call($event.target.options, function(o) {
+                    return o.selected
+                  })
+                  .map(function(o) {
+                    var val = "_value" in o ? o._value : o.value
+                    return val
+                  })
+                _vm.numBeds = $event.target.multiple
+                  ? $$selectedVal
+                  : $$selectedVal[0]
               }
-            },
-            [_vm._v("\n                        Price\n                    ")]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass: "dropdown-menu",
-              attrs: { "aria-labelledby": "priceMenuButton" }
-            },
-            [
-              _c("div", { staticClass: "form-row" }, [
-                _c("div", { staticClass: "col" }, [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model.number",
-                        value: _vm.minPrice,
-                        expression: "minPrice",
-                        modifiers: { number: true }
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: {
-                      type: "text",
-                      name: "minprice",
-                      placeholder: "Min"
-                    },
-                    domProps: { value: _vm.minPrice },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.minPrice = _vm._n($event.target.value)
-                      },
-                      blur: function($event) {
-                        return _vm.$forceUpdate()
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-1 text-center pt-2" }, [
-                  _vm._v(
-                    "\n                                -\n                            "
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col" }, [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model.number",
-                        value: _vm.maxPrice,
-                        expression: "maxPrice",
-                        modifiers: { number: true }
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: {
-                      type: "text",
-                      name: "maxprice",
-                      placeholder: "Max"
-                    },
-                    domProps: { value: _vm.maxPrice },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.maxPrice = _vm._n($event.target.value)
-                      },
-                      blur: function($event) {
-                        return _vm.$forceUpdate()
-                      }
-                    }
-                  })
-                ])
+            }
+          },
+          [
+            _c("option", { attrs: { disabled: "", value: "" } }, [
+              _vm._v("Bedrooms")
+            ]),
+            _vm._v(" "),
+            _vm._l(_vm.bedsList, function(bed, index) {
+              return _c("option", { key: index }, [
+                _vm._v(" " + _vm._s(bed) + " ")
               ])
-            ]
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-3 col-lg-2" }, [
-          _c(
-            "select",
-            {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.numBeds,
-                  expression: "numBeds"
-                }
-              ],
-              staticClass: "form-control btn btn-dark",
-              attrs: { name: "bedrooms" },
-              on: {
-                change: function($event) {
-                  var $$selectedVal = Array.prototype.filter
-                    .call($event.target.options, function(o) {
-                      return o.selected
-                    })
-                    .map(function(o) {
-                      var val = "_value" in o ? o._value : o.value
-                      return val
-                    })
-                  _vm.numBeds = $event.target.multiple
-                    ? $$selectedVal
-                    : $$selectedVal[0]
-                }
+            })
+          ],
+          2
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-3 col-lg-2" }, [
+        _c(
+          "select",
+          {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.numBathrooms,
+                expression: "numBathrooms"
               }
-            },
-            [
-              _c("option", { attrs: { disabled: "", value: "" } }, [
-                _vm._v("Bedrooms")
-              ]),
-              _vm._v(" "),
-              _vm._l(_vm.bedsList, function(bed, index) {
-                return _c("option", { key: index }, [
-                  _vm._v(" " + _vm._s(bed) + " ")
-                ])
-              })
             ],
-            2
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-3 col-lg-2" }, [
-          _c(
-            "select",
-            {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.numBathrooms,
-                  expression: "numBathrooms"
-                }
-              ],
-              staticClass: "form-control btn btn-dark",
-              attrs: { name: "bathrooms" },
-              on: {
-                change: function($event) {
-                  var $$selectedVal = Array.prototype.filter
-                    .call($event.target.options, function(o) {
-                      return o.selected
-                    })
-                    .map(function(o) {
-                      var val = "_value" in o ? o._value : o.value
-                      return val
-                    })
-                  _vm.numBathrooms = $event.target.multiple
-                    ? $$selectedVal
-                    : $$selectedVal[0]
-                }
+            staticClass: "form-control btn btn-dark",
+            attrs: { name: "bathrooms" },
+            on: {
+              change: function($event) {
+                var $$selectedVal = Array.prototype.filter
+                  .call($event.target.options, function(o) {
+                    return o.selected
+                  })
+                  .map(function(o) {
+                    var val = "_value" in o ? o._value : o.value
+                    return val
+                  })
+                _vm.numBathrooms = $event.target.multiple
+                  ? $$selectedVal
+                  : $$selectedVal[0]
               }
-            },
-            [
-              _c("option", { attrs: { disabled: "", value: "" } }, [
-                _vm._v("Bathrooms")
-              ]),
-              _vm._v(" "),
-              _vm._l(_vm.bathroomList, function(bathroom, index) {
-                return _c("option", { key: index }, [
-                  _vm._v(" " + _vm._s(bathroom) + " ")
-                ])
-              })
-            ],
-            2
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-2 col-lg-2" }, [
-          _c(
-            "select",
-            {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.sort,
-                  expression: "sort"
-                }
-              ],
-              staticClass: "form-control btn btn-dark",
-              attrs: { name: "sort" },
-              on: {
-                change: function($event) {
-                  var $$selectedVal = Array.prototype.filter
-                    .call($event.target.options, function(o) {
-                      return o.selected
-                    })
-                    .map(function(o) {
-                      var val = "_value" in o ? o._value : o.value
-                      return val
-                    })
-                  _vm.sort = $event.target.multiple
-                    ? $$selectedVal
-                    : $$selectedVal[0]
-                }
+            }
+          },
+          [
+            _c("option", { attrs: { disabled: "", value: "" } }, [
+              _vm._v("Bathrooms")
+            ]),
+            _vm._v(" "),
+            _vm._l(_vm.bathroomList, function(bathroom, index) {
+              return _c("option", { key: index }, [
+                _vm._v(" " + _vm._s(bathroom) + " ")
+              ])
+            })
+          ],
+          2
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-2 col-lg-2" }, [
+        _c(
+          "select",
+          {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.sort,
+                expression: "sort"
               }
-            },
-            [
-              _c("option", { attrs: { disabled: "", value: "" } }, [
-                _vm._v("Sort")
-              ]),
-              _vm._v(" "),
-              _vm._l(_vm.sortList, function(sort, index) {
-                return _c("option", { key: index }, [
-                  _vm._v(" " + _vm._s(sort) + " ")
-                ])
-              })
             ],
-            2
-          )
-        ])
+            staticClass: "form-control btn btn-dark",
+            attrs: { name: "sort" },
+            on: {
+              change: function($event) {
+                var $$selectedVal = Array.prototype.filter
+                  .call($event.target.options, function(o) {
+                    return o.selected
+                  })
+                  .map(function(o) {
+                    var val = "_value" in o ? o._value : o.value
+                    return val
+                  })
+                _vm.sort = $event.target.multiple
+                  ? $$selectedVal
+                  : $$selectedVal[0]
+              }
+            }
+          },
+          [
+            _c("option", { attrs: { disabled: "", value: "" } }, [
+              _vm._v("Sort")
+            ]),
+            _vm._v(" "),
+            _vm._l(_vm.sortList, function(sort, index) {
+              return _c("option", { key: index }, [
+                _vm._v(" " + _vm._s(sort) + " ")
+              ])
+            })
+          ],
+          2
+        )
       ])
     ])
   ])
@@ -41771,7 +41784,6 @@ render._withStripped = true
 /*!*************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/postListing/AddListing.vue?vue&type=template&id=56d95cf9&scoped=true& ***!
   \*************************************************************************************************************************************************************************************************************************************/
->>>>>>> develop
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -42138,7 +42150,12 @@ var render = function() {
               [
                 _c("gatorlist-google-maps", {
                   staticClass: "mapStyle",
-                  attrs: { lat: this.lat, lng: this.lng, zoom: 15 }
+                  attrs: {
+                    lat: this.lat,
+                    lng: this.lng,
+                    zoom: 15,
+                    gestureHandling: "none"
+                  }
                 })
               ],
               1
@@ -42329,82 +42346,99 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c("div", { staticClass: "lead text-center mb-4" }, [
-        _vm._v(
-          "\n        -- Showing " +
-            _vm._s(_vm.filteredListings.length) +
-            " out of " +
-            _vm._s(_vm.allListingsList.length) +
-            " Listings --\n    "
-        )
-      ]),
-      _vm._v(" "),
-      _c(
-        "transition-group",
-        {
-          staticClass: "card-deck",
-          attrs: {
-            tag: "div",
-            name: "move",
-            appear: "",
-            "enter-active-class": "animated fadeInUp faster"
-          }
-        },
-        _vm._l(_vm.filteredListings, function(listing) {
-          return _c("div", { key: listing.image, staticClass: "card mb-4" }, [
-            _c("img", {
-              staticClass: "card-img-top",
-              attrs: { src: listing.image, alt: "Card image cap" }
-            }),
+  return _c("div", [
+    !this.getLoading
+      ? _c(
+          "div",
+          [
+            _c("div", { staticClass: "lead text-center mb-4" }, [
+              _vm._v(
+                "\n            -- Showing " +
+                  _vm._s(_vm.filteredListings.length) +
+                  " out of " +
+                  _vm._s(_vm.getAllListings.length) +
+                  " Listings --\n        "
+              )
+            ]),
             _vm._v(" "),
-            _c("div", { staticClass: "card-body py-3" }, [
-              _c("h5", { staticClass: "card-title text-center" }, [
-                _c("strong", [_vm._v(_vm._s(listing.type))])
-              ]),
-              _vm._v(" "),
-              _c("hr"),
-              _vm._v(" "),
-              _c("h5", { staticClass: "card-title" }, [
-                _vm._v("Rent: "),
-                _c("strong", [_vm._v("$" + _vm._s(listing.rent))])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "row" }, [
-                _c("div", { staticClass: "col" }, [
-                  _c("p", { staticClass: "card-text" }, [
-                    _c("i", { staticClass: "fas fa-bed" }),
-                    _vm._v(" Beds: " + _vm._s(listing.beds))
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col" }, [
-                  _c("p", { staticClass: "card-text" }, [
-                    _c("i", { staticClass: "fas fa-bath" }),
-                    _vm._v(" Baths: " + _vm._s(listing.baths))
-                  ])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("hr"),
-              _vm._v(" "),
-              _c("div", { staticClass: "card-text text-muted" }, [
-                _vm._v(_vm._s(listing.street) + ",")
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "card-text text-muted" }, [
-                _vm._v(_vm._s(listing.city) + ", CA " + _vm._s(listing.zip))
-              ])
-            ])
-          ])
-        }),
-        0
-      )
-    ],
-    1
-  )
+            _c(
+              "transition-group",
+              {
+                staticClass: "card-deck",
+                attrs: {
+                  tag: "div",
+                  name: "move",
+                  appear: "",
+                  "enter-active-class": "animated fadeInUp faster"
+                }
+              },
+              _vm._l(_vm.filteredListings, function(listing) {
+                return _c(
+                  "div",
+                  { key: listing.image, staticClass: "card mb-4" },
+                  [
+                    _c("img", {
+                      staticClass: "card-img-top",
+                      attrs: { src: listing.image, alt: "Card image cap" }
+                    }),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "card-body py-3" }, [
+                      _c("h5", { staticClass: "card-title text-center" }, [
+                        _c("strong", [
+                          _vm._v(
+                            _vm._s(
+                              listing.type.charAt(0).toUpperCase() +
+                                listing.type.slice(1)
+                            )
+                          )
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("hr"),
+                      _vm._v(" "),
+                      _c("h5", { staticClass: "card-title" }, [
+                        _vm._v("Rent: "),
+                        _c("strong", [_vm._v("$" + _vm._s(listing.rent))])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "row" }, [
+                        _c("div", { staticClass: "col" }, [
+                          _c("p", { staticClass: "card-text" }, [
+                            _c("i", { staticClass: "fas fa-bed" }),
+                            _vm._v(" Beds: " + _vm._s(listing.bedrooms))
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col" }, [
+                          _c("p", { staticClass: "card-text" }, [
+                            _c("i", { staticClass: "fas fa-bath" }),
+                            _vm._v(" Baths: " + _vm._s(listing.bathrooms))
+                          ])
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("hr"),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "card-text text-muted" }, [
+                        _vm._v(_vm._s(listing.street) + ",")
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "card-text text-muted" }, [
+                        _vm._v(
+                          _vm._s(listing.city) + ", CA " + _vm._s(listing.zip)
+                        )
+                      ])
+                    ])
+                  ]
+                )
+              }),
+              0
+            )
+          ],
+          1
+        )
+      : _c("div", [_vm._v("\n        LOADING....\n    ")])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -58913,7 +58947,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var withParams = Object({"MIX_PUSHER_APP_KEY":"","MIX_PUSHER_APP_CLUSTER":"mt1","NODE_ENV":"development"}).BUILD === 'web' ? __webpack_require__(/*! ./withParamsBrowser */ "./node_modules/vuelidate/lib/withParamsBrowser.js").withParams : __webpack_require__(/*! ./params */ "./node_modules/vuelidate/lib/params.js").withParams;
+var withParams = Object({"MIX_PUSHER_APP_KEY":"","MIX_PUSHER_APP_CLUSTER":"mt1","MIX_GOOGLE_SECRET":"AIzaSyBmbDCDGERAGuQH7jGPLBg8MGd5sQpoxvY","NODE_ENV":"development"}).BUILD === 'web' ? __webpack_require__(/*! ./withParamsBrowser */ "./node_modules/vuelidate/lib/withParamsBrowser.js").withParams : __webpack_require__(/*! ./params */ "./node_modules/vuelidate/lib/params.js").withParams;
 var _default = withParams;
 exports.default = _default;
 
@@ -60045,16 +60079,11 @@ module.exports = function(module) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
-<<<<<<< HEAD
-/* harmony import */ var _routes__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./routes */ "./resources/js/routes.js");
-!(function webpackMissingModule() { var e = new Error("Cannot find module './components/Navbar.vue'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
-=======
 /* harmony import */ var vuelidate__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuelidate */ "./node_modules/vuelidate/lib/index.js");
 /* harmony import */ var vuelidate__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vuelidate__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _routes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./routes */ "./resources/js/routes.js");
 /* harmony import */ var _store_store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./store/store */ "./resources/js/store/store.js");
 /* harmony import */ var _components_header_Navbar_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/header/Navbar.vue */ "./resources/js/components/header/Navbar.vue");
->>>>>>> develop
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -60073,14 +60102,9 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
- // <<<<<<< backend
 
 
- // =======
-// import { routes } from './routes';
-// import { store } from './store/store'
-// import Navbar from './components/header/Navbar.vue';
-// >>>>>>> develop
+
 
  // >>>>>>> develop
 
@@ -60090,11 +60114,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]({
   mode: 'history',
   routes: _routes__WEBPACK_IMPORTED_MODULE_2__["routes"]
 });
-<<<<<<< HEAD
-Vue.component('gatorlist-navbar', !(function webpackMissingModule() { var e = new Error("Cannot find module './components/Navbar.vue'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
-=======
 Vue.component('gatorlist-navbar', _components_header_Navbar_vue__WEBPACK_IMPORTED_MODULE_4__["default"]);
->>>>>>> develop
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -60104,11 +60124,7 @@ Vue.component('gatorlist-navbar', _components_header_Navbar_vue__WEBPACK_IMPORTE
 var app = new Vue({
   el: '#app',
   router: router,
-<<<<<<< HEAD
-  store: store
-=======
   store: _store_store__WEBPACK_IMPORTED_MODULE_3__["store"]
->>>>>>> develop
 });
 
 /***/ }),
@@ -61540,8 +61556,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-<<<<<<< HEAD
-=======
 /***/ "./resources/js/components/header/Filterbar.vue":
 /*!******************************************************!*\
   !*** ./resources/js/components/header/Filterbar.vue ***!
@@ -62032,7 +62046,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
->>>>>>> develop
 /***/ "./resources/js/components/search/GoogleMaps.vue":
 /*!*******************************************************!*\
   !*** ./resources/js/components/search/GoogleMaps.vue ***!
@@ -62335,8 +62348,6 @@ var routes = [{
 
 /***/ }),
 
-<<<<<<< HEAD
-=======
 /***/ "./resources/js/store/store.js":
 /*!*************************************!*\
   !*** ./resources/js/store/store.js ***!
@@ -62365,7 +62376,9 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
       rent: '',
       image: '',
       description: ''
-    }
+    },
+    allListings: null,
+    loading: true
   },
   // getters
   getters: {
@@ -62374,6 +62387,12 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
     },
     getAddListing: function getAddListing(state) {
       return state.addListing;
+    },
+    getAllListings: function getAllListings(state) {
+      return state.allListings;
+    },
+    getLoading: function getLoading(state) {
+      return state.loading;
     }
   },
   // setters MUST BE Synchronous
@@ -62390,6 +62409,12 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
       state.addListing.rent = payload.rent;
       state.addListing.image = payload.image;
       state.addListing.description = payload.description;
+    },
+    mutateAllListings: function mutateAllListings(state, payload) {
+      state.allListings = payload;
+    },
+    mutateLoading: function mutateLoading(state, bool) {
+      state.loading = bool;
     }
   },
   // call setters CAN BE Asynchronous
@@ -62401,13 +62426,20 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
     mutateAddListing: function mutateAddListing(_ref2, payload) {
       var commit = _ref2.commit;
       commit('mutateAddListing', payload);
+    },
+    mutateAllListings: function mutateAllListings(_ref3, payload) {
+      var commit = _ref3.commit;
+      commit('mutateAllListings', payload);
+    },
+    mutateLoading: function mutateLoading(_ref4, bool) {
+      var commit = _ref4.commit;
+      commit('mutateLoading', bool);
     }
   }
 });
 
 /***/ }),
 
->>>>>>> develop
 /***/ "./resources/sass/app.scss":
 /*!*********************************!*\
   !*** ./resources/sass/app.scss ***!
@@ -62426,8 +62458,8 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Daniel\GoogleDrive\School\SFSU\3.1\648SoftwareEngineering\csc648-sp19-Team04\Team04App\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Daniel\GoogleDrive\School\SFSU\3.1\648SoftwareEngineering\csc648-sp19-Team04\Team04App\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/munoz/NoSync/SFSU/Software Engineering/csc648-sp19-Team04/Team04App/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/munoz/NoSync/SFSU/Software Engineering/csc648-sp19-Team04/Team04App/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

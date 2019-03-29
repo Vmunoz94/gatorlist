@@ -15,7 +15,9 @@ export const store = new Vuex.Store({
             rent: '',
             image: '',
             description: '',
-        }
+        },
+        allListings: null,
+        loading: true,
     },
     // getters
     getters: {
@@ -23,7 +25,13 @@ export const store = new Vuex.Store({
             return state.search;
         },
         getAddListing: (state) => {
-            return state.addListing
+            return state.addListing;
+        },
+        getAllListings: (state) => {
+            return state.allListings;
+        },
+        getLoading: (state) => {
+            return state.loading;
         }
     },
     // setters MUST BE Synchronous
@@ -41,14 +49,34 @@ export const store = new Vuex.Store({
             state.addListing.image = payload.image;
             state.addListing.description = payload.description;
         },
+        mutateAllListings: (state, payload) => {
+            state.allListings = payload;
+        },
+        mutateLoading: (state, bool) => {
+            state.loading = bool;
+        },
     },
     // call setters CAN BE Asynchronous
     actions: {
-        mutateSearch: ({ commit }, payload) => {
+        mutateSearch: ({
+            commit
+        }, payload) => {
             commit('mutateSearch', payload);
         },
-        mutateAddListing: ({ commit }, payload) => {
+        mutateAddListing: ({
+            commit
+        }, payload) => {
             commit('mutateAddListing', payload);
         },
+        mutateAllListings: ({
+            commit
+        }, payload) => {
+            commit('mutateAllListings', payload);
+        },
+        mutateLoading: ({
+            commit
+        }, bool) => {
+            commit('mutateLoading', bool);
+        }
     },
 })

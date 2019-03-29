@@ -28,7 +28,13 @@
                     </p> 
                 </div>
                 <div class="col-5">
-                    <gatorlist-google-maps class="mapStyle" :lat="this.lat" :lng="this.lng" :zoom="15"></gatorlist-google-maps>
+                    <gatorlist-google-maps 
+                        class="mapStyle" 
+                        :lat="this.lat" 
+                        :lng="this.lng" 
+                        :zoom="15"
+                        gestureHandling="none">
+                    </gatorlist-google-maps>
                 </div>
             </div>
             <div class="row justify-content-center mb-3">
@@ -102,7 +108,7 @@
             instance.get('https://maps.googleapis.com/maps/api/geocode/json', {
                 params: {
                     address,
-                    key: 'Add API Key',
+                    // key: 'AIzaSyBmbDCDGERAGuQH7jGPLBg8MGd5sQpoxvY',
                 }
             })
             .then((res) => {
@@ -141,11 +147,5 @@
         position: static;
         width: 100%;
         height: 250px;
-        border: 1px solid black;
-        border-radius: 5px;
-        box-shadow: 0 1px 10px black;
-        -moz-box-shadow: 0 1px 10px black;
-        -webkit-box-shadow: 0 1px 10px black;
-        background-color: rgb(170, 178, 187);
     }
 </style>

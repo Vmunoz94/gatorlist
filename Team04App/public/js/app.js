@@ -1985,6 +1985,8 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+<<<<<<< HEAD
+=======
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/account/Account.vue?vue&type=script&lang=js&":
 /*!**************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/account/Account.vue?vue&type=script&lang=js& ***!
@@ -2703,6 +2705,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 /***/ }),
 
+>>>>>>> develop
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/search/GoogleMaps.vue?vue&type=script&lang=js&":
 /*!****************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/search/GoogleMaps.vue?vue&type=script&lang=js& ***!
@@ -7480,6 +7483,8 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 /***/ }),
 
+<<<<<<< HEAD
+=======
 /***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/authentication/Login.vue?vue&type=style&index=0&id=093970bd&scoped=true&lang=css&":
 /*!**************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/authentication/Login.vue?vue&type=style&index=0&id=093970bd&scoped=true&lang=css& ***!
@@ -7632,6 +7637,7 @@ exports.push([module.i, "\n.login[data-v-2a3b7cde]{\n    max-width: 400px;\n    
 
 /***/ }),
 
+>>>>>>> develop
 /***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/search/GoogleMaps.vue?vue&type=style&index=0&id=37dfbd1c&scoped=true&lang=css&":
 /*!***********************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/search/GoogleMaps.vue?vue&type=style&index=0&id=37dfbd1c&scoped=true&lang=css& ***!
@@ -38605,6 +38611,8 @@ if(false) {}
 
 /***/ }),
 
+<<<<<<< HEAD
+=======
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/authentication/Login.vue?vue&type=style&index=0&id=093970bd&scoped=true&lang=css&":
 /*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/authentication/Login.vue?vue&type=style&index=0&id=093970bd&scoped=true&lang=css& ***!
@@ -38845,6 +38853,7 @@ if(false) {}
 
 /***/ }),
 
+>>>>>>> develop
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/search/GoogleMaps.vue?vue&type=style&index=0&id=37dfbd1c&scoped=true&lang=css&":
 /*!***************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/search/GoogleMaps.vue?vue&type=style&index=0&id=37dfbd1c&scoped=true&lang=css& ***!
@@ -40675,6 +40684,12 @@ render._withStripped = true
 
 /***/ }),
 
+<<<<<<< HEAD
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/search/GoogleMaps.vue?vue&type=template&id=37dfbd1c&scoped=true&":
+/*!********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/search/GoogleMaps.vue?vue&type=template&id=37dfbd1c&scoped=true& ***!
+  \********************************************************************************************************************************************************************************************************************************/
+=======
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/authentication/Login.vue?vue&type=template&id=093970bd&scoped=true&":
 /*!***********************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/authentication/Login.vue?vue&type=template&id=093970bd&scoped=true& ***!
@@ -41756,6 +41771,7 @@ render._withStripped = true
 /*!*************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/postListing/AddListing.vue?vue&type=template&id=56d95cf9&scoped=true& ***!
   \*************************************************************************************************************************************************************************************************************************************/
+>>>>>>> develop
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -60029,11 +60045,16 @@ module.exports = function(module) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
+<<<<<<< HEAD
+/* harmony import */ var _routes__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./routes */ "./resources/js/routes.js");
+!(function webpackMissingModule() { var e = new Error("Cannot find module './components/Navbar.vue'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+=======
 /* harmony import */ var vuelidate__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuelidate */ "./node_modules/vuelidate/lib/index.js");
 /* harmony import */ var vuelidate__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vuelidate__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _routes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./routes */ "./resources/js/routes.js");
 /* harmony import */ var _store_store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./store/store */ "./resources/js/store/store.js");
 /* harmony import */ var _components_header_Navbar_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/header/Navbar.vue */ "./resources/js/components/header/Navbar.vue");
+>>>>>>> develop
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -60052,9 +60073,14 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
+ // <<<<<<< backend
 
 
-
+ // =======
+// import { routes } from './routes';
+// import { store } from './store/store'
+// import Navbar from './components/header/Navbar.vue';
+// >>>>>>> develop
 
  // >>>>>>> develop
 
@@ -60064,7 +60090,11 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]({
   mode: 'history',
   routes: _routes__WEBPACK_IMPORTED_MODULE_2__["routes"]
 });
+<<<<<<< HEAD
+Vue.component('gatorlist-navbar', !(function webpackMissingModule() { var e = new Error("Cannot find module './components/Navbar.vue'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+=======
 Vue.component('gatorlist-navbar', _components_header_Navbar_vue__WEBPACK_IMPORTED_MODULE_4__["default"]);
+>>>>>>> develop
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -60074,7 +60104,11 @@ Vue.component('gatorlist-navbar', _components_header_Navbar_vue__WEBPACK_IMPORTE
 var app = new Vue({
   el: '#app',
   router: router,
+<<<<<<< HEAD
+  store: store
+=======
   store: _store_store__WEBPACK_IMPORTED_MODULE_3__["store"]
+>>>>>>> develop
 });
 
 /***/ }),
@@ -61506,6 +61540,8 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+<<<<<<< HEAD
+=======
 /***/ "./resources/js/components/header/Filterbar.vue":
 /*!******************************************************!*\
   !*** ./resources/js/components/header/Filterbar.vue ***!
@@ -61996,6 +62032,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+>>>>>>> develop
 /***/ "./resources/js/components/search/GoogleMaps.vue":
 /*!*******************************************************!*\
   !*** ./resources/js/components/search/GoogleMaps.vue ***!
@@ -62298,6 +62335,8 @@ var routes = [{
 
 /***/ }),
 
+<<<<<<< HEAD
+=======
 /***/ "./resources/js/store/store.js":
 /*!*************************************!*\
   !*** ./resources/js/store/store.js ***!
@@ -62368,6 +62407,7 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
 
 /***/ }),
 
+>>>>>>> develop
 /***/ "./resources/sass/app.scss":
 /*!*********************************!*\
   !*** ./resources/sass/app.scss ***!
@@ -62386,8 +62426,8 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/munoz/NoSync/SFSU/Software Engineering/csc648-sp19-Team04/Team04App/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/munoz/NoSync/SFSU/Software Engineering/csc648-sp19-Team04/Team04App/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Daniel\GoogleDrive\School\SFSU\3.1\648SoftwareEngineering\csc648-sp19-Team04\Team04App\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Daniel\GoogleDrive\School\SFSU\3.1\648SoftwareEngineering\csc648-sp19-Team04\Team04App\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

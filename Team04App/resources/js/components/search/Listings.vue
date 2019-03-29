@@ -27,8 +27,10 @@
             </transition-group>
         </div> 
 
-        <div v-else>
-            LOADING....
+        <div v-else class="d-flex justify-content-center align-items-center loading">
+            <transition appear enter-active-class="animated fadeIn faster">
+                <rotate-square5 size="150px"></rotate-square5>
+            </transition>
         </div>
     </div>
 
@@ -36,13 +38,16 @@
 
 <script>
     import { mapGetters } from 'vuex';
-    import dummyListings from './dummyListings.json';
+    import { RotateSquare5 } from 'vue-loading-spinner';
 
     export default {
         data: function (){
             return {
-                // loading: true,
+
             }
+        },
+        components: {
+            RotateSquare5,
         },
         computed: {
             ...mapGetters([
@@ -68,6 +73,9 @@
 </script>
 
 <style scoped lang='scss'>
+    .loading{
+        height: 50vh;
+    }
     hr{
         margin-top: 5px;
         margin-bottom: 5px;

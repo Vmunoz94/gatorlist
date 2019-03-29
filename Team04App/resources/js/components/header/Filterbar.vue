@@ -1,6 +1,6 @@
 <template>
     <div class="container mb-5">
-            <form>
+            <!-- <form> -->
                 <div class="form-row justify-content-center">
                     <div class="col-12 col-md-10 col-lg-8 justify-content-center pr-0 mr-0 pb-2">
                         <div class="ui icon input fluid">
@@ -54,19 +54,13 @@
                         </select>
                     </div>
                 </div>
-                <!-- testing purposes-->
-                <!-- <div>Type: {{ selected }}</div>
-                <div>Search: {{ search }}</div>
-                <div>Price Min: {{ minPrice }}</div>
-                <div>Price Max: {{ maxPrice }}</div>
-                <div># of Beds: {{ numBeds }}</div>
-                <div># of Bathrooms: {{ numBathrooms }}</div>
-                <div>sort: {{ sort }}</div> -->
-            </form>
+            <!-- </form> -->
         </div>
 </template>
 
 <script>
+    import axios from 'axios';
+
     export default {
         data: function (){
             return {
@@ -81,6 +75,17 @@
                 numBathrooms: '',
                 sort: '',
             }
+        },
+        beforeCreate(){
+            const endpoint = '/api/listings';
+            axios.get(endpoint)
+                .then(res => {
+                    this.$store.dispatch('mutateAllListings', res.data);
+                    this.$store.dispatch('mutateLoading', false);
+                })
+                .catch(() => {
+                    console.log('Error retrieving from ', endpoint);
+                });
         },
         beforeUpdate() {
             this.$router.push({name: 'home'});
@@ -115,3 +120,4 @@
         opacity: 1;
     }
 </style>
+

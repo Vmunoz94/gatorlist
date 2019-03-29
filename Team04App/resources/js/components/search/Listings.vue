@@ -1,60 +1,81 @@
 <template>
-    <div>    
-        <div class="lead text-center mb-4">
-            -- Showing {{ filteredListings.length }} out of {{ allListingsList.length }} Listings --
-        </div>
-        <transition-group tag="div" class="card-deck" name='move' appear enter-active-class="animated fadeInUp faster">
-            <div class="card mb-4" v-for='listing in filteredListings' :key='listing.image'>
-                <img class="card-img-top" :src="listing.image" alt="Card image cap">
-                <div class="card-body py-3">
-                <h5 class="card-title text-center"><strong>{{ listing.type }}</strong></h5>
-                <hr>
-                <h5 class="card-title">Rent: <strong>${{ listing.rent }}</strong></h5>
-                <div class="row">
-                    <div class="col">
-                        <p class="card-text"><i class="fas fa-bed"></i> Beds: {{ listing.beds }}</p>
-                    </div>
-                    <div class="col">
-                        <p class="card-text"><i class="fas fa-bath"></i> Baths: {{ listing.baths }}</p>
-                    </div>
-                </div>
-                <hr>
-                <div class="card-text text-muted">{{ listing.street }},</div>
-                <div class="card-text text-muted">{{ listing.city }}, CA {{ listing.zip }}</div>
-                </div>
+    <div>   
+        <div v-if='!this.getLoading'>    
+            <div class="lead text-center mb-4">
+                -- Showing {{ filteredListings.length }} out of {{ getAllListings.length }} Listings --
             </div>
-        </transition-group>
+            <transition-group tag="div" class="card-deck" name='move' appear enter-active-class="animated fadeInUp faster">
+                <div class="card mb-4" v-for='listing in filteredListings' :key='listing.image'>
+                    <img class="card-img-top" :src="listing.image" alt="Card image cap">
+                    <div class="card-body py-3">
+                    <h5 class="card-title text-center"><strong>{{ listing.type.charAt(0).toUpperCase() + listing.type.slice(1) }}</strong></h5>
+                    <hr>
+                    <h5 class="card-title">Rent: <strong>${{ listing.rent }}</strong></h5>
+                    <div class="row">
+                        <div class="col">
+                            <p class="card-text"><i class="fas fa-bed"></i> Beds: {{ listing.bedrooms }}</p>
+                        </div>
+                        <div class="col">
+                            <p class="card-text"><i class="fas fa-bath"></i> Baths: {{ listing.bathrooms }}</p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="card-text text-muted">{{ listing.street }},</div>
+                    <div class="card-text text-muted">{{ listing.city }}, CA {{ listing.zip }}</div>
+                    </div>
+                </div>
+            </transition-group>
+        </div> 
+
+        <div v-else class="d-flex justify-content-center align-items-center loading">
+            <transition appear enter-active-class="animated fadeIn faster">
+                <rotate-square5 size="150px"></rotate-square5>
+            </transition>
+        </div>
     </div>
 
 </template>
 
 <script>
     import { mapGetters } from 'vuex';
-    import dummyListings from './dummyListings.json';
+    import { RotateSquare5 } from 'vue-loading-spinner';
 
     export default {
         data: function (){
             return {
-                allListingsList: dummyListings,
+
             }
+        },
+        components: {
+            RotateSquare5,
         },
         computed: {
             ...mapGetters([
-                'getSearch'
+                'getSearch', 'getAllListings', 'getLoading'
             ]),
             filteredListings() {
-                return this.allListingsList.filter((element) => {
-                    let objectToArray = Object.values(element);
-                    objectToArray.pop();
-                    objectToArray = objectToArray.join("").toLowerCase();
-                    return objectToArray.match(this.getSearch.toLowerCase());
+                return this.getAllListings.filter((element) => {
+                    const objectCopy = JSON.parse(JSON.stringify(element));
+                    delete objectCopy.image;
+                    const objectCopyValues = Object.values(objectCopy);
+                    objectCopyValues.push('$CA');
+                    const objectCopyArray = objectCopyValues.join("").toLowerCase();
+                    return objectCopyArray.match(this.getSearch.toLowerCase());
                 });
             }
         },
+        watch: {
+            getAllListings(){
+                this.loading = false;
+            }
+        }
     }
 </script>
 
 <style scoped lang='scss'>
+    .loading{
+        height: 50vh;
+    }
     hr{
         margin-top: 5px;
         margin-bottom: 5px;

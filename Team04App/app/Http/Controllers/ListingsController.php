@@ -13,7 +13,7 @@ class ListingsController extends Controller
     // Everything is a get parameter
 
 
-    public function index(Request $request)
+    public function custom(Request $request)
     {
         // ?id={INT}
         $id = $request->input('id') ?: '%';
@@ -33,8 +33,8 @@ class ListingsController extends Controller
         $rent = $request->input('rent') ?: '%';
         // ?description={TEXT}
         $description = $request->input('description') ?: '%';
-        // ?images={TEXT} - Although i don't know why anyone would be searching via image url
-        $images = $request->input('images') ?: '%';
+        // ?image={TEXT} - Although i don't know why anyone would be searching via image url
+        $image = $request->input('image') ?: '%';
         // ?date={DATETIME} - It's gotta be exact as it is right now
         $date = $request->input('date') ?: '%';
         // ?distance_from_campus={INT} - In miles
@@ -53,12 +53,14 @@ class ListingsController extends Controller
         $listing = DB::table('listings')->where([
             ['id', 'like', $id],
             ['type', 'like', $type],
-            ['address', 'like', $street . ', ' . $city . ', CA ' . $zip],
+            ['street', 'like', $street],
+            ['city', 'like', $city],
+            ['zip', 'like', $zip],
             ['bedrooms', 'like', $bedrooms],
             ['bathrooms', 'like', $bathrooms],
             ['rent', 'like', $rent],
             ['description', 'like', $description],
-            ['images', 'like', $images],
+            ['image', 'like', $image],
             ['date', 'like', $date],
             ['distance_from_campus', 'like', $distance_from_campus],
             ['commute_time_to_campus', 'like', $commute_time_to_campus],
@@ -69,10 +71,22 @@ class ListingsController extends Controller
             ->limit($limit)
             ->orderBy('date', $order)
             ->get();
-dd($listing);
-//        return $listing;
+//dd($listing);
+        return $listing;
 
     }
 
 
+    public function index(Request $request)
+    {
+        // ?limit={INT}
+        $limit = $request->input('limit') ?: 9999999;
+        $listing = DB::table('listings')
+            ->select('type', 'rent', 'street', 'city', 'zip', 'bedrooms', 'bathrooms', 'image')
+            ->limit($limit)
+            ->get();
+//        echo $listing[0]->rent;
+        return $listing;
+
+    }
 }

@@ -17,6 +17,3 @@ Route::get('/{any}', 'HomeController@index')->where('any', '.*');
 // Route::get('/about', 'AboutController@index');
 
 // Route::get('/about/{firstName}', 'AboutController@specificAboutPage');
-
-// Route::get('/test', 'ListingsController@index');
-

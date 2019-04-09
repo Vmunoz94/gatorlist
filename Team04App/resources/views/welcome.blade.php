@@ -12,7 +12,7 @@
         <link rel="stylesheet" href="{{asset('css/app.css')}}">
 
         {{-- Import Google Maps API Key --}}
-        {{-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmbDCDGERAGuQH7jGPLBg8MGd5sQpoxvY" async defer></script> --}}
+        {{-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmbDCDGERAGuQH7jGPLBg8MGd5sQpoxvY"></script> --}}
     </head>
     <body>
         <div id="app" class="flex-center position-ref full-height">

@@ -22,11 +22,6 @@
     import GoogleMaps from './search/GoogleMaps.vue'
 
     export default {
-        data: function (){
-            return {
-                
-            }
-        },
         components: {
             'gatorlist-listings': Listings,
             'gatorlist-google-maps': GoogleMaps,

@@ -48443,7 +48443,7 @@ var render = function() {
                       attrs: { src: listing.image, alt: "Card image cap" }
                     }),
                     _vm._v(" "),
-                    _c("div", { staticClass: "card-body py-2" }, [
+                    _c("div", { staticClass: "card-body py-3" }, [
                       _c("h5", { staticClass: "card-title text-center" }, [
                         _c("strong", [
                           _vm._v(

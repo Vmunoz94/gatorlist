@@ -1,18 +1,17 @@
 <template>
     <div>
         <!-- navbar -->
-        <nav class="navbar navbar-expand-md navbar-light bg-light">
+        <nav class="navbar navbar-expand-md navbar-light bg-light py-0">
             <div class="container">
-                <span class="navbar-brand text-dark"><i class="fas fa-home"/> GatorList</span>
+                <span class="navbar-brand text-dark">
+                    <router-link to='/' class="nav-link text-dark py-1"><i class="fas fa-home"/> GatorList</router-link>
+                </span>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle">
                     <span class="navbar-toggler-icon"/>
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarToggle">
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item p-0">
-                            <router-link to='/' class="nav-link text-dark">Search</router-link>
-                        </li>
                         <li class="nav-item p-0">
                             <router-link to='/postListing' class="nav-link text-dark">Post Listing</router-link>
                         </li>
@@ -34,13 +33,17 @@
                 </div>
             </div>
         </nav>
-        <gatorlist-jumbotron></gatorlist-jumbotron>
-        <gatorlist-filterbar></gatorlist-filterbar>
+
+        <!-- import components -->
+        <gatorlist-jumbotron/>
+        <gatorlist-searchbar/>
+        <gatorlist-filterbar/>
     </div>
 </template>
 
 <script>
     import Jumbotron from './Jumbotron.vue';
+    import SearchBar from './SearchBar.vue';
     import Filterbar from './Filterbar.vue';
 
     export default {
@@ -53,6 +56,7 @@
         },
         components: {
             'gatorlist-jumbotron': Jumbotron,
+            'gatorlist-searchbar': SearchBar,
             'gatorlist-filterbar': Filterbar,
         },
     }

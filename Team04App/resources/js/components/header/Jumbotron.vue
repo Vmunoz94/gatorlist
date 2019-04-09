@@ -5,7 +5,7 @@
             <p class="lead text-center jumbotron-content-bigger mb-1">Spring 2019</p>
             <p class="lead text-center jumbotron-content-bigger mb-1">Section-01</p>
             <p class="lead text-center jumbotron-content-bigger mb-1">Team-04</p>
-            <hr class="my-4">
+            <hr class="mt-2 mb-3">
         </div>
     </div>
 </template>

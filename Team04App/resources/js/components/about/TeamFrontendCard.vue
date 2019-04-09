@@ -3,7 +3,8 @@
         <div class="card text-white bg-dark mb-5">
             <h5 class="card-header text-center">{{ employees[0].role }}</h5>
             <div class="card-body text-center">
-                <div v-for='employee in employees'>
+                <!-- iterate through frontend 'employees' and create appropriate buttons -->
+                <div v-for='employee in employees' :key="employee.name">
                     <router-link :to='employee.link' class="ui inverted purple button small w-75 mx-auto name-of-person my-2" @click='selectComponent(false, employee.component)'>{{ employee.name }}</router-link>
                 </div>
             </div>

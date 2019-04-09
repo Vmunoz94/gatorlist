@@ -1,27 +1,30 @@
 <template>
     <div>   
-        <div v-if='!this.getLoading'>    
-            <div class="lead text-center mb-4">
+        <div v-if='!this.getLoading'> 
+            <!-- # Listings showing -->
+            <div class="lead text-center mb-3">
                 -- Showing {{ filteredListings.length }} out of {{ getAllListings.length }} Listings --
             </div>
+
+            <!-- Individual listing cards -->
             <transition-group tag="div" class="card-deck" name='move' appear enter-active-class="animated fadeInUp faster">
                 <div class="card mb-4" v-for='listing in filteredListings' :key='listing.image'>
                     <img class="card-img-top" :src="listing.image" alt="Card image cap">
-                    <div class="card-body py-3">
-                    <h5 class="card-title text-center"><strong>{{ listing.type.charAt(0).toUpperCase() + listing.type.slice(1) }}</strong></h5>
-                    <hr>
-                    <h5 class="card-title">Rent: <strong>${{ listing.rent }}</strong></h5>
-                    <div class="row">
-                        <div class="col">
-                            <p class="card-text"><i class="fas fa-bed"></i> Beds: {{ listing.bedrooms }}</p>
+                    <div class="card-body py-2">
+                        <h5 class="card-title text-center"><strong>{{ listing.type.charAt(0).toUpperCase() + listing.type.slice(1) }}</strong></h5>
+                        <hr>
+                        <h5 class="card-title">Rent: <strong>${{ listing.rent }}</strong></h5>
+                        <div class="row">
+                            <div class="col">
+                                <p class="card-text"><i class="fas fa-bed"></i> Beds: {{ listing.bedrooms }}</p>
+                            </div>
+                            <div class="col">
+                                <p class="card-text"><i class="fas fa-bath"></i> Baths: {{ listing.bathrooms }}</p>
+                            </div>
                         </div>
-                        <div class="col">
-                            <p class="card-text"><i class="fas fa-bath"></i> Baths: {{ listing.bathrooms }}</p>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="card-text text-muted">{{ listing.street }},</div>
-                    <div class="card-text text-muted">{{ listing.city }}, CA {{ listing.zip }}</div>
+                        <hr>
+                        <div class="card-text text-muted">{{ listing.street }},</div>
+                        <div class="card-text text-muted">{{ listing.city }}, CA {{ listing.zip }}</div>
                     </div>
                 </div>
             </transition-group>
@@ -58,7 +61,6 @@
                     const objectCopy = JSON.parse(JSON.stringify(element));
                     delete objectCopy.image;
                     const objectCopyValues = Object.values(objectCopy);
-                    objectCopyValues.push('$CA');
                     const objectCopyArray = objectCopyValues.join("").toLowerCase();
                     return objectCopyArray.match(this.getSearch.toLowerCase());
                 });

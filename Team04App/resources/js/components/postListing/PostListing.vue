@@ -1,9 +1,7 @@
 <template>
-    <div>
-        <div class="login d-flex justify-content-center align-items-center">
-            <h1>
-                Post Listing
-            </h1>
+    <div class="mt-5">
+        <div class="form-title d-flex justify-content-center align-items-center">
+            <h1>Post Listing</h1>
         </div>
 
         <div class="form-content justify-content-between">
@@ -13,7 +11,7 @@
 </template>
 
 <style scoped>
-    .login{
+    .form-title{
         max-width: 400px;
         width: 70%;
         height: 150px;

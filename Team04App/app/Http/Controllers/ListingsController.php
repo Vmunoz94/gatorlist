@@ -13,7 +13,7 @@ class ListingsController extends Controller
     // Everything is a get parameter
 
 
-    public function custom(Request $request)
+    public function index(Request $request)
     {
         // ?id={INT}
         $id = $request->input('id') ?: '%';
@@ -77,7 +77,7 @@ class ListingsController extends Controller
     }
 
 
-    public function index(Request $request)
+    public function simple(Request $request)
     {
         // ?limit={INT}
         $limit = $request->input('limit') ?: 9999999;

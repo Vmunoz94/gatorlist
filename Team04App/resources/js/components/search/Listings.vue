@@ -11,7 +11,7 @@
                 <div class="card mb-4" v-for='listing in filteredListings' :key='listing.image'>
                     <img class="card-img-top" :src="listing.image" alt="Card image cap">
                     <div class="card-body py-3">
-                        <h5 class="card-title text-center"><strong>{{ listing.type.charAt(0).toUpperCase() + listing.type.slice(1) }}</strong></h5>
+                        <h5 class="card-title text-center mb-1"><strong>{{ listing.type.charAt(0).toUpperCase() + listing.type.slice(1) }}</strong></h5>
                         <hr>
                         <h5 class="card-title">Rent: <strong>${{ listing.rent }}</strong></h5>
                         <div class="row">

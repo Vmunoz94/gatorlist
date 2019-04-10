@@ -1,5 +1,5 @@
 <template>
-    <div class="jumbotron jumbotron-fluid mb-0 pb-0 pt-0">
+    <div class="jumbotron jumbotron-fluid my-0 py-0">
         <div class="container">
             <p class="lead text-center jumbotron-content-bigger mb-1">Software Engineering class SFSU</p>
             <p class="lead text-center jumbotron-content-bigger mb-1">Spring 2019</p>

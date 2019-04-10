@@ -47542,39 +47542,35 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "jumbotron jumbotron-fluid mb-0 pb-0 pt-0" },
-      [
-        _c("div", { staticClass: "container" }, [
-          _c(
-            "p",
-            { staticClass: "lead text-center jumbotron-content-bigger mb-1" },
-            [_vm._v("Software Engineering class SFSU")]
-          ),
-          _vm._v(" "),
-          _c(
-            "p",
-            { staticClass: "lead text-center jumbotron-content-bigger mb-1" },
-            [_vm._v("Spring 2019")]
-          ),
-          _vm._v(" "),
-          _c(
-            "p",
-            { staticClass: "lead text-center jumbotron-content-bigger mb-1" },
-            [_vm._v("Section-01")]
-          ),
-          _vm._v(" "),
-          _c(
-            "p",
-            { staticClass: "lead text-center jumbotron-content-bigger mb-1" },
-            [_vm._v("Team-04")]
-          ),
-          _vm._v(" "),
-          _c("hr", { staticClass: "mt-2 mb-3" })
-        ])
-      ]
-    )
+    return _c("div", { staticClass: "jumbotron jumbotron-fluid my-0 py-0" }, [
+      _c("div", { staticClass: "container" }, [
+        _c(
+          "p",
+          { staticClass: "lead text-center jumbotron-content-bigger mb-1" },
+          [_vm._v("Software Engineering class SFSU")]
+        ),
+        _vm._v(" "),
+        _c(
+          "p",
+          { staticClass: "lead text-center jumbotron-content-bigger mb-1" },
+          [_vm._v("Spring 2019")]
+        ),
+        _vm._v(" "),
+        _c(
+          "p",
+          { staticClass: "lead text-center jumbotron-content-bigger mb-1" },
+          [_vm._v("Section-01")]
+        ),
+        _vm._v(" "),
+        _c(
+          "p",
+          { staticClass: "lead text-center jumbotron-content-bigger mb-1" },
+          [_vm._v("Team-04")]
+        ),
+        _vm._v(" "),
+        _c("hr", { staticClass: "mt-2 mb-3" })
+      ])
+    ])
   }
 ]
 render._withStripped = true
@@ -48444,7 +48440,7 @@ var render = function() {
                     }),
                     _vm._v(" "),
                     _c("div", { staticClass: "card-body py-3" }, [
-                      _c("h5", { staticClass: "card-title text-center" }, [
+                      _c("h5", { staticClass: "card-title text-center mb-1" }, [
                         _c("strong", [
                           _vm._v(
                             _vm._s(

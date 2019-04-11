@@ -8,7 +8,10 @@
 
             <!-- Individual listing cards -->
             <transition-group tag="div" class="card-deck" name='move' appear enter-active-class="animated fadeInUp faster">
-                <div class="card mb-4" v-for='listing in filteredListings' :key='listing.id'>
+                <div class="card mb-4" 
+                    v-for='listing in filteredListings' 
+                    :key='listing.id'
+                    @click="openNewTab(listing.id)">
                     <img class="card-img-top" :src="listing.image" alt="Card image cap">
                     <div class="card-body py-3">
                         <h5 class="card-title text-center mb-1"><strong>{{ listing.type.charAt(0).toUpperCase() + listing.type.slice(1) }}</strong></h5>
@@ -32,7 +35,11 @@
 
         <div v-else class="d-flex justify-content-center align-items-center loading">
             <transition appear enter-active-class="animated fadeIn faster">
-                <rotate-square5 size="150px"></rotate-square5>
+                <breeding-rhombus-spinner class="mt-5"
+                    :animation-duration="1200"
+                    :size="200"
+                    color="#8d3dc6"
+                />
             </transition>
         </div>
     </div>
@@ -41,11 +48,12 @@
 
 <script>
     import { mapGetters } from 'vuex';
-    import { RotateSquare5 } from 'vue-loading-spinner';
+    import { BreedingRhombusSpinner } from 'epic-spinners'
+
 
     export default {
         components: {
-            RotateSquare5,
+            BreedingRhombusSpinner, 
         },
         computed: {
             ...mapGetters([
@@ -58,6 +66,11 @@
                 });
             }
         },
+        methods: {
+            openNewTab(id){
+                window.open('listing/' + id, "_blank");
+            }
+        }
     }
 </script>
 

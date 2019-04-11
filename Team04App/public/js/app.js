@@ -2868,9 +2868,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  data: function data() {
-    return {};
-  },
   components: {
     RotateSquare5: vue_loading_spinner__WEBPACK_IMPORTED_MODULE_1__["RotateSquare5"]
   },
@@ -2879,19 +2876,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var _this = this;
 
       return this.getAllListings.filter(function (element) {
-        var objectCopy = JSON.parse(JSON.stringify(element));
-        delete objectCopy.image;
-        var objectCopyValues = Object.values(objectCopy);
-        var objectCopyArray = objectCopyValues.join("").toLowerCase();
-        return objectCopyArray.match(_this.getSearch.toLowerCase());
+        // filter through combined column created by the Backend team
+        return element.combined.match(_this.getSearch.toLowerCase());
       });
     }
-  }),
-  watch: {
-    getAllListings: function getAllListings() {
-      this.loading = false;
-    }
-  }
+  })
 });
 
 /***/ }),
@@ -48432,7 +48421,7 @@ var render = function() {
               _vm._l(_vm.filteredListings, function(listing) {
                 return _c(
                   "div",
-                  { key: listing.image, staticClass: "card mb-4" },
+                  { key: listing.id, staticClass: "card mb-4" },
                   [
                     _c("img", {
                       staticClass: "card-img-top",

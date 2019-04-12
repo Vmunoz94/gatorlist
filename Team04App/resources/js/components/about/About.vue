@@ -4,7 +4,7 @@
             About the Team
         </h1>
 
-        <!-- card section -->
+        <!-- card section, load appropriate cards (Team Lead, Frontend, Backend)-->
         <div class="container">
             <div class="row">
                 <div class="col-lg-4">

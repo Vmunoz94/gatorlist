@@ -9,7 +9,7 @@
             </div>
 
             <div v-if='confirmed'>
-                <div class="row justify-content-center mb-5">
+                <div class="row justify-content-center mb-3">
                     <div class="col-5 border-right">
                         <p><strong class="mr-3">Listing Type:</strong> 
                             <span class="d-flex">{{ this.getAddListing.type }}</span>
@@ -48,7 +48,7 @@
             </div>
 
             <div v-else>
-                <div class="row justify-content-center mb-5">
+                <div class="row justify-content-center mb-3">
                     <div class="col-10">
                         <div class="alert alert-danger" role="alert">
                             Location does not exist. Please go back.
@@ -68,7 +68,7 @@
         </div>
 
         <div v-else class="d-flex justify-content-center align-items-center loading">
-            <transition appear enter-active-class="animated fadeIn faster">
+            <transition appear enter-active-class="animated fadeIn slower">
                 <rotate-square5 size="100px"></rotate-square5>
             </transition>
         </div>
@@ -96,15 +96,18 @@
         },
         methods: {
             goBack(){
+                // go back to home screen
                 this.$router.push('/postListing');
             }
         },
         computed: {
             ...mapGetters([
+                // get the listing from Vuex
                 'getAddListing'
             ]),
         },
         created() {
+            // Create address string to search in google maps
             let address = [];
             address.push(this.getAddListing.street)
             address.push(this.getAddListing.city)
@@ -112,10 +115,12 @@
             address.push(this.getAddListing.zip)
             address = address.join(" ");
 
+            // Delete tokens, otherwise error occurs
             var instance = axios.create();
             delete instance.defaults.headers.common['X-CSRF-TOKEN'];
             delete instance.defaults.headers.common['X-Requested-With'];
 
+            // Make GET request to Geocoding API, which should return latitude and longitude of address
             instance.get('https://maps.googleapis.com/maps/api/geocode/json', {
                 params: {
                     address,
@@ -124,11 +129,13 @@
             })
             .then((res) => {
                 if (res.data.status === 'ZERO_RESULTS'){
+                    // If 0 results were found by google, then address is invalid
                     console.log('Zero Results found');
                     this.confirmed = false;
                     this.loading = false;
                 }
                 else{
+                    // Store latitude and longitude of location
                     this.confirmed = true;
                     this.loading = false;
                     this.lat = res.data.results[0].geometry.location.lat
@@ -136,6 +143,7 @@
                 }
             })
             .catch(() => {
+                // Error with Geocoding API, Issue on google's end
                 console.log('Could not retrieve location from Geocoding API');
                 this.confirmed = false;
             });            

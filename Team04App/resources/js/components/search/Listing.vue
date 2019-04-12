@@ -7,6 +7,7 @@
                     <hr class="text-center w-75"/>
                     
                     <!-- listing details -->
+                    <div class="container">
                     <div class="row ml-2 text-size mb-3">
                         <div class="col">
                             <p><strong>Type:</strong> {{ listing.type | capitalize }}</p>
@@ -27,7 +28,7 @@
                     <p class="ml-4"><strong>Description:</strong> {{ listing.description }}</p>
                     <p class="ml-4"><strong>Date Added:</strong> {{ listing.date }}</p>
 
-                    <div class="container">
+                    <!-- <div class="container"> -->
 
                         <!-- text area -->
                         <div v-show="this.loggedIn" class="mt-5">
@@ -57,14 +58,23 @@
                                 </div>
                             </div>
                         </div>
-                    
                     </div>
+                    <!-- </div> -->
                 </div>
 
                 <div class="col-12 col-md-6 mt-5">
-                    <img :src="listing.image" class="rounded mx-auto d-block img-fluid">
-                </div>
+                    <!-- image -->
+                    <img :src="listing.image" class="rounded mx-auto d-block img-fluid w-75 mb-5">
 
+                    <!-- google maps -->
+                    <gatorlist-google-maps 
+                        :lat='37.7749' 
+                        :lng='-122.4194' 
+                        :zoom='12' 
+                        gestureHandling='cooperative' 
+                        class="mapStyle mb-5 mx-auto">
+                    </gatorlist-google-maps>
+                </div>
 
             </div>
         </div>
@@ -78,7 +88,8 @@
 </template>
 
 <script>
-    import { FingerprintSpinner } from 'epic-spinners'
+    import { FingerprintSpinner } from 'epic-spinners';
+    import GoogleMaps from './GoogleMaps.vue';
 
     export default {
         data(){
@@ -105,6 +116,7 @@
         },
         components: {
             FingerprintSpinner,
+            'gatorlist-google-maps': GoogleMaps,
         },
         filters: {
             capitalize(value) {
@@ -150,5 +162,10 @@
         box-shadow: 0 1px 10px black;
         -moz-box-shadow: 0 1px 10px black;
         -webkit-box-shadow: 0 1px 10px black;
+    }
+    .mapStyle {
+        width: 75%;
+        height: 50vh;
+        border-radius: 5px;
     }
 </style>

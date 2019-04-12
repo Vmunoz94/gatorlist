@@ -2819,6 +2819,7 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var epic_spinners__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! epic-spinners */ "./node_modules/epic-spinners/src/lib.js");
+/* harmony import */ var _GoogleMaps_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./GoogleMaps.vue */ "./resources/js/components/search/GoogleMaps.vue");
 //
 //
 //
@@ -2898,6 +2899,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -2922,7 +2934,8 @@ __webpack_require__.r(__webpack_exports__);
     });
   },
   components: {
-    FingerprintSpinner: epic_spinners__WEBPACK_IMPORTED_MODULE_0__["FingerprintSpinner"]
+    FingerprintSpinner: epic_spinners__WEBPACK_IMPORTED_MODULE_0__["FingerprintSpinner"],
+    'gatorlist-google-maps': _GoogleMaps_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   filters: {
     capitalize: function capitalize(value) {
@@ -9040,7 +9053,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.text-size[data-v-f87a94f0]{\n    font-size: .9rem;\n}\nstrong[data-v-f87a94f0]{\n    font-size: 1.05rem;\n}\nimg[data-v-f87a94f0]{\n    border: 1px solid grey;\n    box-shadow: 0 1px 10px black;\n    -moz-box-shadow: 0 1px 10px black;\n    -webkit-box-shadow: 0 1px 10px black;\n}\n", ""]);
+exports.push([module.i, "\n.text-size[data-v-f87a94f0]{\n    font-size: .9rem;\n}\nstrong[data-v-f87a94f0]{\n    font-size: 1.05rem;\n}\nimg[data-v-f87a94f0]{\n    border: 1px solid grey;\n    box-shadow: 0 1px 10px black;\n    -moz-box-shadow: 0 1px 10px black;\n    -webkit-box-shadow: 0 1px 10px black;\n}\n.mapStyle[data-v-f87a94f0] {\n    width: 75%;\n    height: 50vh;\n    border-radius: 5px;\n}\n", ""]);
 
 // exports
 
@@ -53935,98 +53948,100 @@ var render = function() {
               _vm._v(" "),
               _c("hr", { staticClass: "text-center w-75" }),
               _vm._v(" "),
-              _c("div", { staticClass: "row ml-2 text-size mb-3" }, [
-                _c("div", { staticClass: "col" }, [
-                  _c("p", [
-                    _c("strong", [_vm._v("Type:")]),
-                    _vm._v(" " + _vm._s(_vm._f("capitalize")(_vm.listing.type)))
+              _c("div", { staticClass: "container" }, [
+                _c("div", { staticClass: "row ml-2 text-size mb-3" }, [
+                  _c("div", { staticClass: "col" }, [
+                    _c("p", [
+                      _c("strong", [_vm._v("Type:")]),
+                      _vm._v(
+                        " " + _vm._s(_vm._f("capitalize")(_vm.listing.type))
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("p", [
+                      _c("strong", [_vm._v("Street:")]),
+                      _vm._v(" " + _vm._s(_vm.listing.street))
+                    ]),
+                    _vm._v(" "),
+                    _c("p", [
+                      _c("strong", [_vm._v("City:")]),
+                      _vm._v(" " + _vm._s(_vm.listing.city))
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(0),
+                    _vm._v(" "),
+                    _c("p", [
+                      _c("strong", [_vm._v("ZIP:")]),
+                      _vm._v(" " + _vm._s(_vm.listing.zip) + " ")
+                    ])
                   ]),
                   _vm._v(" "),
-                  _c("p", [
-                    _c("strong", [_vm._v("Street:")]),
-                    _vm._v(" " + _vm._s(_vm.listing.street))
-                  ]),
-                  _vm._v(" "),
-                  _c("p", [
-                    _c("strong", [_vm._v("City:")]),
-                    _vm._v(" " + _vm._s(_vm.listing.city))
-                  ]),
-                  _vm._v(" "),
-                  _vm._m(0),
-                  _vm._v(" "),
-                  _c("p", [
-                    _c("strong", [_vm._v("ZIP:")]),
-                    _vm._v(" " + _vm._s(_vm.listing.zip) + " ")
+                  _c("div", { staticClass: "col" }, [
+                    _c("p", [
+                      _c("strong", [_vm._v("Rent:")]),
+                      _vm._v(" $" + _vm._s(_vm.listing.rent) + " / Month")
+                    ]),
+                    _vm._v(" "),
+                    _c("p", [
+                      _c("strong", [_vm._v("Bedrooms:")]),
+                      _vm._v(" " + _vm._s(_vm.listing.bedrooms))
+                    ]),
+                    _vm._v(" "),
+                    _c("p", [
+                      _c("strong", [_vm._v("Bathrooms:")]),
+                      _vm._v(" " + _vm._s(_vm.listing.bathrooms))
+                    ]),
+                    _vm._v(" "),
+                    _c("p", [
+                      _c("strong", [_vm._v("Distance From Campus:")]),
+                      _vm._v(
+                        " " +
+                          _vm._s(
+                            _vm._f("subjectVerbMiles")(
+                              _vm.listing.distance_from_campus
+                            )
+                          ) +
+                          " "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("p", [
+                      _c("strong", [_vm._v("Commute Time to Campus:")]),
+                      _vm._v(
+                        " " +
+                          _vm._s(
+                            _vm._f("subjectVerbMinutes")(
+                              _vm.listing.commute_time_to_campus
+                            )
+                          ) +
+                          " "
+                      )
+                    ])
                   ])
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "col" }, [
-                  _c("p", [
-                    _c("strong", [_vm._v("Rent:")]),
-                    _vm._v(" $" + _vm._s(_vm.listing.rent) + " / Month")
-                  ]),
-                  _vm._v(" "),
-                  _c("p", [
-                    _c("strong", [_vm._v("Bedrooms:")]),
-                    _vm._v(" " + _vm._s(_vm.listing.bedrooms))
-                  ]),
-                  _vm._v(" "),
-                  _c("p", [
-                    _c("strong", [_vm._v("Bathrooms:")]),
-                    _vm._v(" " + _vm._s(_vm.listing.bathrooms))
-                  ]),
-                  _vm._v(" "),
-                  _c("p", [
-                    _c("strong", [_vm._v("Distance From Campus:")]),
-                    _vm._v(
-                      " " +
-                        _vm._s(
-                          _vm._f("subjectVerbMiles")(
-                            _vm.listing.distance_from_campus
-                          )
-                        ) +
-                        " "
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("p", [
-                    _c("strong", [_vm._v("Commute Time to Campus:")]),
-                    _vm._v(
-                      " " +
-                        _vm._s(
-                          _vm._f("subjectVerbMinutes")(
-                            _vm.listing.commute_time_to_campus
-                          )
-                        ) +
-                        " "
-                    )
-                  ])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("p", { staticClass: "ml-4" }, [
-                _c("strong", [_vm._v("Full Address:")]),
-                _vm._v(
-                  " " +
-                    _vm._s(_vm.listing.street) +
-                    ", " +
-                    _vm._s(_vm.listing.city) +
-                    ", CA, " +
-                    _vm._s(_vm.listing.zip)
-                )
-              ]),
-              _vm._v(" "),
-              _c("p", { staticClass: "ml-4" }, [
-                _c("strong", [_vm._v("Description:")]),
-                _vm._v(" " + _vm._s(_vm.listing.description))
-              ]),
-              _vm._v(" "),
-              _c("p", { staticClass: "ml-4" }, [
-                _c("strong", [_vm._v("Date Added:")]),
-                _vm._v(" " + _vm._s(_vm.listing.date))
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "container" }, [
+                _c("p", { staticClass: "ml-4" }, [
+                  _c("strong", [_vm._v("Full Address:")]),
+                  _vm._v(
+                    " " +
+                      _vm._s(_vm.listing.street) +
+                      ", " +
+                      _vm._s(_vm.listing.city) +
+                      ", CA, " +
+                      _vm._s(_vm.listing.zip)
+                  )
+                ]),
+                _vm._v(" "),
+                _c("p", { staticClass: "ml-4" }, [
+                  _c("strong", [_vm._v("Description:")]),
+                  _vm._v(" " + _vm._s(_vm.listing.description))
+                ]),
+                _vm._v(" "),
+                _c("p", { staticClass: "ml-4" }, [
+                  _c("strong", [_vm._v("Date Added:")]),
+                  _vm._v(" " + _vm._s(_vm.listing.date))
+                ]),
+                _vm._v(" "),
                 _c(
                   "div",
                   {
@@ -54105,12 +54120,27 @@ var render = function() {
               ])
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "col-12 col-md-6 mt-5" }, [
-              _c("img", {
-                staticClass: "rounded mx-auto d-block img-fluid",
-                attrs: { src: _vm.listing.image }
-              })
-            ])
+            _c(
+              "div",
+              { staticClass: "col-12 col-md-6 mt-5" },
+              [
+                _c("img", {
+                  staticClass: "rounded mx-auto d-block img-fluid w-75 mb-5",
+                  attrs: { src: _vm.listing.image }
+                }),
+                _vm._v(" "),
+                _c("gatorlist-google-maps", {
+                  staticClass: "mapStyle mb-5 mx-auto",
+                  attrs: {
+                    lat: 37.7749,
+                    lng: -122.4194,
+                    zoom: 12,
+                    gestureHandling: "cooperative"
+                  }
+                })
+              ],
+              1
+            )
           ])
         ])
       : _c(

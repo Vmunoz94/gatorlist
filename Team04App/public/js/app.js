@@ -2909,6 +2909,32 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2917,7 +2943,7 @@ __webpack_require__.r(__webpack_exports__);
       listing: null,
       loading: true,
       loggedIn: false,
-      message: "Hello, I'm sincerely interested in your property."
+      message: "Hello, I'm sincerely interested in your property. Please message me back when you get the time. Thank You."
     };
   },
   beforeCreate: function beforeCreate() {
@@ -9053,7 +9079,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.text-size[data-v-f87a94f0]{\n    font-size: .9rem;\n}\nstrong[data-v-f87a94f0]{\n    font-size: 1.05rem;\n}\nimg[data-v-f87a94f0]{\n    border: 1px solid grey;\n    box-shadow: 0 1px 10px black;\n    -moz-box-shadow: 0 1px 10px black;\n    -webkit-box-shadow: 0 1px 10px black;\n}\n.mapStyle[data-v-f87a94f0] {\n    width: 75%;\n    height: 50vh;\n    border-radius: 5px;\n}\n", ""]);
+exports.push([module.i, "\n.text-size[data-v-f87a94f0]{\n    font-size: .9rem;\n}\nstrong[data-v-f87a94f0]{\n    font-size: 1.05rem;\n}\nimg[data-v-f87a94f0]{\n    border: 1px solid grey;\n    box-shadow: 0 1px 10px black;\n    -moz-box-shadow: 0 1px 10px black;\n    -webkit-box-shadow: 0 1px 10px black;\n}\n.mapStyle[data-v-f87a94f0] {\n    width: 75%;\n    height: 50vh;\n    border-radius: 5px;\n}\n.smooth-leave-active[data-v-f87a94f0]{\n    opacity: 0;\n}\n.smooth-move[data-v-f87a94f0]{\n    transition: all .5s;\n}\n", ""]);
 
 // exports
 
@@ -54044,79 +54070,114 @@ var render = function() {
                 _vm._v(" "),
                 _c(
                   "div",
-                  {
-                    directives: [
-                      {
-                        name: "show",
-                        rawName: "v-show",
-                        value: this.loggedIn,
-                        expression: "this.loggedIn"
-                      }
-                    ],
-                    staticClass: "mt-5"
-                  },
+                  { staticClass: "container" },
                   [
-                    _c("div", { staticClass: "form-group" }, [
-                      _c("textarea", {
-                        staticClass: "form-control",
-                        attrs: { rows: "3" },
-                        domProps: { value: this.message }
-                      })
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                !this.loggedIn
-                  ? _c("div", [
-                      _c("div", { staticClass: "row text-center mt-5" }, [
-                        _c("div", { staticClass: "col" }, [
-                          _c(
-                            "button",
-                            {
-                              staticClass: "btn btn-secondary btn-lg btn-block",
-                              on: { click: _vm.goBack }
-                            },
-                            [_vm._v(" Go Back ")]
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "col" }, [
-                          _c(
-                            "button",
-                            {
-                              staticClass: "btn btn-primary btn-lg btn-block",
-                              on: { click: _vm.contactLandlord }
-                            },
-                            [_vm._v(" Contact Landlord ")]
-                          )
-                        ])
-                      ])
-                    ])
-                  : _c("div", [
-                      _c("div", { staticClass: "row text-center mt-5" }, [
-                        _c("div", { staticClass: "col" }, [
-                          _c(
-                            "button",
-                            {
-                              staticClass: "btn btn-warning btn-lg btn-block",
-                              on: { click: _vm.cancel }
-                            },
-                            [_vm._v(" Cancel ")]
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "col" }, [
-                          _c(
-                            "button",
-                            {
-                              staticClass: "btn btn-success btn-lg btn-block",
-                              on: { click: _vm.sendMessage }
-                            },
-                            [_vm._v(" Send Message ")]
-                          )
-                        ])
-                      ])
-                    ])
+                    this.loggedIn
+                      ? _c(
+                          "div",
+                          { staticClass: "mt-5" },
+                          [
+                            _c(
+                              "transition",
+                              {
+                                attrs: {
+                                  appear: "",
+                                  "enter-active-class": "animated zoomIn faster"
+                                }
+                              },
+                              [
+                                _c("div", { staticClass: "form-group" }, [
+                                  _c("textarea", {
+                                    staticClass: "form-control",
+                                    attrs: { rows: "4" },
+                                    domProps: { value: this.message }
+                                  })
+                                ])
+                              ]
+                            )
+                          ],
+                          1
+                        )
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _c(
+                      "transition",
+                      {
+                        attrs: {
+                          appear: "",
+                          name: "smooth",
+                          "enter-active-class": "animated flipInX faster"
+                        }
+                      },
+                      [
+                        !this.loggedIn
+                          ? _c("div", { key: "1" }, [
+                              _c(
+                                "div",
+                                { staticClass: "row text-center mt-5" },
+                                [
+                                  _c("div", { staticClass: "col" }, [
+                                    _c(
+                                      "button",
+                                      {
+                                        staticClass:
+                                          "btn btn-secondary btn-lg btn-block",
+                                        on: { click: _vm.goBack }
+                                      },
+                                      [_vm._v(" Go Back ")]
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("div", { staticClass: "col" }, [
+                                    _c(
+                                      "button",
+                                      {
+                                        staticClass:
+                                          "btn btn-primary btn-lg btn-block",
+                                        on: { click: _vm.contactLandlord }
+                                      },
+                                      [_vm._v(" Contact Landlord ")]
+                                    )
+                                  ])
+                                ]
+                              )
+                            ])
+                          : _c("div", { key: "2" }, [
+                              _c(
+                                "div",
+                                { staticClass: "row text-center mt-5" },
+                                [
+                                  _c("div", { staticClass: "col" }, [
+                                    _c(
+                                      "button",
+                                      {
+                                        staticClass:
+                                          "btn btn-warning btn-lg btn-block",
+                                        on: { click: _vm.cancel }
+                                      },
+                                      [_vm._v(" Cancel ")]
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("div", { staticClass: "col" }, [
+                                    _c(
+                                      "button",
+                                      {
+                                        staticClass:
+                                          "btn btn-success btn-lg btn-block",
+                                        on: { click: _vm.sendMessage }
+                                      },
+                                      [_vm._v(" Send Message ")]
+                                    )
+                                  ])
+                                ]
+                              )
+                            ])
+                      ]
+                    )
+                  ],
+                  1
+                )
               ])
             ]),
             _vm._v(" "),

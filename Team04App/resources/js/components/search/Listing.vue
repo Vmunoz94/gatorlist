@@ -8,58 +8,61 @@
                     
                     <!-- listing details -->
                     <div class="container">
-                    <div class="row ml-2 text-size mb-3">
-                        <div class="col">
-                            <p><strong>Type:</strong> {{ listing.type | capitalize }}</p>
-                            <p><strong>Street:</strong> {{ listing.street }}</p>
-                            <p><strong>City:</strong> {{ listing.city }}</p>
-                            <p><strong>State:</strong> CA </p>
-                            <p><strong>ZIP:</strong> {{ listing.zip }} </p>
+                        <div class="row ml-2 text-size mb-3">
+                            <div class="col">
+                                <p><strong>Type:</strong> {{ listing.type | capitalize }}</p>
+                                <p><strong>Street:</strong> {{ listing.street }}</p>
+                                <p><strong>City:</strong> {{ listing.city }}</p>
+                                <p><strong>State:</strong> CA </p>
+                                <p><strong>ZIP:</strong> {{ listing.zip }} </p>
+                            </div>
+                            <div class="col">
+                                <p><strong>Rent:</strong> ${{ listing.rent }} / Month</p>
+                                <p><strong>Bedrooms:</strong> {{ listing.bedrooms }}</p>
+                                <p><strong>Bathrooms:</strong> {{ listing.bathrooms }}</p>
+                                <p><strong>Distance From Campus:</strong> {{ listing.distance_from_campus | subjectVerbMiles }} </p>
+                                <p><strong>Commute Time to Campus:</strong> {{ listing.commute_time_to_campus | subjectVerbMinutes }} </p>
+                            </div>
                         </div>
-                        <div class="col">
-                            <p><strong>Rent:</strong> ${{ listing.rent }} / Month</p>
-                            <p><strong>Bedrooms:</strong> {{ listing.bedrooms }}</p>
-                            <p><strong>Bathrooms:</strong> {{ listing.bathrooms }}</p>
-                            <p><strong>Distance From Campus:</strong> {{ listing.distance_from_campus | subjectVerbMiles }} </p>
-                            <p><strong>Commute Time to Campus:</strong> {{ listing.commute_time_to_campus | subjectVerbMinutes }} </p>
+                        <p class="ml-4"><strong>Full Address:</strong> {{ listing.street }}, {{ listing.city }}, CA, {{ listing.zip }}</p>
+                        <p class="ml-4"><strong>Description:</strong> {{ listing.description }}</p>
+                        <p class="ml-4"><strong>Date Added:</strong> {{ listing.date }}</p>
+
+                        <div class="container">
+                            <!-- text area -->
+                            <div v-if="this.loggedIn" class="mt-5">
+                                <transition appear enter-active-class="animated zoomIn faster">
+                                    <div class="form-group">
+                                        <textarea class="form-control" rows="4" :value="this.message"></textarea>
+                                    </div>
+                                </transition>
+                            </div>
+
+                            <!-- buttons -->
+                            <transition appear name="smooth" enter-active-class="animated flipInX faster">
+                                <div v-if="!this.loggedIn" key="1">
+                                    <div class="row text-center mt-5">
+                                        <div class="col">
+                                            <button class="btn btn-secondary btn-lg btn-block" @click="goBack"> Go Back </button>
+                                        </div>
+                                        <div class="col">
+                                            <button class="btn btn-primary btn-lg btn-block" @click="contactLandlord"> Contact Landlord </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div v-else key="2">
+                                    <div class="row text-center mt-5">
+                                        <div class="col">
+                                            <button class="btn btn-warning btn-lg btn-block" @click="cancel"> Cancel </button>
+                                        </div>
+                                        <div class="col">
+                                            <button class="btn btn-success btn-lg btn-block" @click="sendMessage"> Send Message </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </transition>
                         </div>
                     </div>
-                    <p class="ml-4"><strong>Full Address:</strong> {{ listing.street }}, {{ listing.city }}, CA, {{ listing.zip }}</p>
-                    <p class="ml-4"><strong>Description:</strong> {{ listing.description }}</p>
-                    <p class="ml-4"><strong>Date Added:</strong> {{ listing.date }}</p>
-
-                    <!-- <div class="container"> -->
-
-                        <!-- text area -->
-                        <div v-show="this.loggedIn" class="mt-5">
-                            <div class="form-group">
-                                <textarea class="form-control" rows="3" :value="this.message"></textarea>
-                            </div>
-                        </div>
-
-                        <!-- buttons -->
-                        <div v-if="!this.loggedIn">
-                            <div class="row text-center mt-5">
-                                <div class="col">
-                                    <button class="btn btn-secondary btn-lg btn-block" @click="goBack"> Go Back </button>
-                                </div>
-                                <div class="col">
-                                    <button class="btn btn-primary btn-lg btn-block" @click="contactLandlord"> Contact Landlord </button>
-                                </div>
-                            </div>
-                        </div>
-                        <div v-else>
-                            <div class="row text-center mt-5">
-                                <div class="col">
-                                    <button class="btn btn-warning btn-lg btn-block" @click="cancel"> Cancel </button>
-                                </div>
-                                <div class="col">
-                                    <button class="btn btn-success btn-lg btn-block" @click="sendMessage"> Send Message </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- </div> -->
                 </div>
 
                 <div class="col-12 col-md-6 mt-5">
@@ -97,7 +100,7 @@
                 listing: null,
                 loading: true, 
                 loggedIn: false,  
-                message: "Hello, I'm sincerely interested in your property.",
+                message: "Hello, I'm sincerely interested in your property. Please message me back when you get the time. Thank You.",
             }
         },
         beforeCreate(){
@@ -167,5 +170,11 @@
         width: 75%;
         height: 50vh;
         border-radius: 5px;
+    }
+    .smooth-leave-active{
+        opacity: 0;
+    }
+    .smooth-move{
+        transition: all .5s;
     }
 </style>

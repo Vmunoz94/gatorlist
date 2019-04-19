@@ -1764,7 +1764,6 @@ module.exports = {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _search_Listings_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./search/Listings.vue */ "./resources/js/components/search/Listings.vue");
-/* harmony import */ var _search_GoogleMaps_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./search/GoogleMaps.vue */ "./resources/js/components/search/GoogleMaps.vue");
 //
 //
 //
@@ -1784,12 +1783,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-
+ // import GoogleMaps from './search/GoogleMaps.vue'
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    'gatorlist-listings': _search_Listings_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
-    'gatorlist-google-maps': _search_GoogleMaps_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
+    'gatorlist-listings': _search_Listings_vue__WEBPACK_IMPORTED_MODULE_0__["default"] // 'gatorlist-google-maps': GoogleMaps,
+
   }
 });
 
@@ -2820,6 +2819,9 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var epic_spinners__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! epic-spinners */ "./node_modules/epic-spinners/src/lib.js");
 /* harmony import */ var _GoogleMaps_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./GoogleMaps.vue */ "./resources/js/components/search/GoogleMaps.vue");
+//
+//
+//
 //
 //
 //
@@ -8277,7 +8279,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".loading[data-v-0f80c6ca] {\n  height: 50vh;\n}\nhr[data-v-0f80c6ca] {\n  margin-top: 5px;\n  margin-bottom: 5px;\n}\n.card[data-v-0f80c6ca] {\n  box-shadow: 0 1px 10px black;\n  -moz-box-shadow: 0 1px 10px black;\n  -webkit-box-shadow: 0 1px 10px black;\n  border: 1px solid grey;\n}\n.card[data-v-0f80c6ca]:hover {\n  cursor: pointer;\n  box-shadow: 0 5px 20px black;\n  -moz-box-shadow: 0 5px 20px black;\n  -webkit-box-shadow: 0 5px 20px black;\n  -webkit-transform: scale(1.05);\n          transform: scale(1.05);\n  transition: all 0.2s ease-in-out;\n}\n.move-leave-active[data-v-0f80c6ca] {\n  opacity: 0;\n  position: absolute;\n}\n.move-move[data-v-0f80c6ca] {\n  transition: all 0.5s;\n}\n\n/* Bootstrap 4 breakpoints & gutter */\n/* number of cards per line for each breakpoint */\n@media (min-width: 0) {\n.card-deck .card[data-v-0f80c6ca] {\n    flex: 0 0 calc(100% - 30px);\n}\n}\n@media (min-width: 576px) {\n.card-deck .card[data-v-0f80c6ca] {\n    flex: 0 0 calc(50% - 30px);\n}\n}\n@media (min-width: 768px) {\n.card-deck .card[data-v-0f80c6ca] {\n    flex: 0 0 calc(33.3333333333% - 30px);\n}\n}\n@media (min-width: 992px) {\n.card-deck .card[data-v-0f80c6ca] {\n    flex: 0 0 calc(50% - 30px);\n}\n}\n@media (min-width: 1200px) {\n.card-deck .card[data-v-0f80c6ca] {\n    flex: 0 0 calc(33.3333333333% - 30px);\n}\n}", ""]);
+exports.push([module.i, ".loading[data-v-0f80c6ca] {\n  height: 50vh;\n}\nhr[data-v-0f80c6ca] {\n  margin-top: 5px;\n  margin-bottom: 5px;\n}\n.card[data-v-0f80c6ca] {\n  box-shadow: 0 1px 10px black;\n  -moz-box-shadow: 0 1px 10px black;\n  -webkit-box-shadow: 0 1px 10px black;\n  border: 1px solid grey;\n}\n.card[data-v-0f80c6ca]:hover {\n  cursor: pointer;\n  box-shadow: 0 5px 20px black;\n  -moz-box-shadow: 0 5px 20px black;\n  -webkit-box-shadow: 0 5px 20px black;\n  -webkit-transform: scale(1.05);\n          transform: scale(1.05);\n  transition: all 0.2s ease-in-out;\n}\n.move-leave-active[data-v-0f80c6ca] {\n  opacity: 0;\n  position: absolute;\n}\n.move-move[data-v-0f80c6ca] {\n  transition: all 0.5s;\n}\n\n/* Bootstrap 4 breakpoints & gutter */\n/* number of cards per line for each breakpoint */\n@media (min-width: 0) {\n.card-deck .card[data-v-0f80c6ca] {\n    flex: 0 0 calc(100% - 30px);\n}\n}\n@media (min-width: 576px) {\n.card-deck .card[data-v-0f80c6ca] {\n    flex: 0 0 calc(33.3333333333% - 30px);\n}\n}\n@media (min-width: 768px) {\n.card-deck .card[data-v-0f80c6ca] {\n    flex: 0 0 calc(25% - 30px);\n}\n}\n@media (min-width: 992px) {\n.card-deck .card[data-v-0f80c6ca] {\n    flex: 0 0 calc(20% - 30px);\n}\n}\n@media (min-width: 1200px) {\n.card-deck .card[data-v-0f80c6ca] {\n    flex: 0 0 calc(16.6666666667% - 30px);\n}\n}", ""]);
 
 // exports
 
@@ -8676,7 +8678,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.mapStyle {\n    position: fixed;\n    top: 14px;\n    width: 100%;\n    height: 96vh;\n}\n@media only screen and (max-width: 992px) {\n.hide{\n        display: none;\n}\n}\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* .mapStyle {\n    position: fixed;\n    top: 14px;\n    width: 100%;\n    height: 96vh;\n} */\n/* @media only screen and (max-width: 992px) {\n    .hide{\n        display: none;\n    }\n} */\n", ""]);
 
 // exports
 
@@ -9056,7 +9058,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.text-size[data-v-f87a94f0]{\n    font-size: .9rem;\n}\nstrong[data-v-f87a94f0]{\n    font-size: 1.05rem;\n}\nimg[data-v-f87a94f0]{\n    border: 1px solid grey;\n    box-shadow: 0 1px 10px black;\n    -moz-box-shadow: 0 1px 10px black;\n    -webkit-box-shadow: 0 1px 10px black;\n}\n.mapStyle[data-v-f87a94f0] {\n    width: 75%;\n    height: 50vh;\n    border-radius: 5px;\n}\n.smooth-leave-active[data-v-f87a94f0]{\n    opacity: 0;\n}\n.smooth-move[data-v-f87a94f0]{\n    transition: all .5s;\n}\n", ""]);
+exports.push([module.i, "\n.text-size[data-v-f87a94f0]{\n    font-size: .9rem;\n}\nstrong[data-v-f87a94f0]{\n    font-size: 1.05rem;\n}\nimg[data-v-f87a94f0]{\n    border: 1px solid grey;\n    box-shadow: 0 1px 10px black;\n    -moz-box-shadow: 0 1px 10px black;\n    -webkit-box-shadow: 0 1px 10px black;\n}\n.mapStyle[data-v-f87a94f0] {\n    width: 100%;\n    height: 50vh;\n    border-radius: 5px;\n}\n.smooth-leave-active[data-v-f87a94f0]{\n    opacity: 0;\n}\n.smooth-move[data-v-f87a94f0]{\n    transition: all .5s;\n}\n", ""]);
 
 // exports
 
@@ -51063,29 +51065,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container-fluid" }, [
     _c("div", { staticClass: "row" }, [
-      _c(
-        "div",
-        { staticClass: "col-12 col-lg-6" },
-        [_c("gatorlist-listings")],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "col border-left hide" },
-        [
-          _c("gatorlist-google-maps", {
-            staticClass: "mapStyle",
-            attrs: {
-              lat: 37.7749,
-              lng: -122.4194,
-              zoom: 12,
-              gestureHandling: "cooperative"
-            }
-          })
-        ],
-        1
-      )
+      _c("div", { staticClass: "col" }, [_c("gatorlist-listings")], 1)
     ])
   ])
 }
@@ -53942,7 +53922,14 @@ var render = function() {
     !this.loading
       ? _c("div", [
           _c("div", { staticClass: "row mt-5" }, [
-            _c("div", { staticClass: "col-12 col-md-6" }, [
+            _c("div", { staticClass: "col-12 col-md-6 col-lg-4" }, [
+              _c("img", {
+                staticClass: "rounded mx-auto d-block img-fluid mb-5",
+                attrs: { src: _vm.listing.image }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-12 col-md-6 col-lg-4 mb-5" }, [
               _c("h2", { staticClass: "text-center" }, [
                 _vm._v(
                   _vm._s(_vm._f("capitalize")(_vm.listing.type)) + " Details"
@@ -54160,13 +54147,8 @@ var render = function() {
             _vm._v(" "),
             _c(
               "div",
-              { staticClass: "col-12 col-md-6 mt-5" },
+              { staticClass: "col-12 col-lg-4" },
               [
-                _c("img", {
-                  staticClass: "rounded mx-auto d-block img-fluid w-75 mb-5",
-                  attrs: { src: _vm.listing.image }
-                }),
-                _vm._v(" "),
                 _c("gatorlist-google-maps", {
                   staticClass: "mapStyle mb-5 mx-auto",
                   attrs: {

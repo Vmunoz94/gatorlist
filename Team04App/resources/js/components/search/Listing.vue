@@ -2,11 +2,17 @@
     <div class = "container-fluid mb-5">
         <div v-if='!this.loading'>
             <div class="row mt-5">
-                <div class="col-12 col-md-6">
+
+                <!-- image -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <img :src="listing.image" class="rounded mx-auto d-block img-fluid mb-5">
+                </div>
+                
+                <!-- listing details -->
+                <div class="col-12 col-md-6 col-lg-4 mb-5">
                     <h2 class="text-center">{{ listing.type | capitalize }} Details</h2>
                     <hr class="text-center w-75"/>
                     
-                    <!-- listing details -->
                     <div class="container">
                         <div class="row ml-2 text-size mb-3">
                             <div class="col">
@@ -65,11 +71,8 @@
                     </div>
                 </div>
 
-                <div class="col-12 col-md-6 mt-5">
-                    <!-- image -->
-                    <img :src="listing.image" class="rounded mx-auto d-block img-fluid w-75 mb-5">
-
-                    <!-- google maps -->
+                <!-- google maps -->
+                <div class="col-12 col-lg-4">
                     <gatorlist-google-maps 
                         :lat='37.7749' 
                         :lng='-122.4194' 
@@ -167,7 +170,7 @@
         -webkit-box-shadow: 0 1px 10px black;
     }
     .mapStyle {
-        width: 75%;
+        width: 100%;
         height: 50vh;
         border-radius: 5px;
     }

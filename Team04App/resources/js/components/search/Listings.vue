@@ -119,10 +119,10 @@
     /* number of cards per line for each breakpoint */
     $cards-per-line: (
         xs: 1,
-        sm: 2,
-        md: 3,
-        lg: 2,
-        xl: 3,
+        sm: 3,
+        md: 4,
+        lg: 5,
+        xl: 6,
     );
 
     @each $name, $breakpoint in $grid-breakpoints {

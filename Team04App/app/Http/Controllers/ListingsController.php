@@ -31,6 +31,10 @@ class ListingsController extends Controller
         $bathrooms = $request->input('bathrooms') ?: '%';
         // ?rent={INT}
         $rent = $request->input('rent') ?: '%';
+        // ?min_rent={INT}
+        $min_rent = $request->input('min_rent') ?: '0';
+        // ?max_rent={INT}
+        $max_rent = $request->input('max_rent') ?: '9999999';
         // ?description={TEXT}
         $description = $request->input('description') ?: '%';
         // ?image={TEXT} - Although i don't know why anyone would be searching via image url
@@ -50,28 +54,29 @@ class ListingsController extends Controller
         // ?search={TEXT} - This searches through the `combined` column to see if anything matches
         $search = $request->input('search') ?: '%';
 
-        $listing = DB::table('listings')->where([
-            ['id', 'like', $id],
-            ['type', 'like', $type],
-            ['street', 'like', $street],
-            ['city', 'like', $city],
-            ['zip', 'like', $zip],
-            ['bedrooms', 'like', $bedrooms],
-            ['bathrooms', 'like', $bathrooms],
-            ['rent', 'like', $rent],
-            ['description', 'like', $description],
-            ['image', 'like', $image],
-            ['date', 'like', $date],
-            ['distance_from_campus', 'like', $distance_from_campus],
-            ['commute_time_to_campus', 'like', $commute_time_to_campus],
-            ['landlord_id', 'like', $landlord_id],
-            //combined is a column that is the result of every other column being concated
-            ['combined', 'like', '%' . $search . '%'],
-        ])
-            ->limit($limit)
-            ->orderBy('date', $order)
-            ->get();
-//dd($listing);
+            $listing = DB::table('listings')->where([
+                ['id', 'like', $id],
+                ['type', 'like', $type],
+                ['street', 'like', $street],
+                ['city', 'like', $city],
+                ['zip', 'like', $zip],
+                ['bedrooms', 'like', $bedrooms],
+                ['bathrooms', 'like', $bathrooms],
+                ['rent', 'like', $rent],
+
+                ['description', 'like', $description],
+                ['image', 'like', $image],
+                ['date', 'like', $date],
+                ['distance_from_campus', 'like', $distance_from_campus],
+                ['commute_time_to_campus', 'like', $commute_time_to_campus],
+                ['landlord_id', 'like', $landlord_id],
+                //combined is a column that is the result of every other column being concated
+                ['combined', 'like', '%' . $search . '%'],
+            ])->whereBetween('rent', [$min_rent, $max_rent])
+                ->limit($limit)
+                ->orderBy('date', $order)
+                ->get();
+//        dd($listing);
         return $listing;
 
     }

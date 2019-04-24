@@ -54,7 +54,6 @@ class ListingsController extends Controller
         // ?search={TEXT} - This searches through the `combined` column to see if anything matches
         $search = $request->input('search') ?: '%';
 
-        if ($rent == "%") {
             $listing = DB::table('listings')->where([
                 ['id', 'like', $id],
                 ['type', 'like', $type],
@@ -63,6 +62,8 @@ class ListingsController extends Controller
                 ['zip', 'like', $zip],
                 ['bedrooms', 'like', $bedrooms],
                 ['bathrooms', 'like', $bathrooms],
+                ['rent', 'like', $rent],
+
                 ['description', 'like', $description],
                 ['image', 'like', $image],
                 ['date', 'like', $date],
@@ -75,29 +76,6 @@ class ListingsController extends Controller
                 ->limit($limit)
                 ->orderBy('date', $order)
                 ->get();
-        } else {
-            $listing = DB::table('listings')->where([
-                ['id', 'like', $id],
-                ['type', 'like', $type],
-                ['street', 'like', $street],
-                ['city', 'like', $city],
-                ['zip', 'like', $zip],
-                ['bedrooms', 'like', $bedrooms],
-                ['bathrooms', 'like', $bathrooms],
-                ['rent', 'like', $rent],
-                ['description', 'like', $description],
-                ['image', 'like', $image],
-                ['date', 'like', $date],
-                ['distance_from_campus', 'like', $distance_from_campus],
-                ['commute_time_to_campus', 'like', $commute_time_to_campus],
-                ['landlord_id', 'like', $landlord_id],
-                //combined is a column that is the result of every other column being concated
-                ['combined', 'like', '%' . $search . '%'],
-            ])
-                ->limit($limit)
-                ->orderBy('date', $order)
-                ->get();
-        }
 //        dd($listing);
         return $listing;
 

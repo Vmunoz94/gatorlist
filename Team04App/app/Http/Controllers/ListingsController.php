@@ -60,8 +60,8 @@ class ListingsController extends Controller
                 ['street', 'like', $street],
                 ['city', 'like', $city],
                 ['zip', 'like', $zip],
-                ['bedrooms', 'like', $bedrooms],
-                ['bathrooms', 'like', $bathrooms],
+                ['bedrooms', '>=', $bedrooms],
+                ['bathrooms', '>=', $bathrooms],
                 ['rent', 'like', $rent],
 
                 ['description', 'like', $description],

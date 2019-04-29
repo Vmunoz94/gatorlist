@@ -54,7 +54,7 @@
             <div class="col-10 col-sm-8">
                 <div class="form-group my-1">
                     <label for="image">Image URL:</label>
-                    <input type="text" class="form-control" id="image" placeholder="Image URL" v-model='url'>
+                    <input type="text" class="form-control" id="image" placeholder="https://www.example.com" v-model='url'>
                 </div>
             </div>
         </div>

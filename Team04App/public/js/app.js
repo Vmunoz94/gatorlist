@@ -53650,7 +53650,11 @@ var render = function() {
               }
             ],
             staticClass: "form-control",
-            attrs: { type: "text", id: "image", placeholder: "Image URL" },
+            attrs: {
+              type: "text",
+              id: "image",
+              placeholder: "https://www.example.com"
+            },
             domProps: { value: _vm.url },
             on: {
               input: function($event) {

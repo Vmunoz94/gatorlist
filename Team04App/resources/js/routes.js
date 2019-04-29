@@ -1,4 +1,5 @@
 import Home from './components/Home.vue';
+import Listing from './components/search/Listing.vue';
 import Login from './components/authentication/Login.vue';
 import Register from './components/authentication/Register.vue';
 import Account from './components/account/Account.vue';
@@ -20,6 +21,7 @@ import Gabriel from './components/about/employee/Gabriel.vue'
 
 export const routes = [
     { path: '/', component: Home, name: 'home'},
+    { path: '/listing/:id', component: Listing},
     { path: '/login', component: Login },
     { path: '/register', component: Register },
     { path: '/account', component: Account, children:[

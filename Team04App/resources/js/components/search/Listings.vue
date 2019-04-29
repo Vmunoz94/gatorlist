@@ -1,27 +1,33 @@
 <template>
     <div>   
-        <div v-if='!this.getLoading'>    
-            <div class="lead text-center mb-4">
+        <div v-if='!this.getLoading'> 
+            <!-- # Listings showing -->
+            <div class="lead text-center mb-3">
                 -- Showing {{ filteredListings.length }} out of {{ getAllListings.length }} Listings --
             </div>
+
+            <!-- Individual listing cards -->
             <transition-group tag="div" class="card-deck" name='move' appear enter-active-class="animated fadeInUp faster">
-                <div class="card mb-4" v-for='listing in filteredListings' :key='listing.image'>
+                <div class="card mb-4" 
+                    v-for='listing in filteredListings' 
+                    :key='listing.id'
+                    @click="openNewTab(listing.id)">
                     <img class="card-img-top" :src="listing.image" alt="Card image cap">
                     <div class="card-body py-3">
-                    <h5 class="card-title text-center"><strong>{{ listing.type.charAt(0).toUpperCase() + listing.type.slice(1) }}</strong></h5>
-                    <hr>
-                    <h5 class="card-title">Rent: <strong>${{ listing.rent }}</strong></h5>
-                    <div class="row">
-                        <div class="col">
-                            <p class="card-text"><i class="fas fa-bed"></i> Beds: {{ listing.bedrooms }}</p>
+                        <h5 class="card-title text-center mb-1"><strong>{{ listing.type.charAt(0).toUpperCase() + listing.type.slice(1) }}</strong></h5>
+                        <hr>
+                        <h5 class="card-title">Rent: <strong>${{ listing.rent }}</strong></h5>
+                        <div class="row">
+                            <div class="col">
+                                <p class="card-text"><i class="fas fa-bed"></i> Beds: {{ listing.bedrooms }}</p>
+                            </div>
+                            <div class="col">
+                                <p class="card-text"><i class="fas fa-bath"></i> Baths: {{ listing.bathrooms }}</p>
+                            </div>
                         </div>
-                        <div class="col">
-                            <p class="card-text"><i class="fas fa-bath"></i> Baths: {{ listing.bathrooms }}</p>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="card-text text-muted">{{ listing.street }},</div>
-                    <div class="card-text text-muted">{{ listing.city }}, CA {{ listing.zip }}</div>
+                        <hr>
+                        <div class="card-text text-muted">{{ listing.street }},</div>
+                        <div class="card-text text-muted">{{ listing.city }}, CA {{ listing.zip }}</div>
                     </div>
                 </div>
             </transition-group>
@@ -29,7 +35,11 @@
 
         <div v-else class="d-flex justify-content-center align-items-center loading">
             <transition appear enter-active-class="animated fadeIn faster">
-                <rotate-square5 size="150px"></rotate-square5>
+                <breeding-rhombus-spinner class="mt-5"
+                    :animation-duration="1200"
+                    :size="200"
+                    color="#8d3dc6"
+                />
             </transition>
         </div>
     </div>
@@ -38,16 +48,12 @@
 
 <script>
     import { mapGetters } from 'vuex';
-    import { RotateSquare5 } from 'vue-loading-spinner';
+    import { BreedingRhombusSpinner } from 'epic-spinners'
+
 
     export default {
-        data: function (){
-            return {
-
-            }
-        },
         components: {
-            RotateSquare5,
+            BreedingRhombusSpinner, 
         },
         computed: {
             ...mapGetters([
@@ -55,18 +61,14 @@
             ]),
             filteredListings() {
                 return this.getAllListings.filter((element) => {
-                    const objectCopy = JSON.parse(JSON.stringify(element));
-                    delete objectCopy.image;
-                    const objectCopyValues = Object.values(objectCopy);
-                    objectCopyValues.push('$CA');
-                    const objectCopyArray = objectCopyValues.join("").toLowerCase();
-                    return objectCopyArray.match(this.getSearch.toLowerCase());
+                    // filter through combined column created by the Backend team
+                    return element.combined.match(this.getSearch.toLowerCase());
                 });
             }
         },
-        watch: {
-            getAllListings(){
-                this.loading = false;
+        methods: {
+            openNewTab(id){
+                window.open('listing/' + id, "_blank");
             }
         }
     }
@@ -117,10 +119,10 @@
     /* number of cards per line for each breakpoint */
     $cards-per-line: (
         xs: 1,
-        sm: 2,
-        md: 3,
-        lg: 2,
-        xl: 3,
+        sm: 3,
+        md: 4,
+        lg: 5,
+        xl: 6,
     );
 
     @each $name, $breakpoint in $grid-breakpoints {

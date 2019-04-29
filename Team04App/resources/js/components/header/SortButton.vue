@@ -11,7 +11,7 @@
   export default {
     data() {
       return {
-        sortList: ['Most Recent', 'Distance to Campus', 'Commute Time'],
+        sortList: ['Most Recent', 'Distance to Campus', 'Commute Time', 'Max Price', 'Min Price'],
         sort: '',
       }
     },
@@ -32,6 +32,12 @@
             break;
           case 'Commute Time':
             this.getAllListings.sort((a, b) => a.commute_time_to_campus - b.commute_time_to_campus);
+            break;
+          case 'Max Price':
+            this.getAllListings.sort((a, b) => b.rent - a.rent);
+            break;
+          case 'Min Price':
+            this.getAllListings.sort((a, b) => a.rent - b.rent);
             break;
         }
       }

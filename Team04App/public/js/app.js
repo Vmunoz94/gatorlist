@@ -2304,13 +2304,11 @@ __webpack_require__.r(__webpack_exports__);
     return {
       listingTypes: ['All', 'Room', 'Apartment', 'House'],
       bedAndBathList: ['0+', '1+', '2+', '3+', '4+'],
-      sortList: ['Most Recent', 'Distance to Campus', 'Commute Time'],
       listingSelected: '',
       minPrice: null,
       maxPrice: null,
       numBedrooms: '',
-      numBathrooms: '',
-      sort: ''
+      numBathrooms: ''
     };
   },
   beforeCreate: function beforeCreate() {
@@ -2342,6 +2340,14 @@ __webpack_require__.r(__webpack_exports__);
 
     if (this.numBathrooms !== '0+' && this.numBathrooms !== '') {
       endpoint += 'bathrooms=' + this.numBathrooms[0] + '&';
+    }
+
+    if (this.minPrice) {
+      endpoint += 'min_rent=' + this.minPrice + '&';
+    }
+
+    if (this.maxPrice) {
+      endpoint += 'max_rent=' + this.maxPrice + '&';
     } // set loading to true while extracting from DB
 
 
@@ -2513,7 +2519,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      sortList: ['Most Recent', 'Distance to Campus', 'Commute Time'],
+      sortList: ['Most Recent', 'Distance to Campus', 'Commute Time', 'Max Price', 'Min Price'],
       sort: ''
     };
   },
@@ -2537,6 +2543,18 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         case 'Commute Time':
           this.getAllListings.sort(function (a, b) {
             return a.commute_time_to_campus - b.commute_time_to_campus;
+          });
+          break;
+
+        case 'Max Price':
+          this.getAllListings.sort(function (a, b) {
+            return b.rent - a.rent;
+          });
+          break;
+
+        case 'Min Price':
+          this.getAllListings.sort(function (a, b) {
+            return a.rent - b.rent;
           });
           break;
       }
@@ -52917,20 +52935,17 @@ var render = function() {
                   directives: [
                     {
                       name: "model",
-                      rawName: "v-model.number",
+                      rawName: "v-model.number.lazy",
                       value: _vm.minPrice,
                       expression: "minPrice",
-                      modifiers: { number: true }
+                      modifiers: { number: true, lazy: true }
                     }
                   ],
                   staticClass: "form-control",
                   attrs: { type: "text", name: "minprice", placeholder: "Min" },
                   domProps: { value: _vm.minPrice },
                   on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
+                    change: function($event) {
                       _vm.minPrice = _vm._n($event.target.value)
                     },
                     blur: function($event) {
@@ -52949,20 +52964,17 @@ var render = function() {
                   directives: [
                     {
                       name: "model",
-                      rawName: "v-model.number",
+                      rawName: "v-model.number.lazy",
                       value: _vm.maxPrice,
                       expression: "maxPrice",
-                      modifiers: { number: true }
+                      modifiers: { number: true, lazy: true }
                     }
                   ],
                   staticClass: "form-control",
                   attrs: { type: "text", name: "maxprice", placeholder: "Max" },
                   domProps: { value: _vm.maxPrice },
                   on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
+                    change: function($event) {
                       _vm.maxPrice = _vm._n($event.target.value)
                     },
                     blur: function($event) {

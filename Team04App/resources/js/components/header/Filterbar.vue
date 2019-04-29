@@ -14,13 +14,13 @@
                 <div class="dropdown-menu" aria-labelledby="priceMenuButton">
                     <div class="form-row">
                         <div class="col">
-                            <input type="text" class="form-control" name="minprice" v-model.number='minPrice' placeholder="Min">
+                            <input type="text" class="form-control" name="minprice" v-model.number.lazy='minPrice' placeholder="Min">
                         </div>
                         <div class="col-1 text-center pt-2">
                             -
                         </div>
                         <div class="col">
-                            <input type="text" class="form-control" name="maxprice" v-model.number='maxPrice' placeholder="Max">
+                            <input type="text" class="form-control" name="maxprice" v-model.number.lazy='maxPrice' placeholder="Max">
                         </div>
                     </div>
                 </div>
@@ -53,13 +53,11 @@
             return {
                 listingTypes: ['All', 'Room', 'Apartment', 'House'],
                 bedAndBathList: ['0+', '1+', '2+', '3+', '4+'],
-                sortList: ['Most Recent', 'Distance to Campus', 'Commute Time'],
                 listingSelected: '',
                 minPrice: null,
                 maxPrice: null,
                 numBedrooms: '',
                 numBathrooms: '',
-                sort: '',
             }
         },
         beforeCreate(){

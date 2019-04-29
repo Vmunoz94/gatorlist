@@ -38,10 +38,7 @@
                 </select>
             </div>
             <div class="col-2 col-lg-2">
-                <select class="form-control btn btn-dark" name="sort" v-model='sort'>
-                    <option disabled value="">Sort</option>
-                    <option v-for='(sort, index) in sortList' :key='index'> {{ sort }} </option>
-                </select>
+                <gatorlist-sortbutton/>
             </div>
         </div>
     </div>
@@ -49,6 +46,7 @@
 
 <script>
     import axios from 'axios';
+    import SortButton from './SortButton.vue';
 
     export default {
         data: function (){
@@ -105,6 +103,9 @@
             // redirect to home page when component updates
             this.$router.push({name: 'home'});
         },
+        components: {
+            'gatorlist-sortbutton': SortButton,
+        }
     }
 </script>
 

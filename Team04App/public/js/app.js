@@ -2523,27 +2523,21 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     sort: function sort() {
       switch (this.sort) {
         case 'Most Recent':
-          console.log('Most Recent!');
           this.getAllListings.sort(function (a, b) {
             return b.date.localeCompare(a.date);
           });
-          console.log(this.getAllListings);
           break;
 
         case 'Distance to Campus':
-          console.log('Distance');
           this.getAllListings.sort(function (a, b) {
             return a.distance_from_campus - b.distance_from_campus;
           });
-          console.log(this.getAllListings);
           break;
 
         case 'Commute Time':
-          console.log('Commute');
           this.getAllListings.sort(function (a, b) {
             return a.commute_time_to_campus - b.commute_time_to_campus;
           });
-          console.log(this.getAllListings);
           break;
       }
     }

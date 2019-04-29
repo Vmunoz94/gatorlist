@@ -90,6 +90,14 @@
             if(this.numBathrooms !== '0+' && this.numBathrooms !== ''){
                 endpoint += 'bathrooms=' + this.numBathrooms[0] + '&';
             }
+            if(this.minPrice)
+            {
+                endpoint += 'min_rent=' + this.minPrice + '&';
+            }
+            if(this.maxPrice)
+            {
+                endpoint += 'max_rent=' + this.maxPrice + '&';
+            }
             
             // set loading to true while extracting from DB
             this.$store.dispatch('mutateLoading', true);

@@ -14,13 +14,13 @@
                 <div class="dropdown-menu" aria-labelledby="priceMenuButton">
                     <div class="form-row">
                         <div class="col">
-                            <input type="text" class="form-control" name="minprice" v-model.number='minPrice' placeholder="Min">
+                            <input type="text" class="form-control" name="minprice" v-model.number.lazy='minPrice' placeholder="Min">
                         </div>
                         <div class="col-1 text-center pt-2">
                             -
                         </div>
                         <div class="col">
-                            <input type="text" class="form-control" name="maxprice" v-model.number='maxPrice' placeholder="Max">
+                            <input type="text" class="form-control" name="maxprice" v-model.number.lazy='maxPrice' placeholder="Max">
                         </div>
                     </div>
                 </div>
@@ -38,10 +38,7 @@
                 </select>
             </div>
             <div class="col-2 col-lg-2">
-                <select class="form-control btn btn-dark" name="sort" v-model='sort'>
-                    <option disabled value="">Sort</option>
-                    <option v-for='(sort, index) in sortList' :key='index'> {{ sort }} </option>
-                </select>
+                <gatorlist-sortbutton/>
             </div>
         </div>
     </div>
@@ -49,19 +46,18 @@
 
 <script>
     import axios from 'axios';
+    import SortButton from './SortButton.vue';
 
     export default {
         data: function (){
             return {
                 listingTypes: ['All', 'Room', 'Apartment', 'House'],
                 bedAndBathList: ['0+', '1+', '2+', '3+', '4+'],
-                sortList: ['Most Recent', 'Distance to Campus', 'Commute Time'],
                 listingSelected: '',
                 minPrice: null,
                 maxPrice: null,
                 numBedrooms: '',
                 numBathrooms: '',
-                sort: '',
             }
         },
         beforeCreate(){
@@ -90,6 +86,14 @@
             if(this.numBathrooms !== '0+' && this.numBathrooms !== ''){
                 endpoint += 'bathrooms=' + this.numBathrooms[0] + '&';
             }
+            if(this.minPrice)
+            {
+                endpoint += 'min_rent=' + this.minPrice + '&';
+            }
+            if(this.maxPrice)
+            {
+                endpoint += 'max_rent=' + this.maxPrice + '&';
+            }
             
             // set loading to true while extracting from DB
             this.$store.dispatch('mutateLoading', true);
@@ -105,6 +109,9 @@
             // redirect to home page when component updates
             this.$router.push({name: 'home'});
         },
+        components: {
+            'gatorlist-sortbutton': SortButton,
+        }
     }
 </script>
 

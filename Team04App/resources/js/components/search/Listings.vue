@@ -62,7 +62,6 @@
             filteredListings() {
                 return this.getAllListings.filter((element) => {
                     // filter through combined column created by the Backend team
-                    console.log(element.combined);
                     return element.combined.toLowerCase().match(this.getSearch.toLowerCase());
                 });
             }

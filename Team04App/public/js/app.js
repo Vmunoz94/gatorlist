@@ -3152,7 +3152,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       return this.getAllListings.filter(function (element) {
         // filter through combined column created by the Backend team
-        console.log(element.combined);
         return element.combined.toLowerCase().match(_this.getSearch.toLowerCase());
       });
     }

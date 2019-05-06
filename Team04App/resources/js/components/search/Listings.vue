@@ -62,7 +62,7 @@
             filteredListings() {
                 return this.getAllListings.filter((element) => {
                     // filter through combined column created by the Backend team
-                    return element.combined.match(this.getSearch.toLowerCase());
+                    return element.combined.toLowerCase().match(this.getSearch.toLowerCase());
                 });
             }
         },

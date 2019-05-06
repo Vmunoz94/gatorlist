@@ -15,6 +15,7 @@ class ListingsController extends Controller
 
     public function index(Request $request)
     {
+
         // ?id={INT}
         $id = $request->input('id') ?: '%';
         // ?type=[house, apartment, room]
@@ -53,29 +54,33 @@ class ListingsController extends Controller
         $limit = $request->input('limit') ?: 9999999;
         // ?search={TEXT} - This searches through the `combined` column to see if anything matches
         $search = $request->input('search') ?: '%';
+        // $?pending=[0, 1]
+        //0 for approved, 1 for pending
+        $pending = $request->input('pending') ?: '0';
 
-            $listing = DB::table('listings')->where([
-                ['id', 'like', $id],
-                ['type', 'like', $type],
-                ['street', 'like', $street],
-                ['city', 'like', $city],
-                ['zip', 'like', $zip],
-                ['bedrooms', '>=', $bedrooms],
-                ['bathrooms', '>=', $bathrooms],
-                ['rent', 'like', $rent],
+        $listing = DB::table('listings')->where([
+            ['id', 'like', $id],
+            ['type', 'like', $type],
+            ['street', 'like', $street],
+            ['city', 'like', $city],
+            ['zip', 'like', $zip],
+            ['bedrooms', '>=', $bedrooms],
+            ['bathrooms', '>=', $bathrooms],
+            ['rent', 'like', $rent],
 
-                ['description', 'like', $description],
-                ['image', 'like', $image],
-                ['date', 'like', $date],
-                ['distance_from_campus', 'like', $distance_from_campus],
-                ['commute_time_to_campus', 'like', $commute_time_to_campus],
-                ['landlord_id', 'like', $landlord_id],
-                //combined is a column that is the result of every other column being concated
-                ['combined', 'like', '%' . $search . '%'],
-            ])->whereBetween('rent', [$min_rent, $max_rent])
-                ->limit($limit)
-                ->orderBy('date', $order)
-                ->get();
+            ['description', 'like', $description],
+            ['image', 'like', $image],
+            ['date', 'like', $date],
+            ['distance_from_campus', 'like', $distance_from_campus],
+            ['commute_time_to_campus', 'like', $commute_time_to_campus],
+            ['landlord_id', 'like', $landlord_id],
+            ['pending', 'like', $pending],
+            //combined is a column that is the result of every other column being concated
+            ['combined', 'like', '%' . $search . '%']
+        ])->whereBetween('rent', [$min_rent, $max_rent])
+            ->limit($limit)
+            ->orderBy('date', $order)
+            ->get();
 //        dd($listing);
         return $listing;
 

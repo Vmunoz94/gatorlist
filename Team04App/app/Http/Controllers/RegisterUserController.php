@@ -18,9 +18,9 @@ class RegisterUserController extends Controller
         $firstName = $request->input('firstName');
         $lastName = $request->input('lastName');
         $userName = $request->input('userName');
-        
+
         $emailAddr = $request->input('emailAddr');
-        if(strpos($emailAddr, '@') !== false){
+        if(!strpos($emailAddr, '@')){
             return "Email requires @ sign";
         }
 

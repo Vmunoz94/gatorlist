@@ -52921,7 +52921,7 @@ var render = function() {
           ref: "recaptcha",
           attrs: {
             size: "invisible",
-            sitekey: "6LfaVqMUAAAAAP3ncY-fDKn6CZkdO8kuuPmXYP66"
+            sitekey: "6Lfz-6MUAAAAAPqIsnKhdnbNhe2Ut4PJwTtaq_zj"
           },
           on: { verify: _vm.onCaptchaVerified, expired: _vm.onCaptchaExpired }
         })

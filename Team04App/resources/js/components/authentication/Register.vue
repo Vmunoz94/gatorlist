@@ -84,7 +84,7 @@
                 @verify="onCaptchaVerified"
                 @expired="onCaptchaExpired"
                 size="invisible"
-                sitekey="6LfaVqMUAAAAAP3ncY-fDKn6CZkdO8kuuPmXYP66">
+                sitekey="6Lfz-6MUAAAAAPqIsnKhdnbNhe2Ut4PJwTtaq_zj">
             </vue-recaptcha>
         </form>
     </div>

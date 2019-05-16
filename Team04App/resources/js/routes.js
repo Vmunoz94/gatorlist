@@ -22,7 +22,7 @@ import Gabriel from './components/about/employee/Gabriel.vue'
 export const routes = [
     { path: '/', component: Home, name: 'home'},
     { path: '/listing/:id', component: Listing},
-    { path: '/login', component: Login },
+    { path: '/login', component: Login, name: 'login' },
     { path: '/register', component: Register },
     { path: '/account', component: Account, children:[
         { path: '', component: Account_details },

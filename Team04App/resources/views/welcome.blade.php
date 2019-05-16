@@ -13,6 +13,9 @@
 
         {{-- Import Google Maps API Key --}}
         {{-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmbDCDGERAGuQH7jGPLBg8MGd5sQpoxvY"></script> --}}
+
+        {{-- Import reCaptcha --}}
+        <script src="https://www.google.com/recaptcha/api.js?onload=vueRecaptchaApiLoaded&render=explicit" async defer></script> 
     </head>
     <body>
         <div id="app" class="flex-center position-ref full-height">

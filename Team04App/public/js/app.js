@@ -9295,7 +9295,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "\nimg[data-v-3d36cdca]{\n  border: 1px solid grey;\n  box-shadow: 0 1px 10px black;\n  -moz-box-shadow: 0 1px 10px black;\n  -webkit-box-shadow: 0 1px 10px black;\n}\n.mapStyle[data-v-3d36cdca] {\n  width: 100%;\n  height: 40vh;\n  border-radius: 5px;\n}\n", ""]);
+exports.push([module.i, "\n.margin-top[data-v-3d36cdca]{\n  margin-top: 150px;\n}\nimg[data-v-3d36cdca]{\n  border: 1px solid grey;\n  box-shadow: 0 1px 10px black;\n  -moz-box-shadow: 0 1px 10px black;\n  -webkit-box-shadow: 0 1px 10px black;\n}\n.mapStyle[data-v-3d36cdca] {\n  width: 100%;\n  height: 40vh;\n  border-radius: 5px;\n}\n", ""]);
 
 // exports
 
@@ -53181,7 +53181,7 @@ var render = function() {
     _vm.loading
       ? _c(
           "div",
-          { staticClass: "d-flex justify-content-center mt-5" },
+          { staticClass: "d-flex justify-content-center margin-top" },
           [
             _c("orbit-spinner", {
               attrs: { "animation-duration": 1200, size: 200, color: "orange" }

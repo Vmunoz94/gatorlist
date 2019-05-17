@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="loading" class="d-flex justify-content-center mt-5">
+    <div v-if="loading" class="d-flex justify-content-center margin-top">
       <orbit-spinner
         :animation-duration="1200"
         :size="200"
@@ -110,6 +110,9 @@
 </script>
 
 <style scoped>
+  .margin-top{
+    margin-top: 150px;
+  }
   img{
     border: 1px solid grey;
     box-shadow: 0 1px 10px black;

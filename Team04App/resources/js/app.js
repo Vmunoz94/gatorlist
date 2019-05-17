@@ -34,6 +34,18 @@ const router = new VueRouter({
 
 Vue.component('gatorlist-navbar', Navbar);
 
+Vue.filter('capitalize', value => {
+    return value.charAt(0).toUpperCase() + value.slice(1)
+});
+Vue.filter('subjectVerbMiles', value => {
+    if (value === 1) return String(value) + ' Mile';
+    return String(value) + ' Miles';
+});
+Vue.filter('subjectVerbMinutes', value => {
+    if (value === 1) return String(value) + ' Minute';
+    return String(value) + ' Minutes';
+});
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

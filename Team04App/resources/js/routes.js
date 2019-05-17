@@ -3,9 +3,11 @@ import Listing from './components/search/Listing.vue';
 import Login from './components/authentication/Login.vue';
 import Register from './components/authentication/Register.vue';
 import Account from './components/account/Account.vue';
+import AdminPanel from './components/account/adminPanel/AdminPanel.vue';
+import PendingListing from './components/account/adminPanel/PendingListing.vue';
 import Account_details from './components/account/Account_details.vue';
 import PendingListings from './components/account/PendingListings.vue';
-import EditListings from './components/account/EditListings.vue';
+// import EditListings from './components/account/EditListings.vue';
 import PostListing from './components/postListing/PostListing.vue';
 import AddListing from './components/postListing/AddListing.vue';
 import ConfirmListing from './components/postListing/ConfirmListing.vue';
@@ -26,8 +28,10 @@ export const routes = [
     { path: '/register', component: Register },
     { path: '/account', component: Account, children:[
         { path: '', component: Account_details },
+        { path: 'adminPanel', component: AdminPanel },
+        { path: 'adminPanel/:id', component: PendingListing },
         { path: 'pendingListings', component: PendingListings },
-        { path: 'editListings', component: EditListings },
+        // { path: 'editListings', component: EditListings },
         { path: 'messages', component: Messages },
     ] },
     { path: '/postListing', component: PostListing, children: [

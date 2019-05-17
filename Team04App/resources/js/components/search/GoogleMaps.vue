@@ -10,14 +10,19 @@
             zoom: Number,
             gestureHandling: String
         },
-        mounted: function() {
+        mounted() {
             this.map = new google.maps.Map(document.getElementById('Map'), {
                 center: {lat:this.$props.lat, lng: this.$props.lng},
                 zoom: this.$props.zoom,
                 gestureHandling: this.$props.gestureHandling,
             })
-        }
 
+            let marker = new google.maps.Marker({
+                map: this.map,
+                animation: google.maps.Animation.DROP,
+                position: {lat:this.$props.lat, lng: this.$props.lng}
+            });
+        }
     }
 </script>
 

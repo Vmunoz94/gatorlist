@@ -35,13 +35,49 @@ class RegisterUserController extends Controller
         if(empty($firstName) || empty($lastName) || empty($emailAddr) || empty($userName) || empty($password)){
 
             return "One or more field is empty!. Please fill all the Fields!.";
-        } else if (!strpos($emailAddr, '@')){
+        } 
+        else if (!strpos($emailAddr, '@')) {
             return "Email requires @ sign";
         } 
-        // else if($userName>0){
+
+        if(strlen($userName) < 4) {
+
+            return "username should be at least 4 characters";
+        }
+    
+        if(strlen($password) < 8) {
+
+            return "password should be at least 8 characters";
+        }
+        
+        // else if(function_exists($userName)){
         //     return "Username already exist, use a different username.";
         // }
+        
 
+        // else if(!strpos($emailAddr, 'unique')){
+        //     return "Email Address already exist, use a different Email Address.";
+        // }
+
+        $userExistsCheck = DB::table('users')
+        ->select('userName')
+        ->where('userName', $userName)
+        ->get();
+
+        $emailExistsCheck = DB::table('users')
+        ->select('emailAddr')
+        ->where('emailAddr', $emailAddr)
+        ->get();
+
+
+
+        if(count($userExistsCheck)>0) {
+            return "user already exists";
+        }
+        if(count($emailExistsCheck)>0) {
+            return "email already exists";
+        }
+        
         $result = DB::table('users')->insert(
             [
                 'firstName' => $firstName,
@@ -50,9 +86,11 @@ class RegisterUserController extends Controller
                 'emailAddr' => $emailAddr,
                 'password' => $securePassword,
                 'accountCreation' => date("Y-m-d H:i:s")
-            ]
-
+            ]     
         );
+
+        
+        
         return "Finished";
 
     }

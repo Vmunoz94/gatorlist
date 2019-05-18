@@ -21,7 +21,8 @@ public function store(Request $request){
     //Receive hashed password from database
 $queryResult = DB::table('users')->where('userName', $userName)->get();
 $passwordResult = $queryResult["password"];
-if(password_verify($password, $passwordResult)){
+if(bycrypt($password, $passwordResult)){
+    
     return "Success";
 }else{
     return "Fucked up password";

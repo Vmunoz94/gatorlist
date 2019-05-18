@@ -9,23 +9,35 @@ class LoginUserController extends Controller
 {
 
 
-    // public function index(Request $request)
-    // {
+    public function index(Request $request)
+     {
 
-    // }
+    }
 
-public function store(Request $request){
+public function store(Request $request) {
+
     $userName = $request->input('userName');
     $password = $request->input('password');
+    
 
     //Receive hashed password from database
-$queryResult = DB::table('users')->where('userName', $userName)->get();
-$passwordResult = $queryResult["password"];
-if(bycrypt($password, $passwordResult)){
+    $userExistsCheck = DB::table('users')
+    ->select('password')
+    ->where([
+        ['userName', '=', $userName]
+    ])
+    ->get();
+
+
+
+
+
+if (password_verify($password, $userExistsCheck[0]->password)){
     
-    return "Success";
-}else{
-    return "Fucked up password";
+    return "success";
+}  
+else {
+    return "Login Fail!";
 }
 }
 }

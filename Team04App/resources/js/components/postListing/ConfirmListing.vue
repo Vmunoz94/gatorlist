@@ -1,6 +1,15 @@
 <template>
     <div>
-        <div v-if='!this.loading'>
+        <div v-if='loadingCoordinates || loadingDistance' class="d-flex justify-content-center align-items-center loading">
+            <hollow-dots-spinner
+                :animation-duration="1000"
+                :dot-size="30"
+                :dots-num="5"
+                color="green"
+            />
+        </div>
+
+        <div v-else>
             <div class="row justify-content-center margin-top">
                 <div class="col-10 text-center">
                     <h4><strong>Confirm Details</strong></h4>
@@ -9,6 +18,7 @@
             </div>
 
             <div v-if='confirmed'>
+                <!-- Listing Details -->
                 <div class="row justify-content-center mb-3">
                     <div class="col-5 border-right">
                         <p><strong class="mr-3">Listing Type:</strong> 
@@ -28,17 +38,43 @@
                             <span class="d-flex">{{ this.getAddListing.description }}</span>
                         </p> 
                     </div>
+
+                    <!-- Google Maps -->
                     <div class="col-5">
                         <gatorlist-google-maps 
                             class="mapStyle" 
                             :lat="this.lat" 
                             :lng="this.lng" 
                             :zoom="15"
-                            gestureHandling="none">
-                        </gatorlist-google-maps>
+                            gestureHandling="none"
+                        />
+
+                        <div class="text-center">
+                            <!-- Coordinates -->
+                            <div class="mt-4">
+                                Coordinates:
+                            </div>
+                            <hr class="w-75 my-0"/>
+                            <div> Lat: {{this.lat}} </div>
+                            <div> Lng: {{this.lng}} </div>
+
+                            <!-- Distance -->
+                            <div class="mt-4">
+                                Distance to Campus:
+                            </div>
+                            <hr class="w-75 my-0"/>
+                            <div> {{ this.distance.text }} </div>
+
+                            <!-- Commute -->
+                            <div class="mt-4">
+                                Commute Time to Campus:
+                            </div>
+                            <hr class="w-75 my-0"/>
+                            <div> {{ this.commute.text }} </div>
+                        </div>
                     </div>
                 </div>
-                <div class="row justify-content-center mb-3">
+                <div class="row justify-content-center mb-3 mt-5">
                     <div class="col-10">
                         <div class="alert alert-warning" role="alert">
                             Posting may take a maximum of 24hrs to be confirmed
@@ -62,22 +98,16 @@
                     <button class="btn btn-dark btn-lg btn-block" @click='goBack'>Go Back</button>
                 </div>
                 <div class="col-5">
-                    <button class="btn btn-primary btn-lg btn-block" :disabled='!confirmed'>Confirm</button>
+                    <button class="btn btn-primary btn-lg btn-block" :disabled='!confirmed' @click="confirm">Confirm</button>
                 </div>
             </div>
-        </div>
-
-        <div v-else class="d-flex justify-content-center align-items-center loading">
-            <transition appear enter-active-class="animated fadeIn slower">
-                <rotate-square5 size="100px"></rotate-square5>
-            </transition>
         </div>
     </div>
 </template>
 
 <script>
     import { mapGetters } from 'vuex';
-    import { RotateSquare5 } from 'vue-loading-spinner';
+    import { HollowDotsSpinner } from 'epic-spinners'
     import GoogleMaps from '../search/GoogleMaps.vue'
     import axios from 'axios';
 
@@ -85,19 +115,41 @@
         data: function () {
             return {
                 confirmed: false,
-                loading: true,
+                confirmedCoordinates: false,
+                confirmedDistance: false,
+                loadingCoordinates: true,
+                loadingDistance: true, 
                 lat: '',
                 lng: '',
+                distance: {},
+                commute: {},
             }
         },
         components: {
             'gatorlist-google-maps': GoogleMaps,
-            RotateSquare5,
+            HollowDotsSpinner,
         },
         methods: {
             goBack(){
-                // go back to home screen
+                // go back to post listing page
                 this.$router.push('/postListing');
+            },
+            confirm(){
+                console.log('confirm');
+                console.log(this.lat);
+                axios.post('/api/listings', {
+                    ...this.getAddListing,
+                    lat: this.lat,
+                    lng: this.lng,
+                    distance: this.distance,
+                    commute: this.commute,
+                    landlord_Id: 1
+                  //  landlord_Id: "idk yet...some number"
+                }).then(res => {
+                    
+                }).catch(err => {
+                    console.log(err);
+                })
             }
         },
         computed: {
@@ -114,39 +166,61 @@
             address.push(this.getAddListing.state)
             address.push(this.getAddListing.zip)
             address = address.join(" ");
-
-            // Delete tokens, otherwise error occurs
-            var instance = axios.create();
-            delete instance.defaults.headers.common['X-CSRF-TOKEN'];
-            delete instance.defaults.headers.common['X-Requested-With'];
-
-            // Make GET request to Geocoding API, which should return latitude and longitude of address
-            instance.get('https://maps.googleapis.com/maps/api/geocode/json', {
-                params: {
-                    address,
-                    key: 'AIzaSyBmbDCDGERAGuQH7jGPLBg8MGd5sQpoxvY',
+            const destination = 'San Francisco State University';
+            
+            // Find Coordinates
+            let geocoder = new google.maps.Geocoder();
+            geocoder.geocode({
+                address,
+            }, (results, status) => {
+                if (status === 'OK') {
+                    // map.setCenter(results[0].geometry.location);
+                    // var marker = new google.maps.Marker({
+                    //     map: map,
+                    //     position: results[0].geometry.location
+                    // });
+                    this.loadingCoordinates = false;
+                    this.confirmedCoordinates = true;
+                    this.confirmed = this.confirmedCoordinates && this.confirmedDistance;
+                    this.lng = results[0].geometry.viewport.ia.l
+                    this.lat = results[0].geometry.viewport.na.l
+                } else {
+                    this.loadingCoordinates = false;
+                    this.confirmedCoordinates = false;
+                    console.log('Coordinate Location does not exists');
                 }
-            })
-            .then((res) => {
-                if (res.data.status === 'ZERO_RESULTS'){
-                    // If 0 results were found by google, then address is invalid
-                    console.log('Zero Results found');
-                    this.confirmed = false;
-                    this.loading = false;
+            });
+
+
+            //Find Distance
+            let service = new google.maps.DistanceMatrixService();
+            service.getDistanceMatrix({
+                origins: [address],
+                destinations: [destination],
+                travelMode: 'DRIVING',
+                unitSystem: google.maps.UnitSystem.IMPERIAL,
+                avoidHighways: false,
+                avoidTolls: false
+            }, ((response, status) => {
+                if (status === 'OK'){
+                    if(response.rows[0].elements[0].status === 'NOT_FOUND'){
+                        this.loadingDistance = false;
+                        this.confirmedDistance = false;
+                        console.log('Distance Location does not exists');
+                    } else {
+                        this.loadingDistance = false;
+                        this.confirmedDistance = true;
+                        this.confirmed = this.confirmedCoordinates && this.confirmedDistance;
+                        this.distance = response.rows[0].elements[0].distance;
+                        this.commute = response.rows[0].elements[0].duration;
+                    }
                 }
                 else{
-                    // Store latitude and longitude of location
-                    this.confirmed = true;
-                    this.loading = false;
-                    this.lat = res.data.results[0].geometry.location.lat
-                    this.lng = res.data.results[0].geometry.location.lng
+                    this.loadingDistance = false;
+                    this.confirmedDistance = false;
+                    console.log('Error retrieving Distance Matrix')
                 }
-            })
-            .catch(() => {
-                // Error with Geocoding API, Issue on google's end
-                console.log('Could not retrieve location from Geocoding API');
-                this.confirmed = false;
-            });            
+            }));
         },
     }
 </script>

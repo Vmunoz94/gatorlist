@@ -21,6 +21,7 @@ public function store(Request $request) {
     
 
     //Receive hashed password from database
+// <<<<<<< ga-login
 
 $queryResult = DB::table('users')->where('userName', $userName)->get();
 $passwordResult = $queryResult["password"];
@@ -31,12 +32,15 @@ $passwordResult = $queryResult["password"];
 // }else{
 //     return null;
 // }
+// =======
+// >>>>>>> develop
     $userExistsCheck = DB::table('users')
     ->select('password')
     ->where([
         ['userName', '=', $userName]
     ])
     ->get();
+// <<<<<<< ga-login
 if (password_verify($password, $userExistsCheck[0]->password)){
     return $userExistsCheck[0]->password;
     return $userName;
@@ -44,6 +48,20 @@ if (password_verify($password, $userExistsCheck[0]->password)){
 else {
     return null;
     }
+// =======
+
+
+
+
+
+// if (password_verify($password, $userExistsCheck[0]->password)){
+    
+//     return "success";
+// }  
+// else {
+//     return "Login Fail!";
+// }
+// >>>>>>> develop
 }
 }
 

@@ -2930,6 +2930,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2939,6 +2955,8 @@ __webpack_require__.r(__webpack_exports__);
       selected: '',
       street: '',
       city: '',
+      numBeds: null,
+      numBaths: null,
       zip: '',
       rent: '',
       url: '',
@@ -2961,6 +2979,18 @@ __webpack_require__.r(__webpack_exports__);
       numeric: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["numeric"],
       minLen: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["minLength"])(5),
       maxLen: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["maxLength"])(5)
+    },
+    numBeds: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"],
+      numeric: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["numeric"],
+      minVal: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["minValue"])(0),
+      integer: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["integer"]
+    },
+    numBaths: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"],
+      numeric: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["numeric"],
+      minVal: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["minValue"])(0),
+      integer: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["integer"]
     },
     rent: {
       required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"],
@@ -2986,6 +3016,8 @@ __webpack_require__.r(__webpack_exports__);
       addListing.rent = this.rent;
       addListing.image = this.url;
       addListing.description = this.description;
+      addListing.numBeds = this.numBeds;
+      addListing.numBaths = this.numBaths;
       this.$store.dispatch('mutateAddListing', addListing);
       this.$router.push('/postListing/confirm');
     }
@@ -3012,6 +3044,12 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -3147,13 +3185,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.$router.push('/postListing');
     },
     confirm: function confirm() {
-      console.log('confirm');
-      axios__WEBPACK_IMPORTED_MODULE_3___default.a.post('api/listings', _objectSpread({}, this.getAddListing, {
+      axios__WEBPACK_IMPORTED_MODULE_3___default.a.post('/api/listings', _objectSpread({}, this.getAddListing, {
         lat: this.lat,
         lng: this.lng,
         distance: this.distance,
         commute: this.commute,
-        landlord_Id: "idk yet...some number"
+        landlord_Id: 1 //  landlord_Id: "idk yet...some number"
+
       })).then(function (res) {})["catch"](function (err) {
         console.log(err);
       });
@@ -48798,6 +48836,76 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
+    _c("div", { staticClass: "row justify-content-center mt-3" }, [
+      _c("div", { staticClass: "col-12 col-sm-2" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-5 col-sm-4" }, [
+        _c("div", { staticClass: "form-group my-1" }, [
+          _c("label", { attrs: { for: "numBeds" } }, [_vm._v("Num Bedrooms:")]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model.number",
+                value: _vm.numBeds,
+                expression: "numBeds",
+                modifiers: { number: true }
+              }
+            ],
+            staticClass: "form-control",
+            attrs: { type: "text", id: "numBeds", placeholder: "numBeds" },
+            domProps: { value: _vm.numBeds },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.numBeds = _vm._n($event.target.value)
+              },
+              blur: function($event) {
+                return _vm.$forceUpdate()
+              }
+            }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-5 col-sm-4" }, [
+        _c("div", { staticClass: "form-group my-1" }, [
+          _c("label", { attrs: { for: "numBaths" } }, [
+            _vm._v("Num Bathrooms")
+          ]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model.number",
+                value: _vm.numBaths,
+                expression: "numBaths",
+                modifiers: { number: true }
+              }
+            ],
+            staticClass: "form-control",
+            attrs: { type: "text", id: "numBaths", placeholder: "numBaths" },
+            domProps: { value: _vm.numBaths },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.numBaths = _vm._n($event.target.value)
+              },
+              blur: function($event) {
+                return _vm.$forceUpdate()
+              }
+            }
+          })
+        ])
+      ])
+    ]),
+    _vm._v(" "),
     _c("div", { staticClass: "row justify-content-center mt-4" }, [
       _c("div", { staticClass: "col-10 col-sm-2" }, [
         _c("div", { staticClass: "form-group my-1" }, [
@@ -49016,6 +49124,26 @@ var render = function() {
                             _vm._s(this.getAddListing.zip) +
                             "\n                        "
                         )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("p", [
+                      _c("strong", { staticClass: "mr-3" }, [
+                        _vm._v("Num Beds:")
+                      ]),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "d-flex" }, [
+                        _vm._v(_vm._s(this.getAddListing.bedrooms))
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("p", [
+                      _c("strong", { staticClass: "mr-3" }, [
+                        _vm._v("Num Baths:")
+                      ]),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "d-flex" }, [
+                        _vm._v(_vm._s(this.getAddListing.bathrooms))
                       ])
                     ]),
                     _vm._v(" "),
@@ -70324,7 +70452,9 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
       zip: '',
       rent: '',
       image: '',
-      description: ''
+      description: '',
+      bedrooms: '',
+      bathrooms: ''
     },
     allListings: null,
     loading: true
@@ -70358,6 +70488,8 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
       state.addListing.rent = payload.rent;
       state.addListing.image = payload.image;
       state.addListing.description = payload.description;
+      state.addListing.bedrooms = payload.numBeds;
+      state.addListing.bathrooms = payload.numBaths;
     },
     mutateAllListings: function mutateAllListings(state, payload) {
       state.allListings = payload;

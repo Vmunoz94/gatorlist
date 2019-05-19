@@ -15,6 +15,8 @@ export const store = new Vuex.Store({
             rent: '',
             image: '',
             description: '',
+            bedrooms: '',
+            bathrooms: '',
         },
         allListings: null,
         loading: true,
@@ -48,6 +50,8 @@ export const store = new Vuex.Store({
             state.addListing.rent = payload.rent;
             state.addListing.image = payload.image;
             state.addListing.description = payload.description;
+            state.addListing.bedrooms = payload.numBeds;
+            state.addListing.bathrooms = payload.numBaths;
         },
         mutateAllListings: (state, payload) => {
             state.allListings = payload;

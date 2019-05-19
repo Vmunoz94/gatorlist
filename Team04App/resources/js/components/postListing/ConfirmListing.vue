@@ -32,6 +32,12 @@
                                 {{ this.getAddListing.street }} {{ this.getAddListing.city }}, 
                                 {{ this.getAddListing.state }}  {{ this.getAddListing.zip }}
                             </span>
+                        </p>
+                        <p><strong class="mr-3">Num Beds:</strong> 
+                            <span class="d-flex">{{ this.getAddListing.bedrooms }}</span>
+                        </p> 
+                        <p><strong class="mr-3">Num Baths:</strong> 
+                            <span class="d-flex">{{ this.getAddListing.bathrooms }}</span>
                         </p> 
                         <img :src='this.getAddListing.image' class="img-fluid mb-3">
                         <p><strong class="mr-3">Description:</strong>
@@ -135,14 +141,14 @@
                 this.$router.push('/postListing');
             },
             confirm(){
-                console.log('confirm')
-                axios.post('api/listings', {
+                axios.post('/api/listings', {
                     ...this.getAddListing,
                     lat: this.lat,
                     lng: this.lng,
                     distance: this.distance,
                     commute: this.commute,
-                    landlord_Id: "idk yet...some number"
+                    landlord_Id: 1
+                  //  landlord_Id: "idk yet...some number"
                 }).then(res => {
                     
                 }).catch(err => {

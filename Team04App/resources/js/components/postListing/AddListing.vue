@@ -43,6 +43,22 @@
                 </div>
             </div>
         </div>
+        
+        <div class="row justify-content-center mt-3">
+            <div class="col-12 col-sm-2"></div>
+            <div class="col-5 col-sm-4">
+                <div class="form-group my-1">
+                    <label for="numBeds">Num Bedrooms:</label>
+                    <input type="text" class="form-control" id="numBeds" placeholder="numBeds" v-model.number='numBeds'>
+                </div>
+            </div>
+            <div class="col-5 col-sm-4">
+                <div class="form-group my-1">
+                    <label for="numBaths">Num Bathrooms</label>
+                    <input type="text" class="form-control" id="numBaths" placeholder="numBaths" v-model.number='numBaths'>
+                </div>
+            </div>
+        </div>
 
         <div class="row justify-content-center mt-4">
             <div class="col-10 col-sm-2">
@@ -73,7 +89,7 @@
 </template>
 
 <script>
-    import { required, numeric, minLength, maxLength, url } from 'vuelidate/lib/validators';
+    import { required, numeric, minLength, maxLength, url, minValue, integer } from 'vuelidate/lib/validators';
     import ConfirmListing from './ConfirmListing.vue';
 
     export default {
@@ -83,6 +99,8 @@
                 selected: '',
                 street: '',
                 city: '',
+                numBeds: null,
+                numBaths: null,
                 zip: '',
                 rent: '',
                 url: '',
@@ -105,6 +123,18 @@
                 numeric,
                 minLen: minLength(5),
                 maxLen: maxLength(5),
+            },
+            numBeds: {
+                required,
+                numeric,
+                minVal: minValue(0),
+                integer,
+            },
+            numBaths: {
+                required,
+                numeric,
+                minVal: minValue(0),
+                integer,
             },
             rent: {
                 required,
@@ -131,6 +161,8 @@
                 addListing.rent = this.rent;
                 addListing.image = this.url;
                 addListing.description = this.description;
+                addListing.numBeds = this.numBeds;
+                addListing.numBaths = this.numBaths;
                 this.$store.dispatch('mutateAddListing', addListing);
                 this.$router.push('/postListing/confirm');
             }

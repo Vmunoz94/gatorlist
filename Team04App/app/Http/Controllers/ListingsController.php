@@ -86,6 +86,61 @@ class ListingsController extends Controller
 
     }
 
+    public function store(Request $request)
+    {
+        //Data from Form
+        $type = $request->input('type');
+        $street = $request->input('street');
+        $zip = $request->input('zip');
+        $rent = $request->input('rent');
+        $image = $request->input('image');
+        $description = $request->input('description');
+        $city = $request->input('city');
+
+        //Not sure if form gives us these values
+        //$latitude = $request->input('latitude');
+        //$longitude = $request->input('longitude');
+
+        //Data we're missing from form
+        //$bedrooms = $request->input('bedrooms');
+        //$bathrooms = $request->input('bathrooms');
+
+        //Create query to get current user's id
+        //Need username of currently logged in user
+        //$current_user =
+        //$landlord_id = $current_user's ID;
+
+
+        //Use api to get distance
+        //$distance_from_campus =
+
+        //Use api to get commute time
+        //$commute_time_to_campus =
+
+        $result = DB::table('listings')->insert(
+            [
+                'pending' => 1,
+                'type' => $type,
+//                'bedrooms' => $bedrooms,
+//                'bathrooms' => $bathrooms,
+                'rent' => $rent,
+                'description' => $description,
+                'image' => $image,
+                'date' => date("Y-m-d H:i:s"),
+//                'distance_from_campus' => $distance_from_campus,
+//                'commute_time_to_campus' => $commute_time_to_campus,
+//                'landlord_id' => $landlord_id,
+//                'latitude' => $latitude,
+//                'longitude' => $longitude,
+                'street' => $street,
+                'city' => $city,
+                'zip' => $zip
+            ]
+        );
+        return "Finished";
+
+
+    }
 
     public function simple(Request $request)
     {

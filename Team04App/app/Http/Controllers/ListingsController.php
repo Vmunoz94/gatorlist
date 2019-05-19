@@ -88,6 +88,8 @@ class ListingsController extends Controller
 
     public function store(Request $request)
     {
+        dd($request);
+        return true;
         //Data from Form
         $type = $request->input('type');
         $street = $request->input('street');
@@ -96,42 +98,37 @@ class ListingsController extends Controller
         $image = $request->input('image');
         $description = $request->input('description');
         $city = $request->input('city');
-
-        //Not sure if form gives us these values
-        //$latitude = $request->input('latitude');
-        //$longitude = $request->input('longitude');
+        $latitude = $request->input('lat');
+        $longitude = $request->input('lng');
 
         //Data we're missing from form
-        //$bedrooms = $request->input('bedrooms');
-        //$bathrooms = $request->input('bathrooms');
+        $bedrooms = $request->input('bedrooms') ?: 1;
+        $bathrooms = $request->input('bathrooms') ?: 1;
 
         //Create query to get current user's id
         //Need username of currently logged in user
         //$current_user =
-        //$landlord_id = $current_user's ID;
+        $landlord_id = $request->input('lgandlord_Id');
 
 
-        //Use api to get distance
-        //$distance_from_campus =
-
-        //Use api to get commute time
-        //$commute_time_to_campus =
+        $distance_from_campus = $request->input('distance');
+        $commute_time_to_campus = $request->input('commute');
 
         $result = DB::table('listings')->insert(
             [
                 'pending' => 1,
                 'type' => $type,
-//                'bedrooms' => $bedrooms,
-//                'bathrooms' => $bathrooms,
+                'bedrooms' => $bedrooms,
+                'bathrooms' => $bathrooms,
                 'rent' => $rent,
                 'description' => $description,
                 'image' => $image,
                 'date' => date("Y-m-d H:i:s"),
-//                'distance_from_campus' => $distance_from_campus,
-//                'commute_time_to_campus' => $commute_time_to_campus,
-//                'landlord_id' => $landlord_id,
-//                'latitude' => $latitude,
-//                'longitude' => $longitude,
+                'distance_from_campus' => $distance_from_campus,
+                'commute_time_to_campus' => $commute_time_to_campus,
+                'landlord_id' => $landlord_id,
+                'latitude' => $latitude,
+                'longitude' => $longitude,
                 'street' => $street,
                 'city' => $city,
                 'zip' => $zip
@@ -144,7 +141,7 @@ class ListingsController extends Controller
 
     public function simple(Request $request)
     {
-        // ?limit={INT}
+        // ?limit={INT}g
         $limit = $request->input('limit') ?: 9999999;
         $listing = DB::table('listings')
             ->select('type', 'rent', 'street', 'city', 'zip', 'bedrooms', 'bathrooms', 'image')

@@ -36,3 +36,4 @@ Homestead.json
 ### Composer ###
 composer.phar
 /vendor/
+.vs

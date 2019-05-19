@@ -108,7 +108,7 @@ class ListingsController extends Controller
         //Create query to get current user's id
         //Need username of currently logged in user
         //$current_user =
-        $landlord_id = $request->input('llandlord_Id');
+        $landlord_id = $request->input('lgandlord_Id');
 
 
         $distance_from_campus = $request->input('distance');

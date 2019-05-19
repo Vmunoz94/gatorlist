@@ -88,7 +88,20 @@ class ListingsController extends Controller
 
     public function store(Request $request)
     {
+        if ($request->input('approved') != '') {
+            $id = $request->input('id');
+            $approvedBool = $request->input('approved');
+//            echo $approvedBool;
+//            echo $id;
+            if ($approvedBool == "true") {
+                DB::table('listings')->where('id', $id)->update(['pending' => 0]);
+            } else {
+                DB::table('listings')->where('id', $id)->delete();
+            }
+            return "Finished";
 
+
+        }
         //Data from Form
         $type = $request->input('type');
         $street = $request->input('street');

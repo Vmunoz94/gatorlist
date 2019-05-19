@@ -135,14 +135,16 @@
                 this.$router.push('/postListing');
             },
             confirm(){
-                console.log('confirm')
-                axios.post('api/listings', {
+                console.log('confirm');
+                console.log(this.lat);
+                axios.post('/api/listings', {
                     ...this.getAddListing,
                     lat: this.lat,
                     lng: this.lng,
                     distance: this.distance,
                     commute: this.commute,
-                    landlord_Id: "idk yet...some number"
+                    landlord_Id: 1
+                  //  landlord_Id: "idk yet...some number"
                 }).then(res => {
                     
                 }).catch(err => {

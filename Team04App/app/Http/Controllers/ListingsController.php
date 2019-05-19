@@ -88,8 +88,7 @@ class ListingsController extends Controller
 
     public function store(Request $request)
     {
-        dd($request);
-        return true;
+
         //Data from Form
         $type = $request->input('type');
         $street = $request->input('street');
@@ -108,11 +107,12 @@ class ListingsController extends Controller
         //Create query to get current user's id
         //Need username of currently logged in user
         //$current_user =
-        $landlord_id = $request->input('lgandlord_Id');
+        $landlord_id = $request->input('landlord_Id');
 
 
-        $distance_from_campus = $request->input('distance');
-        $commute_time_to_campus = $request->input('commute');
+        $distance_from_campus = $request->input('distance')['text'];
+
+        $commute_time_to_campus = $request->input('commute')['text'];
 
         $result = DB::table('listings')->insert(
             [

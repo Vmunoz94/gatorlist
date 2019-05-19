@@ -3148,12 +3148,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     },
     confirm: function confirm() {
       console.log('confirm');
-      axios__WEBPACK_IMPORTED_MODULE_3___default.a.post('api/listings', _objectSpread({}, this.getAddListing, {
+      console.log(this.lat);
+      axios__WEBPACK_IMPORTED_MODULE_3___default.a.post('/api/listings', _objectSpread({}, this.getAddListing, {
         lat: this.lat,
         lng: this.lng,
         distance: this.distance,
         commute: this.commute,
-        landlord_Id: "idk yet...some number"
+        landlord_Id: 1 //  landlord_Id: "idk yet...some number"
+
       })).then(function (res) {})["catch"](function (err) {
         console.log(err);
       });
@@ -66507,7 +66509,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var withParams = Object({"MIX_PUSHER_APP_KEY":"","MIX_PUSHER_APP_CLUSTER":"mt1","MIX_GOOGLE_SECRET":"AIzaSyBmbDCDGERAGuQH7jGPLBg8MGd5sQpoxvY","NODE_ENV":"development"}).BUILD === 'web' ? __webpack_require__(/*! ./withParamsBrowser */ "./node_modules/vuelidate/lib/withParamsBrowser.js").withParams : __webpack_require__(/*! ./params */ "./node_modules/vuelidate/lib/params.js").withParams;
+var withParams = Object({"MIX_PUSHER_APP_CLUSTER":"mt1","MIX_PUSHER_APP_KEY":"","NODE_ENV":"development"}).BUILD === 'web' ? __webpack_require__(/*! ./withParamsBrowser */ "./node_modules/vuelidate/lib/withParamsBrowser.js").withParams : __webpack_require__(/*! ./params */ "./node_modules/vuelidate/lib/params.js").withParams;
 var _default = withParams;
 exports.default = _default;
 
@@ -70407,8 +70409,8 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/munoz/NoSync/SFSU/Software Engineering/csc648-sp19-Team04/Team04App/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/munoz/NoSync/SFSU/Software Engineering/csc648-sp19-Team04/Team04App/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Daniel\GoogleDrive\School\SFSU\3.1\648SoftwareEngineering\csc648-sp19-Team04\Team04App\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Daniel\GoogleDrive\School\SFSU\3.1\648SoftwareEngineering\csc648-sp19-Team04\Team04App\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

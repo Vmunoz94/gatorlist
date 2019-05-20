@@ -124,19 +124,6 @@
             FingerprintSpinner,
             'gatorlist-google-maps': GoogleMaps,
         },
-        filters: {
-            capitalize(value) {
-                return value.charAt(0).toUpperCase() + value.slice(1)
-            },
-            subjectVerbMiles(value) {
-                if (value === 1) return String(value) + ' Mile';
-                return String(value) + ' Miles';
-            },
-            subjectVerbMinutes(value) {
-                if (value === 1) return String(value) + ' Minute';
-                return String(value) + ' Minutes';
-            }
-        },
         methods: {
             goBack(){
                 // redirect to home page when search is updated
@@ -149,7 +136,7 @@
                 this.loggedIn = false;
             },
             sendMessage(){
-                
+                console.log("test");
             }
         },
     }

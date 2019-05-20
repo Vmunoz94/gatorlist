@@ -22,23 +22,18 @@ class RegisterUserController extends Controller
         $lastName = $request->input('lastName');
         $userName = $request->input('userName');
 
-        $emailAddr = $request->input('emailAddr');
-
         // if(!strpos($emailAddr, '@')){
         //     return "Email requires @ sign";   
         // }
         
 
         $password = $request->input('password');
-        $securePassword = bcrypt($password);
+        $securePassword = password_hash($password, PASSWORD_DEFAULT);
 
-        if(empty($firstName) || empty($lastName) || empty($emailAddr) || empty($userName) || empty($password)){
+        if(empty($firstName) || empty($lastName) ||empty($userName) || empty($password)){
 
             return "One or more field is empty!. Please fill all the Fields!.";
-        } 
-        else if (!strpos($emailAddr, '@')) {
-            return "Email requires @ sign";
-        } 
+        }
 
         if(strlen($userName) < 4) {
 
@@ -64,18 +59,9 @@ class RegisterUserController extends Controller
         ->where('userName', $userName)
         ->get();
 
-        $emailExistsCheck = DB::table('users')
-        ->select('emailAddr')
-        ->where('emailAddr', $emailAddr)
-        ->get();
-
-
 
         if(count($userExistsCheck)>0) {
             return "user already exists";
-        }
-        if(count($emailExistsCheck)>0) {
-            return "email already exists";
         }
         
         $result = DB::table('users')->insert(
@@ -83,7 +69,6 @@ class RegisterUserController extends Controller
                 'firstName' => $firstName,
                 'lastName' => $lastName,
                 'userName' => $userName,
-                'emailAddr' => $emailAddr,
                 'password' => $securePassword,
                 'accountCreation' => date("Y-m-d H:i:s")
             ]     

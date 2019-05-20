@@ -57,7 +57,6 @@
       SelfBuildingSquareSpinner,
     },
     created() {
-        console.log(this.getUser.id)
         axios.get(`/api/listings?pending=1&id=${this.getUser.userID}`)
         .then(response => {
             this.allPendingListings = response.data;

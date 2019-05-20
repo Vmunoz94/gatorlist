@@ -24,4 +24,24 @@ class MessagesController extends Controller
         );
         return "Finished";
     }
+
+    public function index(Request $request)
+    {
+        $to_userID = $request->input('to_userID');
+        $listing = DB::table('messages')->where([
+            ['to_userID', 'like', $to_userID],
+        ])->where('pending', 1)
+            ->limit(1)
+            ->get();
+//        dd($listing);
+
+        DB::table('messages')->where([
+            ['to_userID', $to_userID]
+        ])->update(['pending' => 0]);
+
+
+        return $listing;
+
+
+    }
 }

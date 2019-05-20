@@ -24,10 +24,15 @@
                             <router-link to='/about' class="nav-link text-dark">About</router-link>
                         </li>
                     </ul>
-                    <ul class="navbar-nav">
+                    <ul class="navbar-nav" v-if="this.getUser.userID">
                         <li class="nav-item">
                             <router-link to='/account' class="nav-link text-dark">My Account</router-link>
                         </li>
+                        <li class="nav-item" @click="logout">
+                            <router-link to='/' class="nav-link text-dark">Logout</router-link>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav" v-else>
                         <li class="nav-item">
                             <router-link to='/login' class="nav-link text-dark">Login</router-link>
                         </li>
@@ -50,6 +55,7 @@
     import Jumbotron from './Jumbotron.vue';
     import SearchBar from './SearchBar.vue';
     import Filterbar from './Filterbar.vue';
+    import { mapGetters } from 'vuex';
 
     export default {
         data: function (){
@@ -64,6 +70,17 @@
             'gatorlist-searchbar': SearchBar,
             'gatorlist-filterbar': Filterbar,
         },
+        computed: {
+            ...mapGetters([
+                // get user from Vuex
+                'getUser'
+            ]),
+        },
+        methods: {
+            logout(){
+                this.$store.dispatch('mutateUser', {});
+            }
+        }
     }
 </script>
 

@@ -20,6 +20,7 @@ export const store = new Vuex.Store({
         },
         allListings: null,
         loading: true,
+        user: {},
     },
     // getters
     getters: {
@@ -34,7 +35,10 @@ export const store = new Vuex.Store({
         },
         getLoading: (state) => {
             return state.loading;
-        }
+        },
+        getUser: (state) => {
+            return state.user;
+        },
     },
     // setters MUST BE Synchronous
     mutations: {
@@ -59,6 +63,9 @@ export const store = new Vuex.Store({
         mutateLoading: (state, bool) => {
             state.loading = bool;
         },
+        mutateUser: (state, payload) => {
+            state.user = payload;
+        },
     },
     // call setters CAN BE Asynchronous
     actions: {
@@ -81,6 +88,11 @@ export const store = new Vuex.Store({
             commit
         }, bool) => {
             commit('mutateLoading', bool);
-        }
+        },
+        mutateUser: ({
+            commit
+        }, payload) => {
+            commit('mutateUser', payload);
+        },
     },
 })

@@ -26,15 +26,12 @@
 
 
 <script>
+    import { mapGetters } from 'vuex';
     export default {
             
         data: function () {           
             return{
                 buttons: [
-                {
-                    title: "Admin Panel",
-                    link: "/account/adminPanel", 
-                },
                 {
                     title: "Account Details",
                     link: "/account",
@@ -46,8 +43,22 @@
                     link: "/account/messages",
                 },
                 ]
-            } 
-        },     
+            }
+        },  
+        computed: {
+            ...mapGetters([
+                // get user from Vuex
+                'getUser'
+            ]),
+        }, 
+        created(){
+            if (this.getUser.admin === 1){
+                this.buttons.unshift({
+                    title: "Admin Panel",
+                    link: "/account/adminPanel", 
+                });
+            }
+        }  
     }    
 </script>
 

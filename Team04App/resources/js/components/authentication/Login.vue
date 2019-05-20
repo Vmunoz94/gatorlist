@@ -6,47 +6,65 @@
             </h1>
         </div>
 
-        <div class="form-content">
-            <div class="row justify-content-center">
-                <div class="col-10">
-                    <div class="form-group margin-top">
-                        <label for="username"><i class="fas fa-user"></i> Username:</label>
-                        <input type="text" class="form-control" id="username" placeholder="Username" v-model='username'>
+        <form @submit.prevent="submit">
+            <div class="form-content">
+                <div class="row justify-content-center">
+                    <div class="col-10">
+                        <div class="form-group margin-top">
+                            <label for="username"><i class="fas fa-user"></i> Username:</label>
+                            <input type="text" class="form-control" id="username" placeholder="Username" v-model='username'>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-10">
-                    <div class="form-group">
-                        <i class="fas fa-lock"></i>
-                        <label for="password">Password:</label>
-                        <input type="password" class="form-control" id="password" placeholder="Password" v-model='password'>
+                <div class="row justify-content-center">
+                    <div class="col-10">
+                        <div class="form-group">
+                            <i class="fas fa-lock"></i>
+                            <label for="password">Password:</label>
+                            <input type="password" class="form-control" id="password" placeholder="Password" v-model='password'>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="row justify-content-center text-center mt-3 mb-4">
-                <div class="col-10">
-                    <a href="#" >Forgot Password?</a>
+                <div class="row justify-content-center text-center mt-3 mb-4">
+                    <div class="col-10">
+                        <a href="#" >Forgot Password?</a>
+                    </div>
+                    <div class="col-10 mt-2">
+                        <router-link to="/register">New User? Please Register</router-link>
+                    </div>
                 </div>
-                <div class="col-10 mt-2">
-                    <router-link to="/register">New User? Please Register</router-link>
+                <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-outline-dark btn-lg btn-block" :disabled='$v.$invalid'>Submit</button>
                 </div>
+
+                <div v-if="loading" class="mx-auto mt-4 d-flex justify-content-center">
+                    <circles-to-rhombuses-spinner
+                        :animation-duration="1200"
+                        :circles-num="3"
+                        :circle-size="15"
+                        color="purple"
+                    />
+                </div>
+                <transition appear enter-active-class="animated shake fast">
+                    <div v-if="login === false" class="error text-center mt-2">Wrong Username/Password Combination</div>
+                </transition>
             </div>
-            <div class="d-flex justify-content-center">
-                <button type="submit" class="btn btn-outline-dark btn-lg btn-block" :disabled='$v.$invalid'>Submit</button>
-            </div>
-        </div>
+        </form>
     </div>
 </template>
 
 <script>
     import { required } from 'vuelidate/lib/validators';
+    import { CirclesToRhombusesSpinner } from 'epic-spinners'
+    import axios from 'axios';
 
     export default {
         data: function (){
             return {
                 username: '',
                 password: '',
+                login: null,
+                loading: false,
             }
         },
         validations: {
@@ -57,6 +75,30 @@
                 required
             }
         },
+        components: {
+            CirclesToRhombusesSpinner
+        },
+        methods: {
+            submit(){
+                this.loading = true;
+                axios.post('/api/login', {
+                    userName: this.username,
+                    password: this.password,
+                }).then(res => {
+                    this.loading = false;
+                    if (res.data){
+                        this.$store.dispatch('mutateUser', res.data[0]);
+                        this.$router.push({name: 'home'});
+                    }
+                    else{
+                        this.login = false;
+                    }
+                }).catch(err => {
+                    this.loading = false;
+                    console.log(err);
+                })
+            }
+        }
     }
 </script>
 
@@ -114,5 +156,8 @@
     .form-control:focus {
         border-color: purple;
         box-shadow: none;
+    }
+    .error{
+        color: red;
     }
 </style>

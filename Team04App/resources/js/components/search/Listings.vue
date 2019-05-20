@@ -68,7 +68,8 @@
         },
         methods: {
             openNewTab(id){
-                window.open('listing/' + id, "_blank");
+                this.$router.push('listing/' + id);
+                // window.open('listing/' + id, "_blank");
             }
         }
     }

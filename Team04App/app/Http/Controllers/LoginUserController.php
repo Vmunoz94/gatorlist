@@ -20,17 +20,19 @@ class LoginUserController extends Controller
         $password = $request->input('password');
 
 
-        $queryResult = DB::table('users')->where('userName', $userName)->get();
-
         $userPassword = DB::table('users')
             ->select('password')
             ->where([
                 ['userName', '=', $userName]
             ])
             ->get();
+        if (strlen($userPassword) <= 2) {
+            return null;
+        }
         $userPassword = $userPassword[0]->password;
 
         if (password_verify($password, $userPassword)) {
+            $queryResult = DB::table('users')->where('userName', $userName)->get();
             return $queryResult;
         } else {
             return null;

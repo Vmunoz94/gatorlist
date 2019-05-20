@@ -18,7 +18,7 @@ public function store(Request $request) {
 
     $userName = $request->input('userName');
     $password = $request->input('password');
-    
+
 
     //Receive hashed password from database
 // <<<<<<< ga-login
@@ -44,7 +44,7 @@ $passwordResult = $queryResult["password"];
 if (password_verify($password, $userExistsCheck[0]->password)){
     return $userExistsCheck[0]->password;
     return $userName;
-}  
+}
 else {
     return null;
     }
@@ -55,7 +55,7 @@ else {
 
 
 // if (password_verify($password, $userExistsCheck[0]->password)){
-    
+
 //     return "success";
 // }  
 // else {

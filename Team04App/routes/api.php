@@ -23,3 +23,5 @@ Route::resource('register', 'RegisterUserController');
 
 Route::resource('login', 'LoginUserController');
 
+Route::resource('messages', 'MessagesController');
+

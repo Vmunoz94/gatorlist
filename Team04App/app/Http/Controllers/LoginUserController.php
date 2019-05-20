@@ -10,21 +10,22 @@ class LoginUserController extends Controller
 
 
     public function index(Request $request)
-     {
+    {
 
     }
 
-public function store(Request $request) {
+    public function store(Request $request)
+    {
 
-    $userName = $request->input('userName');
-    $password = $request->input('password');
-    
+        $userName = $request->input('userName');
+        $password = $request->input('password');
 
-    //Receive hashed password from database
+
+        //Receive hashed password from database
 // <<<<<<< ga-login
 
-$queryResult = DB::table('users')->where('userName', $userName)->get();
-$passwordResult = $queryResult["password"];
+        $queryResult = DB::table('users')->where('userName', $userName)->get();
+        $passwordResult = $queryResult["password"];
 // if(password_verify($password, $passwordResult)){
 //     return $passwordResult;//hashed password
 //     return $userName;//username from input to login
@@ -34,34 +35,30 @@ $passwordResult = $queryResult["password"];
 // }
 // =======
 // >>>>>>> develop
-    $userExistsCheck = DB::table('users')
-    ->select('password')
-    ->where([
-        ['userName', '=', $userName]
-    ])
-    ->get();
+        $userExistsCheck = DB::table('users')
+            ->select('password')
+            ->where([
+                ['userName', '=', $userName]
+            ])
+            ->get();
 // <<<<<<< ga-login
-if (password_verify($password, $userExistsCheck[0]->password)){
-    return $userExistsCheck[0]->password;
-    return $userName;
-}  
-else {
-    return null;
-    }
+        if (password_verify($password, $userExistsCheck[0]->password)) {
+            return $userExistsCheck[0]->password;
+            return $userName;
+        } else {
+            return null;
+        }
 // =======
 
 
-
-
-
 // if (password_verify($password, $userExistsCheck[0]->password)){
-    
+
 //     return "success";
 // }  
 // else {
 //     return "Login Fail!";
 // }
 // >>>>>>> develop
-}
+    }
 }
 

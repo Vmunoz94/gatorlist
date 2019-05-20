@@ -23,7 +23,7 @@
                 <strong>Username:</strong>
             </div>
             <div class="col">
-                {{ this.getUser.lastName }}
+                {{ this.getUser.userName }}
             </div>
         </div>
         <div class="row my-4">

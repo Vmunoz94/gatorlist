@@ -2197,7 +2197,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   created: function created() {
     var _this = this;
 
-    axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("/api/listings?pending=1&id=".concat(this.getUser.userID)).then(function (response) {
+    axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("/api/listings?pending=1&landlord_id=".concat(this.getUser.userID)).then(function (response) {
       _this.allPendingListings = response.data;
       _this.loading = false;
     })["catch"](function (error) {

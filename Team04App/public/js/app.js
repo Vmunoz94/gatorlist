@@ -2197,7 +2197,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   created: function created() {
     var _this = this;
 
-    console.log(this.getUser.id);
     axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("/api/listings?pending=1&id=".concat(this.getUser.userID)).then(function (response) {
       _this.allPendingListings = response.data;
       _this.loading = false;
@@ -3423,22 +3422,31 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.$router.push('/postListing');
     },
     confirm: function confirm() {
-      axios__WEBPACK_IMPORTED_MODULE_3___default.a.post('/api/listings', _objectSpread({}, this.getAddListing, {
-        lat: this.lat,
-        lng: this.lng,
-        distance: this.distance,
-        commute: this.commute,
-        landlord_Id: 1 //  landlord_Id: "idk yet...some number"
+      var _this = this;
 
-      })).then(function (res) {})["catch"](function (err) {
-        console.log(err);
-      });
+      if (this.getUser.userID) {
+        axios__WEBPACK_IMPORTED_MODULE_3___default.a.post('/api/listings', _objectSpread({}, this.getAddListing, {
+          lat: this.lat,
+          lng: this.lng,
+          distance: this.distance,
+          commute: this.commute,
+          landlord_Id: this.getUser.userID
+        })).then(function (res) {
+          _this.$router.push({
+            name: 'home'
+          });
+        })["catch"](function (err) {
+          console.log(err);
+        });
+      } else {
+        console.log('need to be logged in first');
+      }
     }
   },
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])([// get the listing from Vuex
-  'getAddListing'])),
+  'getAddListing', 'getUser'])),
   created: function created() {
-    var _this = this;
+    var _this2 = this;
 
     // Create address string to search in google maps
     var address = [];
@@ -3459,14 +3467,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         //     map: map,
         //     position: results[0].geometry.location
         // });
-        _this.loadingCoordinates = false;
-        _this.confirmedCoordinates = true;
-        _this.confirmed = _this.confirmedCoordinates && _this.confirmedDistance;
-        _this.lng = results[0].geometry.viewport.ia.l;
-        _this.lat = results[0].geometry.viewport.na.l;
+        _this2.loadingCoordinates = false;
+        _this2.confirmedCoordinates = true;
+        _this2.confirmed = _this2.confirmedCoordinates && _this2.confirmedDistance;
+        _this2.lng = results[0].geometry.viewport.ia.l;
+        _this2.lat = results[0].geometry.viewport.na.l;
       } else {
-        _this.loadingCoordinates = false;
-        _this.confirmedCoordinates = false;
+        _this2.loadingCoordinates = false;
+        _this2.confirmedCoordinates = false;
         console.log('Coordinate Location does not exists');
       }
     }); //Find Distance
@@ -3482,19 +3490,19 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }, function (response, status) {
       if (status === 'OK') {
         if (response.rows[0].elements[0].status === 'NOT_FOUND') {
-          _this.loadingDistance = false;
-          _this.confirmedDistance = false;
+          _this2.loadingDistance = false;
+          _this2.confirmedDistance = false;
           console.log('Distance Location does not exists');
         } else {
-          _this.loadingDistance = false;
-          _this.confirmedDistance = true;
-          _this.confirmed = _this.confirmedCoordinates && _this.confirmedDistance;
-          _this.distance = response.rows[0].elements[0].distance;
-          _this.commute = response.rows[0].elements[0].duration;
+          _this2.loadingDistance = false;
+          _this2.confirmedDistance = true;
+          _this2.confirmed = _this2.confirmedCoordinates && _this2.confirmedDistance;
+          _this2.distance = response.rows[0].elements[0].distance;
+          _this2.commute = response.rows[0].elements[0].duration;
         }
       } else {
-        _this.loadingDistance = false;
-        _this.confirmedDistance = false;
+        _this2.loadingDistance = false;
+        _this2.confirmedDistance = false;
         console.log('Error retrieving Distance Matrix');
       }
     });

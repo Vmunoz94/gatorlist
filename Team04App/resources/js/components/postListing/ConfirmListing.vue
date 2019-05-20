@@ -141,25 +141,30 @@
                 this.$router.push('/postListing');
             },
             confirm(){
-                axios.post('/api/listings', {
-                    ...this.getAddListing,
-                    lat: this.lat,
-                    lng: this.lng,
-                    distance: this.distance,
-                    commute: this.commute,
-                    landlord_Id: 1
-                  //  landlord_Id: "idk yet...some number"
-                }).then(res => {
-                    
-                }).catch(err => {
-                    console.log(err);
-                })
+                if (this.getUser.userID) {
+                    axios.post('/api/listings', {
+                        ...this.getAddListing,
+                        lat: this.lat,
+                        lng: this.lng,
+                        distance: this.distance,
+                        commute: this.commute,
+                        landlord_Id: this.getUser.userID
+                    }).then(res => {
+                        this.$router.push({name: 'home'})
+                    }).catch(err => {
+                        console.log(err);
+                    })
+                }
+                else{
+                    console.log('need to be logged in first')
+                }
             }
         },
         computed: {
             ...mapGetters([
                 // get the listing from Vuex
-                'getAddListing'
+                'getAddListing',
+                'getUser'
             ]),
         },
         created() {

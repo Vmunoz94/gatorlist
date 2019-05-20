@@ -28,7 +28,7 @@ class RegisterUserController extends Controller
         
 
         $password = $request->input('password');
-        $securePassword = bcrypt($password);
+        $securePassword = password_hash($password, PASSWORD_DEFAULT);
 
         if(empty($firstName) || empty($lastName) ||empty($userName) || empty($password)){
 

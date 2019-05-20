@@ -136,7 +136,7 @@
                 this.loggedIn = false;
             },
             sendMessage(){
-                
+                console.log("test");
             }
         },
     }

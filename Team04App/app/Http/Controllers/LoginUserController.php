@@ -16,9 +16,9 @@ class LoginUserController extends Controller
 
     public function store(Request $request)
     {
-
         $userName = $request->input('userName');
         $password = $request->input('password');
+
 
         $queryResult = DB::table('users')->where('userName', $userName)->get();
 
@@ -35,7 +35,5 @@ class LoginUserController extends Controller
         } else {
             return null;
         }
-
-    }
 }
 

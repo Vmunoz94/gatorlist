@@ -57,7 +57,7 @@
       SelfBuildingSquareSpinner,
     },
     created() {
-        axios.get(`/api/listings?pending=1&id=${this.getUser.userID}`)
+        axios.get(`/api/listings?pending=1&landlord_id=${this.getUser.userID}`)
         .then(response => {
             this.allPendingListings = response.data;
             this.loading = false;

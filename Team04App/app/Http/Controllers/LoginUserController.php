@@ -35,5 +35,6 @@ class LoginUserController extends Controller
         } else {
             return null;
         }
+    }
 }
 

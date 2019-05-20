@@ -18,3 +18,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::resource('listings', 'ListingsController');
+
+Route::resource('register', 'RegisterUserController');
+
+Route::resource('login', 'LoginUserController');
+
+Route::resource('messages', 'MessagesController');
+

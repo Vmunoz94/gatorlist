@@ -15,6 +15,7 @@ class ListingsController extends Controller
 
     public function index(Request $request)
     {
+
         // ?id={INT}
         $id = $request->input('id') ?: '%';
         // ?type=[house, apartment, room]
@@ -53,38 +54,108 @@ class ListingsController extends Controller
         $limit = $request->input('limit') ?: 9999999;
         // ?search={TEXT} - This searches through the `combined` column to see if anything matches
         $search = $request->input('search') ?: '%';
+        // $?pending=[0, 1]
+        //0 for approved, 1 for pending
+        $pending = $request->input('pending') ?: '0';
 
-            $listing = DB::table('listings')->where([
-                ['id', 'like', $id],
-                ['type', 'like', $type],
-                ['street', 'like', $street],
-                ['city', 'like', $city],
-                ['zip', 'like', $zip],
-                ['bedrooms', '>=', $bedrooms],
-                ['bathrooms', '>=', $bathrooms],
-                ['rent', 'like', $rent],
+        $listing = DB::table('listings')->where([
+            ['id', 'like', $id],
+            ['type', 'like', $type],
+            ['street', 'like', $street],
+            ['city', 'like', $city],
+            ['zip', 'like', $zip],
+            ['bedrooms', '>=', $bedrooms],
+            ['bathrooms', '>=', $bathrooms],
+            ['rent', 'like', $rent],
 
-                ['description', 'like', $description],
-                ['image', 'like', $image],
-                ['date', 'like', $date],
-                ['distance_from_campus', 'like', $distance_from_campus],
-                ['commute_time_to_campus', 'like', $commute_time_to_campus],
-                ['landlord_id', 'like', $landlord_id],
-                //combined is a column that is the result of every other column being concated
-                ['combined', 'like', '%' . $search . '%'],
-            ])->whereBetween('rent', [$min_rent, $max_rent])
-                ->limit($limit)
-                ->orderBy('date', $order)
-                ->get();
+            ['description', 'like', $description],
+            ['image', 'like', $image],
+            ['date', 'like', $date],
+            ['distance_from_campus', 'like', $distance_from_campus],
+            ['commute_time_to_campus', 'like', $commute_time_to_campus],
+            ['landlord_id', 'like', $landlord_id],
+            ['pending', 'like', $pending],
+            //combined is a column that is the result of every other column being concated
+            ['combined', 'like', '%' . $search . '%']
+        ])->whereBetween('rent', [$min_rent, $max_rent])
+            ->limit($limit)
+            ->orderBy('date', $order)
+            ->get();
 //        dd($listing);
         return $listing;
 
     }
 
+    public function store(Request $request)
+    {
+        if ($request->has('approved')) {
+            $id = $request->input('id');
+            $approvedBool = $request->input('approved');
+//            echo $approvedBool;
+//            echo $id;
+            if ($approvedBool == true) {
+                DB::table('listings')->where('id', $id)->update(['pending' => 0]);
+            } else {
+                DB::table('listings')->where('id', $id)->delete();
+            }
+            return "Finished";
+
+
+        }
+
+        //Data from Form
+        $type = $request->input('type');
+        $street = $request->input('street');
+        $zip = $request->input('zip');
+        $rent = $request->input('rent');
+        $image = $request->input('image');
+        $description = $request->input('description');
+        $city = $request->input('city');
+        $latitude = $request->input('lat');
+        $longitude = $request->input('lng');
+
+        //Data we're missing from form
+        $bedrooms = $request->input('bedrooms') ?: 1;
+        $bathrooms = $request->input('bathrooms') ?: 1;
+
+        //Create query to get current user's id
+        //Need username of currently logged in user
+        //$current_user =
+        $landlord_id = $request->input('landlord_Id');
+
+
+        $distance_from_campus = $request->input('distance')['text'];
+
+        $commute_time_to_campus = $request->input('commute')['text'];
+
+        $result = DB::table('listings')->insert(
+            [
+                'pending' => 1,
+                'type' => $type,
+                'bedrooms' => $bedrooms,
+                'bathrooms' => $bathrooms,
+                'rent' => $rent,
+                'description' => $description,
+                'image' => $image,
+                'date' => date("Y-m-d H:i:s"),
+                'distance_from_campus' => $distance_from_campus,
+                'commute_time_to_campus' => $commute_time_to_campus,
+                'landlord_id' => $landlord_id,
+                'latitude' => $latitude,
+                'longitude' => $longitude,
+                'street' => $street,
+                'city' => $city,
+                'zip' => $zip
+            ]
+        );
+        return "Finished";
+
+
+    }
 
     public function simple(Request $request)
     {
-        // ?limit={INT}
+        // ?limit={INT}g
         $limit = $request->input('limit') ?: 9999999;
         $listing = DB::table('listings')
             ->select('type', 'rent', 'street', 'city', 'zip', 'bedrooms', 'bathrooms', 'image')

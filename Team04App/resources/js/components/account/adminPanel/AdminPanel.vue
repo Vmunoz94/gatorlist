@@ -1,7 +1,5 @@
 <template>
   <div>
-      <h3 class="text-center mt-4">Pending Listings</h3>
-      <hr class="w-75 text-center mt-2 mb-4"/>
     <div v-if="loading" class="d-flex justify-content-center margin-top-loading">
       <self-building-square-spinner
         :animation-duration="2500"
@@ -10,6 +8,7 @@
       />
     </div>
     <div v-else>
+      <h5 class="text-center mb-4"> --- There are {{ allPendingListings.length | singularORplural }} pending --- </h5>
       <!-- listings -->
       <transition-group tag="div" class="card-deck" name='move' appear enter-active-class="animated fadeInUp faster">
         <div class="card mb-4" 
@@ -33,7 +32,7 @@
             <div class="card-text text-muted">{{ listing.city }}, CA {{ listing.zip }}</div>
           </div>
           <div class="card-footer">
-            Date Added: {{ listing.date }}
+            <button class="ui fluid inverted violet button" @click="viewListing(listing.id)"> Click to View </button>
           </div>
         </div>
       </transition-group>
@@ -43,7 +42,6 @@
 
 <script>
   import { SelfBuildingSquareSpinner  } from 'epic-spinners'
-  import { mapGetters } from 'vuex';
   import axios from 'axios';
 
   export default {
@@ -56,28 +54,27 @@
     components: {
       SelfBuildingSquareSpinner,
     },
-    created() {
-        axios.get(`/api/listings?pending=1&landlord_id=${this.getUser.userID}`)
+    beforeCreate() {
+      axios.get('/api/listings?pending=1')
         .then(response => {
-            this.allPendingListings = response.data;
-            this.loading = false;
+          this.allPendingListings = response.data;
+          this.loading = false;
         })
         .catch(error => {
-            console.log(error);
+          console.log(error);
         });
+    },
+    methods: {
+      viewListing(id){
+        this.$router.push(`adminPanel/${id}`);
+      }
     },
     filters: {
       singularORplural(value){
         if (value.length === 1) return String(value) + ' listing';
         return String(value) + ' listings';
       }
-    },
-    computed: {
-        ...mapGetters([
-            // get user from Vuex
-            'getUser'
-        ]),
-    },
+    }
   }
 </script>
 

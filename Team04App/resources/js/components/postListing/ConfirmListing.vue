@@ -191,7 +191,7 @@
                     this.loadingCoordinates = false;
                     this.confirmedCoordinates = true;
                     this.confirmed = this.confirmedCoordinates && this.confirmedDistance;
-                    this.lng = results[0].geometry.viewport.ia.l
+                    this.lng = results[0].geometry.viewport.ga.l
                     this.lat = results[0].geometry.viewport.na.l
                 } else {
                     this.loadingCoordinates = false;

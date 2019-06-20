@@ -3470,7 +3470,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         _this2.loadingCoordinates = false;
         _this2.confirmedCoordinates = true;
         _this2.confirmed = _this2.confirmedCoordinates && _this2.confirmedDistance;
-        _this2.lng = results[0].geometry.viewport.ia.l;
+        _this2.lng = results[0].geometry.viewport.ga.l;
         _this2.lat = results[0].geometry.viewport.na.l;
       } else {
         _this2.loadingCoordinates = false;
